@@ -343,6 +343,15 @@ main{overflow-x:clip}
 .g-card b{display:block;font-weight:400;margin-top:14px}
 .g-card span{display:block;font-size:13px;color:var(--muted)}
 .g-card .portrait.color img{filter:none}
+.g-card .tags{margin:12px 0 0;gap:6px}
+.g-card .tags li{font-size:11.5px;padding:6px 11px}
+.g-card .portrait{transition:transform .45s ease,opacity .45s ease,filter .45s ease,box-shadow .45s ease}
+@media (hover:hover){
+  .g-grid:hover .g-card .portrait{opacity:.42;filter:grayscale(.85) brightness(.8)}
+  .g-grid .g-card:hover .portrait{opacity:1;filter:none;transform:translateY(-8px) scale(1.04);
+    box-shadow:inset 0 0 0 1px rgba(224,191,159,.6),0 30px 60px -20px rgba(0,0,0,.85),0 0 46px -10px rgba(217,170,128,.45)}
+  .g-card{position:relative}.g-card:hover{z-index:2}
+}
 .g-card a.ig{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;margin-top:10px;padding:10px 18px;border-radius:var(--radius);
   font:500 13px/1 var(--font);letter-spacing:.02em;color:var(--gold);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(224,191,159,.55);
   transition:color .25s ease,transform .25s ease,box-shadow .25s ease}
@@ -961,9 +970,9 @@ const CONFIG = {
      Enquanto a lista estiver vazia, aparecem 4 cartões "Convidado a anunciar". */
   convidados: [
     // { nome: "Nome do convidado", credencial: "Formação", instagram: "usuario (sem @)", foto: "img/convidado-1.png" },
-    { nome: "Kauane Leite", credencial: "", instagram: "kauanelleite", foto: "img/kauane-leite.webp" },
-    { nome: "Leandro Carone", credencial: "", instagram: "oleandrocarone", foto: "img/leandro-carone.webp" },
-    { nome: "Rafael de Abreu", credencial: "", instagram: "psi.rafaeldeabreu", foto: "img/rafael-de-abreu.webp" },
+    { nome: "Kauane Leite", credencial: "", tags: ["Psicologia, Aconselhamento e Teologia", "Saúde mental e fé cristã", "63 mil seguidores"], instagram: "kauanelleite", foto: "img/kauane-leite.webp" },
+    { nome: "Leandro Carone", credencial: "", tags: ["Fundador da Cedro Clínica", "Cuidado de homens", "19 mil seguidores"], instagram: "oleandrocarone", foto: "img/leandro-carone.webp" },
+    { nome: "Rafael de Abreu", credencial: "", tags: ["Instituto de Psicologia Tomista", "Presidente e cofundador", "84 mil seguidores"], instagram: "psi.rafaeldeabreu", foto: "img/rafael-de-abreu.webp" },
   ],
 
   /* Depoimentos da Turma 01. "video" aceita link do YouTube (normal ou Shorts) ou um arquivo .mp4 na pasta img/.
@@ -992,7 +1001,7 @@ const CONFIG = {
     const gr=document.getElementById('guests'); if(g.length===3) gr.classList.add('n3');
     gr.innerHTML=g.map((c,i)=>{
       const ig=String(c.instagram||'').replace(/^@/,'').trim();
-      return `<article class="g-card rv d${i%4}"><div class="portrait color"><img src="${esc(c.foto)}" alt="${esc(c.nome)}" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><b>${esc(c.nome)}</b>${c.credencial?`<span>${esc(c.credencial)}</span>`:''}${ig?`<a class="ig" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>`:''}</article>`}).join('');
+      return `<article class="g-card rv d${i%4}"><div class="portrait color"><img src="${esc(c.foto)}" alt="${esc(c.nome)}" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><b>${esc(c.nome)}</b>${c.credencial?`<span>${esc(c.credencial)}</span>`:''}${(c.tags||[]).length?`<ul class="tags">${c.tags.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${ig?`<a class="ig" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>`:''}</article>`}).join('');
   }
   const d=CONFIG.depoimentos.filter(x=>x&&x.video);
   if(d.length){
