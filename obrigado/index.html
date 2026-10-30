@@ -90,8 +90,7 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 .lateral h2{font-size:22px;font-weight:500;letter-spacing:-.02em}
 .lateral .sub{margin-top:8px;font-size:14px;line-height:1.55;color:var(--muted)}
 .lista{margin-top:22px;display:grid;gap:22px}
-.aula{display:block;width:100%;text-align:left;border-radius:18px;padding:10px;transition:background .2s}
-.aula:hover{background:rgba(255,255,255,.035)}
+.aula{display:block;width:100%;border-radius:18px;padding:10px}
 
 /* capa 16:9: foto do palestrante à direita, nome e tema à esquerda */
 .capa{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse 70% 90% at 78% 40%,#2a1f19,#120d0b 70%);border:1px solid var(--line);isolation:isolate}
@@ -104,10 +103,6 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 .capa .nome{margin-top:auto;font-size:clamp(20px,2.1vw,26px);line-height:1.02;font-weight:500;letter-spacing:-.03em;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
 .capa .tema{margin-top:6px;font-size:11.5px;line-height:1.35;color:#d8cdc2}
 .capa .logo{position:absolute;right:12px;top:12px;width:26px;opacity:.8}
-.capa .play{position:absolute;right:14px;bottom:14px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:#2a1f18;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .2s}
-.capa .play svg{width:18px;height:18px;margin-left:2px}
-.aula:hover .capa .play{transform:scale(1.08)}
-.capa .barra{position:absolute;left:0;bottom:0;height:3px;background:var(--gold);width:0;z-index:2}
 .capa .cad{position:absolute;inset:0;display:none;place-items:end;padding:14px;background:rgba(10,8,7,.35);z-index:3}
 .capa .cad span{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(10,8,7,.8);border:1px solid var(--line-2);font-size:12.5px;color:var(--gold-hi)}
 .capa .cad svg{width:14px;height:14px}
@@ -117,64 +112,20 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 .aula p{margin-top:5px;font-size:13px;line-height:1.5;color:var(--muted)}
 .aula .st{display:block;margin-top:6px;font-size:12px;color:var(--dim)}
 .aula.feita .st{color:var(--gold)}
-.aula.travado{cursor:not-allowed}
 .aula.travado .capa .foto{filter:grayscale(1) brightness(.6)}
-.aula.travado .capa .play{display:none}
 .aula.travado .capa .cad{display:grid}
 .aula.travado h3,.aula.travado .n{color:var(--dim)}
-.aula.travado:hover{background:none}
 .aviso{margin-top:24px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);font-size:13px;line-height:1.55;color:var(--muted)}
 .aviso b{color:var(--fg);font-weight:500}
+.passos{margin-top:24px;padding:20px;border-radius:18px;border:1px solid rgba(217,176,140,.3);background:linear-gradient(145deg,rgba(217,176,140,.08),rgba(42,31,24,.3))}
+.passos .r{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.passos ol{list-style:none;counter-reset:p;margin-top:14px;display:grid;gap:12px}
+.passos li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:14px;line-height:1.5;color:#d6ccc2}
+.passos li::before{content:counter(p);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold-hi);font-size:13px}
+.passos li b{color:var(--fg);font-weight:500}
+.passos .btn{margin-top:18px;width:100%;padding:16px 20px;font-size:15px}
 
-/* ---------- player em tela cheia: só tocar/pausar e volume ---------- */
-.player{position:fixed;inset:0;z-index:50;background:#000;display:none}
-.player.aberto{display:block}
-.tela{position:absolute;inset:0;display:grid;place-items:center}
-.quadro{position:relative;width:min(100vw,calc(100dvh * 16 / 9));aspect-ratio:16/9;background:#000;overflow:hidden}
-.quadro iframe,.quadro #yt{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
-/* camada por cima do vídeo: bloqueia os cliques no YouTube (título, links, barra de tempo) */
-.toque{position:absolute;inset:0;z-index:1}
-/* capa por cima do vídeo antes de tocar e na pausa: esconde as sugestões do YouTube */
-.veu{position:absolute;inset:0;z-index:2;display:grid;place-items:center;background:#000 center/cover no-repeat;transition:opacity .35s}
-.veu::before{content:"";position:absolute;inset:0;background:rgba(10,8,7,.72);backdrop-filter:blur(6px)}
-.player.tocando .veu{opacity:0;pointer-events:none}
-.veu .caixa{position:relative;text-align:center;padding:24px;max-width:520px}
-.veu .r{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.veu h3{margin-top:10px;font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:-.03em;line-height:1.15}
-.veu p{margin-top:8px;color:#d6ccc2;font-size:15px}
-.veu .grande{margin:22px auto 0;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:#2a1f18;box-shadow:0 0 50px rgba(217,176,140,.45)}
-.veu .grande svg{width:30px;height:30px;margin-left:3px}
-.veu .carregando{margin-top:14px;font-size:13px;color:var(--muted);display:none}
-.player.esperando .veu .carregando{display:block}
-.ctrl{position:absolute;inset:0;z-index:3;pointer-events:none;transition:opacity .3s}
-.player.tocando.ocioso .ctrl{opacity:0}
-.ctrl > *{pointer-events:auto}
-.voltar{position:absolute;left:18px;top:16px;display:flex;align-items:center;gap:8px;font-size:14px;padding:9px 14px;border-radius:12px;background:rgba(0,0,0,.55)}
-.voltar svg{width:16px;height:16px}
-.rotulo{position:absolute;left:50%;top:22px;transform:translateX(-50%);font-size:13px;color:#ddd;white-space:nowrap}
-.rotulo b{color:var(--gold);font-weight:500}
-.barra-ctrl{position:absolute;left:0;right:0;bottom:0;padding:22px 22px calc(18px + env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);display:flex;gap:16px;align-items:center;font-size:13px}
-.barra-ctrl button{display:grid;place-items:center;width:40px;height:40px;border-radius:50%}
-.barra-ctrl button:hover{background:rgba(255,255,255,.08)}
-.barra-ctrl svg{width:22px;height:22px}
-.volume{display:flex;align-items:center;gap:6px}
-.volume input{width:110px;accent-color:var(--gold);cursor:pointer}
-.andamento{margin-left:auto;display:flex;align-items:center;gap:12px;color:#cfc4b9;font-variant-numeric:tabular-nums}
-/* barra só de leitura: mostra o andamento, sem clique para avançar */
-.trilho{width:clamp(80px,22vw,260px);height:4px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden;pointer-events:none}
-.trilho i{display:block;height:100%;width:0;background:var(--gold)}
-
-/* fim da aula */
-.fim{position:absolute;inset:0;z-index:4;display:none;place-items:center;background:rgba(10,8,7,.94);backdrop-filter:blur(8px);padding:24px}
-.player.acabou .fim{display:grid}
-.fim .caixa{max-width:480px;text-align:center}
-.fim .r{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.fim h3{margin-top:10px;font-size:28px;font-weight:500;letter-spacing:-.03em;line-height:1.15}
-.fim p{margin-top:10px;color:#d6ccc2;line-height:1.55}
-.fim .bt{display:inline-flex;margin-top:22px;padding:15px 26px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600}
-.fim .sec{display:block;margin:14px auto 0;font-size:14px;color:var(--muted);text-decoration:underline}
-
-/* popup de saída: aparece quando o lead tenta sair sem ter entrado no grupo ou assistido às aulas */
+/* popup de saída: aparece quando o lead tenta sair sem ter entrado no grupo */
 .saida{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(10,8,7,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px}
 .saida.aberto{display:grid;animation:surge .3s ease}
 @keyframes surge{from{opacity:0}}
@@ -211,12 +162,8 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
   .lateral h2,.lateral .sub,.aviso{margin-inline:8px}
   .capa .nome{font-size:clamp(20px,6vw,26px)}
   .capa .tema{font-size:12px}
-  .barra-ctrl{flex-wrap:wrap;gap:10px}
-  .volume input{width:84px}
-  .rotulo{top:64px}
 }
 @media (min-width:600px) and (max-width:980px){.fundo img{width:84%;right:-12%}.info{padding-top:420px}}
-@media (max-width:420px){.trilho{display:none}}
 </style>
 </head>
 <body>
@@ -248,9 +195,9 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
       <div class="bonus">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-1.5-3-5-4-5.5-2S9 8 12 8zm0 0c1.5-3 5-4 5.5-2S15 8 12 8z"/></svg></div>
         <div>
-          <span class="r">Bônus de quem garantiu o ingresso</span>
-          <p>Você ganhou acesso a <b>duas aulas do Congresso Plenitude 2025</b>: a da <b>Kauane Leite</b> e a do <b>Yago Martins</b>. Comece pela Kauane. A aula do Yago abre quando você terminar a primeira.</p>
-          <a class="ir" href="#aulas">Ver as aulas</a>
+          <span class="r">Bônus de quem entrar no grupo</span>
+          <p>Quem entra no grupo de inscritos ganha <b>duas aulas do Congresso Plenitude 2025</b>: a da <b>Kauane Leite</b> e a do <b>Yago Martins</b>. Depois de entrar no grupo, você recebe o link das aulas no seu WhatsApp.</p>
+          <a class="ir" href="#aulas">Ver o bônus</a>
         </div>
       </div>
     </div>
@@ -258,10 +205,37 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 
   <!-- ===== lateral: aulas bônus ===== -->
   <aside class="lateral" id="aulas">
-    <h2>Suas aulas bônus</h2>
-    <p class="sub">Duas aulas gravadas no Congresso Plenitude 2025. Assista na ordem.</p>
-    <div class="lista" id="lista"></div>
-    <p class="aviso"><b>Como funciona:</b> a aula 2 abre quando você termina a aula 1. O seu progresso fica salvo neste aparelho: se fechar a página, você continua de onde parou.</p>
+    <h2>Bônus para quem entrar no grupo</h2>
+    <p class="sub">Duas aulas gravadas no Congresso Plenitude 2025. Elas são liberadas para quem está no grupo de inscritos.</p>
+    <div class="lista">
+      <div class="aula travado">
+        <div class="capa">
+          <img class="foto" src="../img/kauane-leite.webp" alt="">
+          <div class="tx"><span class="tag">Aula 1 · Congresso 2025</span><b class="nome">Kauane<br>Leite</b><span class="tema">Saúde mental e fé cristã</span></div>
+          <img class="logo" src="../img/logo-icone.webp" alt="">
+          <div class="cad"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Libera no grupo</span></div>
+        </div>
+        <div class="d"><span class="n">1</span><div><h3>Kauane Leite · Saúde mental e fé cristã</h3><p>Psicologia, aconselhamento e teologia no cuidado de quem sofre.</p></div></div>
+      </div>
+      <div class="aula travado">
+        <div class="capa">
+          <img class="foto" src="../img/yago-martins.webp" alt="">
+          <div class="tx"><span class="tag">Aula 2 · Congresso 2025</span><b class="nome">Yago<br>Martins</b><span class="tema">Teologia, cosmovisão e integracionismo</span></div>
+          <img class="logo" src="../img/logo-icone.webp" alt="">
+          <div class="cad"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Libera no grupo</span></div>
+        </div>
+        <div class="d"><span class="n">2</span><div><h3>Yago Martins · Teologia, cosmovisão e integracionismo</h3><p>Como o terapeuta pode pensar teologicamente o próprio trabalho.</p></div></div>
+      </div>
+    </div>
+    <div class="passos">
+      <span class="r">Como liberar as aulas</span>
+      <ol>
+        <li><span><b>Entre no grupo de inscritos</b> pelo botão abaixo.</span></li>
+        <li><span>Em poucos minutos, você recebe <b>uma mensagem nossa no WhatsApp</b>.</span></li>
+        <li><span>Confirme que já está no grupo e <b>receba o link das aulas</b>.</span></li>
+      </ol>
+      <a class="btn" data-grupo href="#" target="_blank" rel="noopener">Entrar no grupo de inscritos</a>
+    </div>
   </aside>
 </div>
 
@@ -270,255 +244,37 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
   <div class="caixa">
     <button class="x" id="saidaX" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <span class="r">Antes de sair</span>
-    <h3 id="saidaTitulo">Você já entrou no grupo e assistiu às aulas?</h3>
-    <p>O link de acesso do Congresso chega pelo grupo de inscritos. E as duas aulas bônus ficam aqui nesta página.</p>
-    <ul id="saidaLista"></ul>
-    <a class="bt" id="saidaBt" href="#">Entrar no grupo de inscritos</a>
-    <button class="sec" id="saidaSair">Já fiz tudo, pode sair</button>
-  </div>
-</div>
-
-<!-- ===== player ===== -->
-<div class="player" id="player" aria-hidden="true">
-  <div class="tela">
-    <div class="quadro">
-      <div id="yt"></div>
-      <div class="toque" id="toque" aria-hidden="true"></div>
-      <div class="veu" id="veu">
-        <div class="caixa">
-          <span class="r" id="veuRotulo">Aula 1</span>
-          <h3 id="veuTitulo"></h3>
-          <p id="veuTexto">Toque para assistir</p>
-          <button class="grande" id="veuPlay" aria-label="Tocar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-          <p class="carregando">Carregando o vídeo…</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ctrl">
-    <button class="voltar" id="voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Voltar</button>
-    <div class="rotulo" id="rotulo"></div>
-    <div class="barra-ctrl">
-      <button id="btPlay" aria-label="Tocar ou pausar"><svg id="icPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-      <div class="volume">
-        <button id="btSom" aria-label="Silenciar ou ativar o som"><svg id="icSom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
-        <input type="range" id="vol" min="0" max="100" value="100" aria-label="Volume">
-      </div>
-      <div class="andamento"><span id="tempo">0:00</span><div class="trilho"><i id="trilho"></i></div><span id="total">--:--</span></div>
-    </div>
-  </div>
-  <div class="fim" id="fim">
-    <div class="caixa">
-      <span class="r" id="fimRotulo">Aula 1 concluída</span>
-      <h3 id="fimTitulo">A aula do Yago Martins está liberada.</h3>
-      <p id="fimTexto">Você terminou a aula da Kauane Leite. A segunda aula já está aberta.</p>
-      <button class="bt" id="fimBt">Assistir a aula 2</button>
-      <button class="sec" id="fimSair">Voltar para a página</button>
-    </div>
+    <h3 id="saidaTitulo">Você já entrou no grupo de inscritos?</h3>
+    <p>O link de acesso do Congresso chega pelo grupo. E as duas aulas bônus do Congresso 2025 são liberadas só para quem está nele.</p>
+    <a class="bt" id="saidaBt" data-grupo href="#" target="_blank" rel="noopener">Entrar no grupo de inscritos</a>
+    <button class="sec" id="saidaSair">Já entrei, pode sair</button>
   </div>
 </div>
 
 <script>
 /* ===== CONFIGURAÇÃO ===== */
 const CONFIG = {
-  /* Link de convite do grupo de inscritos no WhatsApp (ex.: "https://chat.whatsapp.com/XXXX").
-     Vazio = o botão abre o WhatsApp da equipe com a mensagem abaixo. */
+  /* Link de convite do grupo de inscritos no WhatsApp. */
   grupo: "https://chat.whatsapp.com/Ce9NwHyeDmQDxprAqguMkR",
-  whatsappEquipe: "554892080188",
-  mensagemEquipe: "Olá! Acabei de garantir meu ingresso do Congresso Plenitude 2026 e quero entrar no grupo de inscritos.",
-
-  /* Aulas bônus, na ordem. Cada aula só abre quando a anterior termina. */
-  aulas: [
-    { id: "zXRE98iSbAw", nome: "Kauane Leite", tema: "Saúde mental e fé cristã", texto: "Psicologia, aconselhamento e teologia no cuidado de quem sofre.", foto: "../img/kauane-leite.webp" },
-    { id: "_jbdPLQUz9U", nome: "Yago Martins", tema: "Teologia, cosmovisão e integracionismo", texto: "Como o terapeuta pode pensar teologicamente o próprio trabalho.", foto: "../img/yago-martins.webp" },
-  ]
 };
+/* As aulas bônus ficam em /aulas/. O link chega pelo WhatsApp (GHL) depois que o lead confirma que entrou no grupo. */
 
 (function(){
-  /* botão do grupo */
-  const grupo = CONFIG.grupo || ("https://wa.me/" + CONFIG.whatsappEquipe + "?text=" + encodeURIComponent(CONFIG.mensagemEquipe));
-  document.querySelectorAll('[data-grupo]').forEach(a => { a.href = grupo; a.addEventListener("click", () => localStorage.setItem("cp26-grupo", "1")); });
+  /* botões do grupo: marcam neste aparelho que o lead clicou */
+  const SA = document.getElementById("saida");
+  document.querySelectorAll("[data-grupo]").forEach(a => { a.href = CONFIG.grupo; a.addEventListener("click", () => { localStorage.setItem("cp26-grupo", "1"); fecharSaida(); }); });
+  const noGrupo = () => localStorage.getItem("cp26-grupo") === "1";
 
-  /* progresso salvo neste aparelho */
-  const K = "cp26-bonus-";
-  const feita = i => localStorage.getItem(K + "feita-" + CONFIG.aulas[i].id) === "1";
-  const liberada = i => i === 0 || feita(i - 1);
-  const posSalva = i => +localStorage.getItem(K + "pos-" + CONFIG.aulas[i].id) || 0;
-  const durSalva = i => +localStorage.getItem(K + "dur-" + CONFIG.aulas[i].id) || 0;
-  const fmt = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = String(s%60).padStart(2,"0"); return h ? h + ":" + String(m).padStart(2,"0") + ":" + x : m + ":" + x; };
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-  const lista = document.getElementById("lista");
-  function desenhar(){
-    lista.innerHTML = CONFIG.aulas.map((a, i) => {
-      const trav = !liberada(i), ok = feita(i), pos = posSalva(i), dur = durSalva(i);
-      const pct = ok ? 100 : (dur ? Math.min(100, pos / dur * 100) : 0);
-      const st = trav ? "Abre quando você terminar a aula " + i
-        : ok ? "Concluída · assistir de novo"
-        : pos > 5 ? "Continuar de " + fmt(pos) : "Liberada · comece por aqui";
-      return `<button class="aula${trav ? " travado" : ""}${ok ? " feita" : ""}" data-i="${i}" ${trav ? 'aria-disabled="true"' : ""}>
-        <div class="capa">
-          <img class="foto" src="${esc(a.foto)}" alt="" loading="lazy">
-          <div class="tx"><span class="tag">Aula ${i + 1} · Congresso 2025</span><b class="nome">${esc(a.nome).replace(" ", "<br>")}</b><span class="tema">${esc(a.tema)}</span></div>
-          <img class="logo" src="../img/logo-icone.webp" alt="">
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
-          <span class="barra" style="width:${pct}%"></span>
-          <div class="cad"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Termine a aula ${i} para abrir</span></div>
-        </div>
-        <div class="d"><span class="n">${i + 1}</span><div><h3>${esc(a.nome)} · ${esc(a.tema)}</h3><p>${esc(a.texto)}</p><span class="st">${st}</span></div></div>
-      </button>`;
-    }).join("");
-  }
-  desenhar();
-  lista.addEventListener("click", e => {
-    const b = e.target.closest(".aula"); if (!b) return;
-    const i = +b.dataset.i;
-    if (!liberada(i)) { b.animate([{transform:"translateX(0)"},{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}], {duration:300}); return; }
-    abrir(i);
-  });
-
-  /* ===== player do YouTube sem controles: só tocar/pausar e volume ===== */
-  const P = document.getElementById("player"), veu = document.getElementById("veu");
-  let yt = null, pronto = false, atual = -1, timer = null, ocioso = null, pendente = null;
-
-  const tag = document.createElement("script"); tag.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
-  window.onYouTubeIframeAPIReady = () => {
-    yt = new YT.Player("yt", {
-      host: "https://www.youtube-nocookie.com",
-      playerVars: { controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1, cc_load_policy: 0, origin: location.origin },
-      events: {
-        onReady: () => { pronto = true; yt.setVolume(+document.getElementById("vol").value); if (pendente !== null) { const i = pendente; pendente = null; carregar(i, true); } },
-        onStateChange: mudou
-      }
-    });
-  };
-
-  function abrir(i){
-    atual = i;
-    const a = CONFIG.aulas[i];
-    P.classList.add("aberto"); P.classList.remove("acabou","tocando"); P.setAttribute("aria-hidden","false");
-    document.body.style.overflow = "hidden";
-    document.getElementById("rotulo").innerHTML = "<b>Aula " + (i + 1) + "</b> · " + esc(a.nome);
-    document.getElementById("veuRotulo").textContent = "Aula " + (i + 1) + " · Congresso 2025";
-    document.getElementById("veuTitulo").textContent = a.nome + " · " + a.tema;
-    const pos = feita(i) ? 0 : posSalva(i);
-    document.getElementById("veuTexto").textContent = pos > 5 ? "Continuar de " + fmt(pos) : "Toque para assistir";
-    veu.style.backgroundImage = "url('" + a.foto + "')";
-    document.getElementById("tempo").textContent = fmt(pos);
-    document.getElementById("total").textContent = durSalva(i) ? fmt(durSalva(i)) : "--:--";
-    document.getElementById("trilho").style.width = durSalva(i) ? (pos / durSalva(i) * 100) + "%" : "0";
-    if (pronto) carregar(i, true); else { pendente = i; P.classList.add("esperando"); }
-  }
-  function carregar(i, tocar){
-    P.classList.remove("esperando");
-    const pos = feita(i) ? 0 : posSalva(i);
-    if (tocar) yt.loadVideoById({ videoId: CONFIG.aulas[i].id, startSeconds: pos });
-    else yt.cueVideoById({ videoId: CONFIG.aulas[i].id, startSeconds: pos });
-  }
-  function fechar(){
-    if (yt && pronto) { salvar(); yt.stopVideo(); }
-    P.classList.remove("aberto","tocando","acabou","esperando"); P.setAttribute("aria-hidden","true");
-    document.body.style.overflow = ""; clearInterval(timer); desenhar();
-  }
-  function salvar(){
-    if (atual < 0 || !yt.getCurrentTime) return;
-    const id = CONFIG.aulas[atual].id, t = yt.getCurrentTime(), d = yt.getDuration();
-    if (d) localStorage.setItem(K + "dur-" + id, Math.round(d));
-    if (t > 0 && !feita(atual)) localStorage.setItem(K + "pos-" + id, Math.floor(t));
-    /* terminou (ou chegou aos últimos 15 s): conta como assistida */
-    if (d && t >= d - 15) concluir();
-  }
-  function concluir(){
-    const id = CONFIG.aulas[atual].id;
-    if (feita(atual)) return;
-    localStorage.setItem(K + "feita-" + id, "1"); localStorage.removeItem(K + "pos-" + id);
-  }
-  function mudou(e){
-    const S = YT.PlayerState;
-    const tocando = e.data === S.PLAYING;
-    P.classList.toggle("tocando", tocando);
-    document.getElementById("icPlay").innerHTML = tocando ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
-    document.getElementById("veuTexto").textContent = tocando ? "" : (e.data === S.PAUSED ? "Pausado · toque para continuar" : document.getElementById("veuTexto").textContent);
-    clearInterval(timer);
-    if (tocando) { timer = setInterval(tique, 1000); acordar(); }
-    if (e.data === S.ENDED) { concluir(); fimDaAula(); }
-  }
-  let ultimoSalvo = 0;
-  function tique(){
-    const t = yt.getCurrentTime(), d = yt.getDuration();
-    document.getElementById("tempo").textContent = fmt(t);
-    if (d) { document.getElementById("total").textContent = fmt(d); document.getElementById("trilho").style.width = (t / d * 100) + "%"; }
-    if (Date.now() - ultimoSalvo > 5000) { ultimoSalvo = Date.now(); salvar(); }
-  }
-  function fimDaAula(){
-    yt.stopVideo();
-    const prox = atual + 1 < CONFIG.aulas.length ? atual + 1 : -1;
-    document.getElementById("fimRotulo").textContent = "Aula " + (atual + 1) + " concluída";
-    if (prox >= 0) {
-      document.getElementById("fimTitulo").textContent = "A aula do " + CONFIG.aulas[prox].nome + " está liberada.";
-      document.getElementById("fimTexto").textContent = "Você terminou a aula de " + CONFIG.aulas[atual].nome + ". A aula " + (prox + 1) + " já está aberta.";
-      document.getElementById("fimBt").textContent = "Assistir a aula " + (prox + 1);
-      document.getElementById("fimBt").style.display = "";
-    } else {
-      document.getElementById("fimTitulo").textContent = "Você assistiu às duas aulas bônus.";
-      document.getElementById("fimTexto").textContent = "Nos vemos no dia 20 de novembro. Fique de olho no grupo de inscritos: é por lá que chegam o link e os horários.";
-      document.getElementById("fimBt").style.display = "none";
-    }
-    P.classList.add("acabou"); P.classList.remove("tocando");
-  }
-  function alternar(){
-    if (!pronto || P.classList.contains("acabou")) return;
-    const s = yt.getPlayerState();
-    if (s === YT.PlayerState.PLAYING || s === YT.PlayerState.BUFFERING) { yt.pauseVideo(); salvar(); }
-    else yt.playVideo();
-  }
-  function acordar(){
-    P.classList.remove("ocioso"); clearTimeout(ocioso);
-    ocioso = setTimeout(() => P.classList.add("ocioso"), 2600);
-  }
-
-  document.getElementById("toque").addEventListener("click", alternar);
-  document.getElementById("veuPlay").addEventListener("click", e => { e.stopPropagation(); alternar(); });
-  veu.addEventListener("click", alternar);
-  document.getElementById("btPlay").addEventListener("click", alternar);
-  document.getElementById("voltar").addEventListener("click", fechar);
-  document.getElementById("fimSair").addEventListener("click", fechar);
-  document.getElementById("fimBt").addEventListener("click", () => { const p = atual + 1; P.classList.remove("acabou"); desenhar(); abrir(p); });
-  P.addEventListener("mousemove", acordar); P.addEventListener("touchstart", acordar, {passive:true});
-
-  /* volume */
-  const vol = document.getElementById("vol"), icSom = document.getElementById("icSom");
-  const desenharSom = () => { const mudo = yt && pronto && (yt.isMuted() || +vol.value === 0);
-    icSom.innerHTML = mudo ? '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6M22 9l-5 6"/>' : '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>'; };
-  vol.addEventListener("input", () => { if (!pronto) return; yt.setVolume(+vol.value); if (+vol.value > 0) yt.unMute(); desenharSom(); });
-  document.getElementById("btSom").addEventListener("click", () => { if (!pronto) return; if (yt.isMuted()) { yt.unMute(); if (+vol.value === 0) { vol.value = 60; yt.setVolume(60); } } else yt.mute(); setTimeout(desenharSom, 50); });
-
-  /* teclado: só espaço (tocar/pausar) e Esc (sair) */
-  document.addEventListener("keydown", e => {
-    if (!P.classList.contains("aberto")) return;
-    if (e.key === " " || e.key === "k") { e.preventDefault(); alternar(); }
-    if (e.key === "Escape") fechar();
-  });
-  window.addEventListener("pagehide", () => { if (P.classList.contains("aberto") && pronto) salvar(); });
+  /* "Ver o bônus" rola sem criar passo no histórico (senão o voltar abriria o popup) */
+  document.querySelector(".bonus .ir").addEventListener("click", e => { e.preventDefault(); document.getElementById("aulas").scrollIntoView({ behavior: "smooth" }); });
 
   /* ===== popup de saída =====
      Computador: o mouse sai pelo topo da janela (rumo ao X ou à barra de endereço).
-     Celular: o botão/gesto de voltar. Aparece uma vez por visita e só se faltar algo. */
-  const SA = document.getElementById("saida");
-  const noGrupo = () => localStorage.getItem("cp26-grupo") === "1";
-  const pendencias = () => [
-    { txt: "Entrar no grupo de inscritos", ok: noGrupo(), acao: () => { window.open(grupo, "_blank", "noopener"); localStorage.setItem("cp26-grupo", "1"); }, bt: "Entrar no grupo de inscritos" },
-    ...CONFIG.aulas.map((a, i) => ({ txt: "Assistir à aula " + (i + 1) + " · " + a.nome, ok: feita(i), acao: () => abrir(i), bt: "Assistir à aula de " + a.nome }))
-  ];
+     Celular: o botão/gesto de voltar. Aparece uma vez por visita e só se o lead ainda não clicou no grupo. */
   let mostrado = sessionStorage.getItem("cp26-saida") === "1", armado = false;
   function mostrarSaida(){
-    const lista = pendencias(), falta = lista.find(x => !x.ok);
-    if (mostrado || !falta || P.classList.contains("aberto")) return false;
+    if (mostrado || noGrupo()) return false;
     mostrado = true; sessionStorage.setItem("cp26-saida", "1");
-    document.getElementById("saidaLista").innerHTML = lista.map(x => `<li class="${x.ok ? "ok" : ""}"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>${esc(x.txt)}</li>`).join("");
-    const bt = document.getElementById("saidaBt");
-    bt.textContent = falta.bt;
-    bt.onclick = e => { e.preventDefault(); fecharSaida(); falta.acao(); };
     SA.classList.add("aberto");
     return true;
   }
@@ -526,23 +282,19 @@ const CONFIG = {
   document.getElementById("saidaX").addEventListener("click", fecharSaida);
   SA.addEventListener("click", e => { if (e.target === SA) fecharSaida(); });
   document.getElementById("saidaSair").addEventListener("click", () => { fecharSaida(); if (armado === "usado") history.back(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && SA.classList.contains("aberto")) fecharSaida(); });
-
-  /* "Ver as aulas" rola sem criar passo no histórico (senão o voltar abriria o popup) */
-  document.querySelector(".bonus .ir").addEventListener("click", e => { e.preventDefault(); document.getElementById("aulas").scrollIntoView({ behavior: "smooth" }); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") fecharSaida(); });
 
   /* computador */
   document.addEventListener("mouseout", e => { if (!e.relatedTarget && e.clientY <= 0) mostrarSaida(); });
 
   /* celular: cria um passo extra no histórico depois do primeiro toque (o navegador exige um toque antes) */
   function armar(){
-    if (armado || mostrado) return;
+    if (armado || mostrado || noGrupo()) return;
     armado = true; history.pushState({ cp26: 1 }, "");
   }
   ["pointerdown", "keydown"].forEach(t => document.addEventListener(t, armar, { once: true, capture: true }));
   window.addEventListener("popstate", () => {
-    if (!armado || armado === "usado") return;
-    if (P.classList.contains("aberto")) { fechar(); history.pushState({ cp26: 1 }, ""); return; }
+    if (armado !== true) return;
     armado = "usado";
     if (!mostrarSaida()) history.back();
   });

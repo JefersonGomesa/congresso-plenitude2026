@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aulas bônus | Congresso Plenitude 2026</title>
+<meta name="description" content="Duas aulas do Congresso Plenitude 2025, liberadas para os inscritos do Congresso 2026.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0807">
+<link rel="icon" type="image/png" sizes="64x64" href="../img/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== Aulas bônus do Congresso (link enviado pelo WhatsApp a quem entrou no grupo de inscritos) · layout da LP "série" da Vox, nas cores do Congresso ===== */
+:root{
+  --bg:#0a0807; --bg-2:#120e0c; --bg-3:#1a1512;
+  --fg:#f3ece4; --muted:#a99d92; --dim:#776c63;
+  --line:rgba(240,220,198,.13); --line-2:rgba(240,220,198,.22);
+  --gold:#d9b08c; --gold-hi:#f3e0ca; --gold-lo:#a9805f;
+  --sand:linear-gradient(100deg,#c4a283 0%,#e2cbb4 30%,#f2e4d5 55%,#e6d0ba 78%,#c19f80 100%);
+  --gold-text:linear-gradient(100deg,#f5e3cf 0%,#d7ad87 45%,#ebcfae 70%,#c79a74 100%);
+  --font:"Lexend","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --lateral:440px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ---------- casca: destaque à esquerda + aulas à direita ---------- */
+.casca{display:grid;grid-template-columns:1fr var(--lateral);min-height:100dvh}
+.destaque{position:relative;overflow:hidden;border-radius:0 0 28px 0;min-height:100dvh;display:flex;flex-direction:column;isolation:isolate}
+
+/* fundo: João e Renata no palco, à direita, com respiração lenta e poeira de luz */
+.fundo{position:absolute;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(ellipse 55% 60% at 72% 45%,#2b211b 0%,#140f0d 55%,var(--bg) 100%)}
+.fundo img{position:absolute;right:-10%;bottom:0;height:88%;width:auto;max-width:none;animation:respira 16s ease-in-out infinite alternate;transform-origin:60% 100%}
+@keyframes respira{from{transform:scale(1)}to{transform:scale(1.045) translateX(-.8%)}}
+.fundo::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(10,8,7,.97) 0%,rgba(10,8,7,.9) 40%,rgba(10,8,7,.3) 70%,rgba(10,8,7,.1) 100%),
+  linear-gradient(0deg,rgba(10,8,7,.96) 0%,rgba(10,8,7,0) 40%)}
+.poeira{position:absolute;inset:0;z-index:1}.poeira i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold-hi);opacity:0;box-shadow:0 0 6px var(--gold);animation:poeira 9s linear infinite}
+@keyframes poeira{0%{transform:translate(0,0);opacity:0}15%{opacity:.7}85%{opacity:.45}100%{transform:translate(30px,-140px);opacity:0}}
+
+/* topo */
+.topo{display:flex;align-items:center;justify-content:space-between;padding:26px clamp(20px,4vw,48px)}
+.marca img{height:42px;width:auto}
+.topo .ok{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gold-hi)}
+.topo .ok svg{width:18px;height:18px}
+
+/* bloco de texto */
+.info{margin-top:auto;padding:0 clamp(20px,4vw,48px) 44px;max-width:680px}
+.selo{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.selo::before{content:"";width:3px;height:14px;background:var(--gold);border-radius:2px}
+h1{margin-top:16px;font-size:clamp(40px,5.6vw,78px);line-height:1;letter-spacing:-.04em;font-weight:500}
+h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:20px;font-size:14px;color:#ddd2c7}
+.meta .chip{padding:3px 12px;border-radius:999px;border:1px solid var(--line-2);font-size:12px}
+.meta .ponto{width:4px;height:4px;border-radius:50%;background:var(--dim)}
+.texto{margin-top:18px;color:#d6ccc2;font-size:clamp(15px,1.25vw,17px);line-height:1.65}
+.texto strong{color:var(--fg);font-weight:500}
+
+/* botão principal (mesmo botão areia da página do Congresso) */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:28px;
+  padding:20px 34px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600;font-size:16px;letter-spacing:.01em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 6px rgba(120,80,50,.25),0 16px 40px -14px rgba(217,170,128,.7),0 0 0 1px rgba(255,236,214,.25);transition:transform .25s,box-shadow .25s}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 6px rgba(120,80,50,.25),0 20px 44px -12px rgba(217,170,128,.75),0 0 0 1px rgba(255,236,214,.35)}
+.btn:hover::after{left:130%}
+.btn:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.pulsa{animation:pulsa 2.6s ease-in-out infinite}
+@keyframes pulsa{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 40px -14px rgba(217,170,128,.7),0 0 0 0 rgba(217,176,140,.45)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 40px -14px rgba(217,170,128,.7),0 0 0 12px rgba(217,176,140,0)}}
+.micro{margin-top:12px;font-size:13px;color:var(--muted)}
+
+
+/* ---------- lateral: as duas aulas bônus ---------- */
+.lateral{padding:30px 26px 44px;background:var(--bg)}
+.lateral h2{font-size:22px;font-weight:500;letter-spacing:-.02em}
+.lateral .sub{margin-top:8px;font-size:14px;line-height:1.55;color:var(--muted)}
+.lista{margin-top:22px;display:grid;gap:22px}
+.aula{display:block;width:100%;text-align:left;border-radius:18px;padding:10px;transition:background .2s}
+.aula:hover{background:rgba(255,255,255,.035)}
+
+/* capa 16:9: foto do palestrante à direita, nome e tema à esquerda */
+.capa{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse 70% 90% at 78% 40%,#2a1f19,#120d0b 70%);border:1px solid var(--line);isolation:isolate}
+.capa .foto{position:absolute;right:0;top:0;height:100%;width:62%;object-fit:cover;object-position:center 18%;filter:grayscale(1) sepia(.22) contrast(1.06) brightness(.96);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%);transform-origin:80% 30%;animation:camera 18s ease-in-out infinite alternate;z-index:-1}
+@keyframes camera{from{transform:scale(1)}to{transform:scale(1.08)}}
+.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,7,.75),transparent 45%);z-index:-1}
+.capa .tx{position:absolute;left:16px;top:14px;bottom:14px;width:58%;display:flex;flex-direction:column}
+.capa .tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.capa .nome{margin-top:auto;font-size:clamp(20px,2.1vw,26px);line-height:1.02;font-weight:500;letter-spacing:-.03em;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.capa .tema{margin-top:6px;font-size:11.5px;line-height:1.35;color:#d8cdc2}
+.capa .logo{position:absolute;right:12px;top:12px;width:26px;opacity:.8}
+.capa .play{position:absolute;right:14px;bottom:14px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:#2a1f18;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .2s}
+.capa .play svg{width:18px;height:18px;margin-left:2px}
+.aula:hover .capa .play{transform:scale(1.08)}
+.capa .barra{position:absolute;left:0;bottom:0;height:3px;background:var(--gold);width:0;z-index:2}
+.capa .cad{position:absolute;inset:0;display:none;place-items:end;padding:14px;background:rgba(10,8,7,.35);z-index:3}
+.capa .cad span{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(10,8,7,.8);border:1px solid var(--line-2);font-size:12.5px;color:var(--gold-hi)}
+.capa .cad svg{width:14px;height:14px}
+.aula .d{display:flex;gap:12px;align-items:baseline;margin-top:12px;padding:0 4px}
+.aula .n{font-size:18px;color:var(--gold);font-weight:400}
+.aula h3{font-size:15.5px;font-weight:500;line-height:1.35}
+.aula p{margin-top:5px;font-size:13px;line-height:1.5;color:var(--muted)}
+.aula .st{display:block;margin-top:6px;font-size:12px;color:var(--dim)}
+.aula.feita .st{color:var(--gold)}
+.aula.travado{cursor:not-allowed}
+.aula.travado .capa .foto{filter:grayscale(1) brightness(.6)}
+.aula.travado .capa .play{display:none}
+.aula.travado .capa .cad{display:grid}
+.aula.travado h3,.aula.travado .n{color:var(--dim)}
+.aula.travado:hover{background:none}
+.aviso{margin-top:24px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);font-size:13px;line-height:1.55;color:var(--muted)}
+.aviso b{color:var(--fg);font-weight:500}
+
+/* ---------- player em tela cheia: só tocar/pausar e volume ---------- */
+.player{position:fixed;inset:0;z-index:50;background:#000;display:none}
+.player.aberto{display:block}
+.tela{position:absolute;inset:0;display:grid;place-items:center}
+.quadro{position:relative;width:min(100vw,calc(100dvh * 16 / 9));aspect-ratio:16/9;background:#000;overflow:hidden}
+.quadro iframe,.quadro #yt{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+/* camada por cima do vídeo: bloqueia os cliques no YouTube (título, links, barra de tempo) */
+.toque{position:absolute;inset:0;z-index:1}
+/* capa por cima do vídeo antes de tocar e na pausa: esconde as sugestões do YouTube */
+.veu{position:absolute;inset:0;z-index:2;display:grid;place-items:center;background:#000 center/cover no-repeat;transition:opacity .35s}
+.veu::before{content:"";position:absolute;inset:0;background:rgba(10,8,7,.72);backdrop-filter:blur(6px)}
+.player.tocando .veu{opacity:0;pointer-events:none}
+.veu .caixa{position:relative;text-align:center;padding:24px;max-width:520px}
+.veu .r{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.veu h3{margin-top:10px;font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:-.03em;line-height:1.15}
+.veu p{margin-top:8px;color:#d6ccc2;font-size:15px}
+.veu .grande{margin:22px auto 0;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:#2a1f18;box-shadow:0 0 50px rgba(217,176,140,.45)}
+.veu .grande svg{width:30px;height:30px;margin-left:3px}
+.veu .carregando{margin-top:14px;font-size:13px;color:var(--muted);display:none}
+.player.esperando .veu .carregando{display:block}
+.ctrl{position:absolute;inset:0;z-index:3;pointer-events:none;transition:opacity .3s}
+.player.tocando.ocioso .ctrl{opacity:0}
+.ctrl > *{pointer-events:auto}
+.voltar{position:absolute;left:18px;top:16px;display:flex;align-items:center;gap:8px;font-size:14px;padding:9px 14px;border-radius:12px;background:rgba(0,0,0,.55)}
+.voltar svg{width:16px;height:16px}
+.rotulo{position:absolute;left:50%;top:22px;transform:translateX(-50%);font-size:13px;color:#ddd;white-space:nowrap}
+.rotulo b{color:var(--gold);font-weight:500}
+.barra-ctrl{position:absolute;left:0;right:0;bottom:0;padding:22px 22px calc(18px + env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);display:flex;gap:16px;align-items:center;font-size:13px}
+.barra-ctrl button{display:grid;place-items:center;width:40px;height:40px;border-radius:50%}
+.barra-ctrl button:hover{background:rgba(255,255,255,.08)}
+.barra-ctrl svg{width:22px;height:22px}
+.volume{display:flex;align-items:center;gap:6px}
+.volume input{width:110px;accent-color:var(--gold);cursor:pointer}
+.andamento{margin-left:auto;display:flex;align-items:center;gap:12px;color:#cfc4b9;font-variant-numeric:tabular-nums}
+/* barra só de leitura: mostra o andamento, sem clique para avançar */
+.trilho{width:clamp(80px,22vw,260px);height:4px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden;pointer-events:none}
+.trilho i{display:block;height:100%;width:0;background:var(--gold)}
+
+/* fim da aula */
+.fim{position:absolute;inset:0;z-index:4;display:none;place-items:center;background:rgba(10,8,7,.94);backdrop-filter:blur(8px);padding:24px}
+.player.acabou .fim{display:grid}
+.fim .caixa{max-width:480px;text-align:center}
+.fim .r{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.fim h3{margin-top:10px;font-size:28px;font-weight:500;letter-spacing:-.03em;line-height:1.15}
+.fim p{margin-top:10px;color:#d6ccc2;line-height:1.55}
+.fim .bt{display:inline-flex;margin-top:22px;padding:15px 26px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600}
+.fim .sec{display:block;margin:14px auto 0;font-size:14px;color:var(--muted);text-decoration:underline}
+
+/* popup de saída: aparece quando o lead tenta sair sem ter assistido às duas aulas */
+.saida{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(10,8,7,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px}
+.saida.aberto{display:grid;animation:surge .3s ease}
+@keyframes surge{from{opacity:0}}
+.saida .caixa{position:relative;width:min(460px,100%);padding:30px 26px 24px;border-radius:22px;background:linear-gradient(160deg,#211a16,#120e0c);border:1px solid rgba(217,176,140,.32);box-shadow:0 40px 100px rgba(0,0,0,.6);animation:sobe .35s ease}
+@keyframes sobe{from{transform:translateY(14px)}}
+.saida .x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.saida .x:hover{background:rgba(255,255,255,.06);color:var(--fg)}
+.saida .x svg{width:18px;height:18px}
+.saida .r{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.saida h3{margin-top:10px;font-size:25px;font-weight:500;letter-spacing:-.03em;line-height:1.2;padding-right:20px}
+.saida p{margin-top:8px;color:#d6ccc2;font-size:14.5px;line-height:1.55}
+.saida ul{list-style:none;margin-top:18px;display:grid;gap:10px}
+.saida li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);font-size:14.5px}
+.saida li i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--dim)}
+.saida li i svg{width:12px;height:12px;display:none}
+.saida li.ok{border-color:rgba(217,176,140,.3);color:var(--muted)}
+.saida li.ok i{background:var(--gold);border-color:var(--gold);color:#2a1f18}.saida li.ok i svg{display:block}
+.saida .bt{display:flex;width:100%;justify-content:center;margin-top:20px;padding:16px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600;font-size:15.5px}
+.saida .sec{display:block;margin:12px auto 0;font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.fundo img,.poeira i,.capa .foto,.btn.pulsa{animation:none}}
+
+/* ---------- celular ---------- */
+@media (max-width:980px){
+  .casca{grid-template-columns:1fr}
+  .destaque{min-height:auto;border-radius:0}
+  .fundo img{height:auto;width:118%;right:-30%;top:40px;bottom:auto;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.15) 70%,transparent 82%);mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.15) 70%,transparent 82%)}
+  .fundo::after{background:linear-gradient(0deg,rgba(10,8,7,1) 0%,rgba(10,8,7,.92) 42%,rgba(10,8,7,.25) 72%,rgba(10,8,7,.4) 100%)}
+  .marca img{height:34px}
+  .topo .ok span{display:none}
+  .info{padding-top:300px;padding-bottom:30px}
+  .btn{width:100%;padding:19px 22px}
+  .lateral{padding:20px 14px 44px;border-top:1px solid var(--line)}
+  .lateral h2,.lateral .sub,.aviso{margin-inline:8px}
+  .capa .nome{font-size:clamp(20px,6vw,26px)}
+  .capa .tema{font-size:12px}
+  .barra-ctrl{flex-wrap:wrap;gap:10px}
+  .volume input{width:84px}
+  .rotulo{top:64px}
+}
+@media (min-width:600px) and (max-width:980px){.fundo img{width:84%;right:-12%}.info{padding-top:420px}}
+@media (max-width:420px){.trilho{display:none}}
+</style>
+</head>
+<body>
+
+<div class="casca">
+  <!-- ===== destaque: aulas liberadas ===== -->
+  <section class="destaque">
+    <div class="fundo" aria-hidden="true">
+      <img src="../img/hero-composto.webp" alt="">
+      <div class="poeira"><i style="left:58%;top:62%;animation-delay:0s"></i><i style="left:64%;top:70%;animation-delay:-2.1s;animation-duration:11s"></i><i style="left:70%;top:55%;animation-delay:-4.3s;animation-duration:8s"></i><i style="left:52%;top:75%;animation-delay:-6.2s;animation-duration:12s"></i><i style="left:76%;top:66%;animation-delay:-1.4s;animation-duration:10s"></i><i style="left:61%;top:48%;animation-delay:-3.7s;animation-duration:9.5s"></i><i style="left:84%;top:80%;animation-delay:-5.5s;animation-duration:13s"></i><i style="left:90%;top:58%;animation-delay:-7.8s;animation-duration:10.5s"></i></div>
+    </div>
+
+    <header class="topo">
+      <a class="marca" href="../"><img src="../img/logo-completa.webp" alt="Congresso Plenitude 26"></a>
+      <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16.5 9.5"/></svg><span>Bônus liberado</span></span>
+    </header>
+
+    <div class="info">
+      <div class="selo">Bônus de inscrito · Congresso Plenitude 2025</div>
+      <h1>Suas aulas<br><span class="g">estão liberadas.</span></h1>
+      <div class="meta"><span>2 aulas</span><span class="ponto"></span><span>Congresso Plenitude 2025</span><span class="ponto"></span><span class="chip">Assista na ordem</span></div>
+      <p class="texto">Obrigado por entrar no grupo de inscritos. Como prometido, aqui estão duas aulas gravadas no Congresso Plenitude 2025: a da <strong>Kauane Leite</strong> e a do <strong>Yago Martins</strong>. Comece pela Kauane. A aula do Yago abre quando você terminar a primeira.</p>
+      <button class="btn pulsa" id="btAssistir">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+        <span id="btAssistirTexto">Assistir à aula 1</span>
+      </button>
+      <p class="micro">Nos vemos no Congresso, dia 20 de novembro.</p>
+    </div>
+  </section>
+
+  <!-- ===== lateral: aulas bônus ===== -->
+  <aside class="lateral" id="aulas">
+    <h2>Suas aulas bônus</h2>
+    <p class="sub">Duas aulas gravadas no Congresso Plenitude 2025. Assista na ordem.</p>
+    <div class="lista" id="lista"></div>
+    <p class="aviso"><b>Como funciona:</b> a aula 2 abre quando você termina a aula 1. O seu progresso fica salvo neste aparelho: se fechar a página, você continua de onde parou.</p>
+  </aside>
+</div>
+
+<!-- ===== popup de saída ===== -->
+<div class="saida" id="saida" role="dialog" aria-modal="true" aria-labelledby="saidaTitulo">
+  <div class="caixa">
+    <button class="x" id="saidaX" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <span class="r">Antes de sair</span>
+    <h3 id="saidaTitulo">Você já assistiu às duas aulas?</h3>
+    <p>As aulas ficam nesta página. O seu progresso fica salvo neste aparelho: se sair agora, você continua de onde parou.</p>
+    <ul id="saidaLista"></ul>
+    <a class="bt" id="saidaBt" href="#">Assistir à aula 1</a>
+    <button class="sec" id="saidaSair">Volto depois</button>
+  </div>
+</div>
+
+<!-- ===== player ===== -->
+<div class="player" id="player" aria-hidden="true">
+  <div class="tela">
+    <div class="quadro">
+      <div id="yt"></div>
+      <div class="toque" id="toque" aria-hidden="true"></div>
+      <div class="veu" id="veu">
+        <div class="caixa">
+          <span class="r" id="veuRotulo">Aula 1</span>
+          <h3 id="veuTitulo"></h3>
+          <p id="veuTexto">Toque para assistir</p>
+          <button class="grande" id="veuPlay" aria-label="Tocar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+          <p class="carregando">Carregando o vídeo…</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ctrl">
+    <button class="voltar" id="voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Voltar</button>
+    <div class="rotulo" id="rotulo"></div>
+    <div class="barra-ctrl">
+      <button id="btPlay" aria-label="Tocar ou pausar"><svg id="icPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="volume">
+        <button id="btSom" aria-label="Silenciar ou ativar o som"><svg id="icSom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+        <input type="range" id="vol" min="0" max="100" value="100" aria-label="Volume">
+      </div>
+      <div class="andamento"><span id="tempo">0:00</span><div class="trilho"><i id="trilho"></i></div><span id="total">--:--</span></div>
+    </div>
+  </div>
+  <div class="fim" id="fim">
+    <div class="caixa">
+      <span class="r" id="fimRotulo">Aula 1 concluída</span>
+      <h3 id="fimTitulo">A aula do Yago Martins está liberada.</h3>
+      <p id="fimTexto">Você terminou a aula da Kauane Leite. A segunda aula já está aberta.</p>
+      <button class="bt" id="fimBt">Assistir a aula 2</button>
+      <button class="sec" id="fimSair">Voltar para a página</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIGURAÇÃO ===== */
+const CONFIG = {
+  /* Aulas bônus, na ordem. Cada aula só abre quando a anterior termina. */
+  aulas: [
+    { id: "zXRE98iSbAw", nome: "Kauane Leite", tema: "Saúde mental e fé cristã", texto: "Psicologia, aconselhamento e teologia no cuidado de quem sofre.", foto: "../img/kauane-leite.webp" },
+    { id: "_jbdPLQUz9U", nome: "Yago Martins", tema: "Teologia, cosmovisão e integracionismo", texto: "Como o terapeuta pode pensar teologicamente o próprio trabalho.", foto: "../img/yago-martins.webp" },
+  ]
+};
+
+(function(){
+  /* progresso salvo neste aparelho */
+  const K = "cp26-bonus-";
+  const feita = i => localStorage.getItem(K + "feita-" + CONFIG.aulas[i].id) === "1";
+  const liberada = i => i === 0 || feita(i - 1);
+  const posSalva = i => +localStorage.getItem(K + "pos-" + CONFIG.aulas[i].id) || 0;
+  const durSalva = i => +localStorage.getItem(K + "dur-" + CONFIG.aulas[i].id) || 0;
+  const fmt = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = String(s%60).padStart(2,"0"); return h ? h + ":" + String(m).padStart(2,"0") + ":" + x : m + ":" + x; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  const lista = document.getElementById("lista");
+  function desenhar(){
+    lista.innerHTML = CONFIG.aulas.map((a, i) => {
+      const trav = !liberada(i), ok = feita(i), pos = posSalva(i), dur = durSalva(i);
+      const pct = ok ? 100 : (dur ? Math.min(100, pos / dur * 100) : 0);
+      const st = trav ? "Abre quando você terminar a aula " + i
+        : ok ? "Concluída · assistir de novo"
+        : pos > 5 ? "Continuar de " + fmt(pos) : "Liberada · comece por aqui";
+      return `<button class="aula${trav ? " travado" : ""}${ok ? " feita" : ""}" data-i="${i}" ${trav ? 'aria-disabled="true"' : ""}>
+        <div class="capa">
+          <img class="foto" src="${esc(a.foto)}" alt="" loading="lazy">
+          <div class="tx"><span class="tag">Aula ${i + 1} · Congresso 2025</span><b class="nome">${esc(a.nome).replace(" ", "<br>")}</b><span class="tema">${esc(a.tema)}</span></div>
+          <img class="logo" src="../img/logo-icone.webp" alt="">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          <span class="barra" style="width:${pct}%"></span>
+          <div class="cad"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Abre após a aula ${i}</span></div>
+        </div>
+        <div class="d"><span class="n">${i + 1}</span><div><h3>${esc(a.nome)} · ${esc(a.tema)}</h3><p>${esc(a.texto)}</p><span class="st">${st}</span></div></div>
+      </button>`;
+    }).join("");
+  }
+  function proxima(){ let i = CONFIG.aulas.findIndex((a, k) => !feita(k)); return i < 0 ? 0 : i; }
+  function desenharTopo(){
+    const i = proxima(), t = document.getElementById("btAssistirTexto");
+    t.textContent = CONFIG.aulas.every((a, k) => feita(k)) ? "Assistir de novo" : posSalva(i) > 5 ? "Continuar a aula " + (i + 1) : "Assistir à aula " + (i + 1);
+  }
+  desenhar(); desenharTopo();
+  document.getElementById("btAssistir").addEventListener("click", () => abrir(proxima()));
+  lista.addEventListener("click", e => {
+    const b = e.target.closest(".aula"); if (!b) return;
+    const i = +b.dataset.i;
+    if (!liberada(i)) { b.animate([{transform:"translateX(0)"},{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}], {duration:300}); return; }
+    abrir(i);
+  });
+
+  /* ===== player do YouTube sem controles: só tocar/pausar e volume ===== */
+  const P = document.getElementById("player"), veu = document.getElementById("veu");
+  let yt = null, pronto = false, atual = -1, timer = null, ocioso = null, pendente = null;
+
+  const tag = document.createElement("script"); tag.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady = () => {
+    yt = new YT.Player("yt", {
+      host: "https://www.youtube-nocookie.com",
+      playerVars: { controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1, cc_load_policy: 0, origin: location.origin },
+      events: {
+        onReady: () => { pronto = true; yt.setVolume(+document.getElementById("vol").value); if (pendente !== null) { const i = pendente; pendente = null; carregar(i, true); } },
+        onStateChange: mudou
+      }
+    });
+  };
+
+  function abrir(i){
+    atual = i;
+    const a = CONFIG.aulas[i];
+    P.classList.add("aberto"); P.classList.remove("acabou","tocando"); P.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+    document.getElementById("rotulo").innerHTML = "<b>Aula " + (i + 1) + "</b> · " + esc(a.nome);
+    document.getElementById("veuRotulo").textContent = "Aula " + (i + 1) + " · Congresso 2025";
+    document.getElementById("veuTitulo").textContent = a.nome + " · " + a.tema;
+    const pos = feita(i) ? 0 : posSalva(i);
+    document.getElementById("veuTexto").textContent = pos > 5 ? "Continuar de " + fmt(pos) : "Toque para assistir";
+    veu.style.backgroundImage = "url('" + a.foto + "')";
+    document.getElementById("tempo").textContent = fmt(pos);
+    document.getElementById("total").textContent = durSalva(i) ? fmt(durSalva(i)) : "--:--";
+    document.getElementById("trilho").style.width = durSalva(i) ? (pos / durSalva(i) * 100) + "%" : "0";
+    if (pronto) carregar(i, true); else { pendente = i; P.classList.add("esperando"); }
+  }
+  function carregar(i, tocar){
+    P.classList.remove("esperando");
+    const pos = feita(i) ? 0 : posSalva(i);
+    if (tocar) yt.loadVideoById({ videoId: CONFIG.aulas[i].id, startSeconds: pos });
+    else yt.cueVideoById({ videoId: CONFIG.aulas[i].id, startSeconds: pos });
+  }
+  function fechar(){
+    if (yt && pronto) { salvar(); yt.stopVideo(); }
+    P.classList.remove("aberto","tocando","acabou","esperando"); P.setAttribute("aria-hidden","true");
+    document.body.style.overflow = ""; clearInterval(timer); desenhar(); desenharTopo();
+  }
+  function salvar(){
+    if (atual < 0 || !yt.getCurrentTime) return;
+    const id = CONFIG.aulas[atual].id, t = yt.getCurrentTime(), d = yt.getDuration();
+    if (d) localStorage.setItem(K + "dur-" + id, Math.round(d));
+    if (t > 0 && !feita(atual)) localStorage.setItem(K + "pos-" + id, Math.floor(t));
+    /* terminou (ou chegou aos últimos 15 s): conta como assistida */
+    if (d && t >= d - 15) concluir();
+  }
+  function concluir(){
+    const id = CONFIG.aulas[atual].id;
+    if (feita(atual)) return;
+    localStorage.setItem(K + "feita-" + id, "1"); localStorage.removeItem(K + "pos-" + id);
+  }
+  function mudou(e){
+    const S = YT.PlayerState;
+    const tocando = e.data === S.PLAYING;
+    P.classList.toggle("tocando", tocando);
+    document.getElementById("icPlay").innerHTML = tocando ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
+    document.getElementById("veuTexto").textContent = tocando ? "" : (e.data === S.PAUSED ? "Pausado · toque para continuar" : document.getElementById("veuTexto").textContent);
+    clearInterval(timer);
+    if (tocando) { timer = setInterval(tique, 1000); acordar(); }
+    if (e.data === S.ENDED) { concluir(); fimDaAula(); }
+  }
+  let ultimoSalvo = 0;
+  function tique(){
+    const t = yt.getCurrentTime(), d = yt.getDuration();
+    document.getElementById("tempo").textContent = fmt(t);
+    if (d) { document.getElementById("total").textContent = fmt(d); document.getElementById("trilho").style.width = (t / d * 100) + "%"; }
+    if (Date.now() - ultimoSalvo > 5000) { ultimoSalvo = Date.now(); salvar(); }
+  }
+  function fimDaAula(){
+    yt.stopVideo();
+    const prox = atual + 1 < CONFIG.aulas.length ? atual + 1 : -1;
+    document.getElementById("fimRotulo").textContent = "Aula " + (atual + 1) + " concluída";
+    if (prox >= 0) {
+      document.getElementById("fimTitulo").textContent = "A aula do " + CONFIG.aulas[prox].nome + " está liberada.";
+      document.getElementById("fimTexto").textContent = "Você terminou a aula de " + CONFIG.aulas[atual].nome + ". A aula " + (prox + 1) + " já está aberta.";
+      document.getElementById("fimBt").textContent = "Assistir a aula " + (prox + 1);
+      document.getElementById("fimBt").style.display = "";
+    } else {
+      document.getElementById("fimTitulo").textContent = "Você assistiu às duas aulas bônus.";
+      document.getElementById("fimTexto").textContent = "Nos vemos no dia 20 de novembro. Fique de olho no grupo de inscritos: é por lá que chegam o link e os horários.";
+      document.getElementById("fimBt").style.display = "none";
+    }
+    P.classList.add("acabou"); P.classList.remove("tocando");
+  }
+  function alternar(){
+    if (!pronto || P.classList.contains("acabou")) return;
+    const s = yt.getPlayerState();
+    if (s === YT.PlayerState.PLAYING || s === YT.PlayerState.BUFFERING) { yt.pauseVideo(); salvar(); }
+    else yt.playVideo();
+  }
+  function acordar(){
+    P.classList.remove("ocioso"); clearTimeout(ocioso);
+    ocioso = setTimeout(() => P.classList.add("ocioso"), 2600);
+  }
+
+  document.getElementById("toque").addEventListener("click", alternar);
+  document.getElementById("veuPlay").addEventListener("click", e => { e.stopPropagation(); alternar(); });
+  veu.addEventListener("click", alternar);
+  document.getElementById("btPlay").addEventListener("click", alternar);
+  document.getElementById("voltar").addEventListener("click", fechar);
+  document.getElementById("fimSair").addEventListener("click", fechar);
+  document.getElementById("fimBt").addEventListener("click", () => { const p = atual + 1; P.classList.remove("acabou"); desenhar(); abrir(p); });
+  P.addEventListener("mousemove", acordar); P.addEventListener("touchstart", acordar, {passive:true});
+
+  /* volume */
+  const vol = document.getElementById("vol"), icSom = document.getElementById("icSom");
+  const desenharSom = () => { const mudo = yt && pronto && (yt.isMuted() || +vol.value === 0);
+    icSom.innerHTML = mudo ? '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6M22 9l-5 6"/>' : '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>'; };
+  vol.addEventListener("input", () => { if (!pronto) return; yt.setVolume(+vol.value); if (+vol.value > 0) yt.unMute(); desenharSom(); });
+  document.getElementById("btSom").addEventListener("click", () => { if (!pronto) return; if (yt.isMuted()) { yt.unMute(); if (+vol.value === 0) { vol.value = 60; yt.setVolume(60); } } else yt.mute(); setTimeout(desenharSom, 50); });
+
+  /* teclado: só espaço (tocar/pausar) e Esc (sair) */
+  document.addEventListener("keydown", e => {
+    if (!P.classList.contains("aberto")) return;
+    if (e.key === " " || e.key === "k") { e.preventDefault(); alternar(); }
+    if (e.key === "Escape") fechar();
+  });
+  window.addEventListener("pagehide", () => { if (P.classList.contains("aberto") && pronto) salvar(); });
+
+  /* ===== popup de saída =====
+     Computador: o mouse sai pelo topo da janela (rumo ao X ou à barra de endereço).
+     Celular: o botão/gesto de voltar. Aparece uma vez por visita e só se faltar alguma aula. */
+  const SA = document.getElementById("saida");
+  const pendencias = () => [
+    ...CONFIG.aulas.map((a, i) => ({ txt: "Assistir à aula " + (i + 1) + " · " + a.nome, ok: feita(i), acao: () => abrir(i), bt: "Assistir à aula de " + a.nome }))
+  ];
+  let mostrado = sessionStorage.getItem("cp26-saida-aulas") === "1", armado = false;
+  function mostrarSaida(){
+    const lista = pendencias(), falta = lista.find(x => !x.ok);
+    if (mostrado || !falta || P.classList.contains("aberto")) return false;
+    mostrado = true; sessionStorage.setItem("cp26-saida-aulas", "1");
+    document.getElementById("saidaLista").innerHTML = lista.map(x => `<li class="${x.ok ? "ok" : ""}"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>${esc(x.txt)}</li>`).join("");
+    const bt = document.getElementById("saidaBt");
+    bt.textContent = falta.bt;
+    bt.onclick = e => { e.preventDefault(); fecharSaida(); falta.acao(); };
+    SA.classList.add("aberto");
+    return true;
+  }
+  function fecharSaida(){ SA.classList.remove("aberto"); }
+  document.getElementById("saidaX").addEventListener("click", fecharSaida);
+  SA.addEventListener("click", e => { if (e.target === SA) fecharSaida(); });
+  document.getElementById("saidaSair").addEventListener("click", () => { fecharSaida(); if (armado === "usado") history.back(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && SA.classList.contains("aberto")) fecharSaida(); });
+
+  /* computador */
+  document.addEventListener("mouseout", e => { if (!e.relatedTarget && e.clientY <= 0) mostrarSaida(); });
+
+  /* celular: cria um passo extra no histórico depois do primeiro toque (o navegador exige um toque antes) */
+  function armar(){
+    if (armado || mostrado) return;
+    armado = true; history.pushState({ cp26: 1 }, "");
+  }
+  ["pointerdown", "keydown"].forEach(t => document.addEventListener(t, armar, { once: true, capture: true }));
+  window.addEventListener("popstate", () => {
+    if (!armado || armado === "usado") return;
+    if (P.classList.contains("aberto")) { fechar(); history.pushState({ cp26: 1 }, ""); return; }
+    armado = "usado";
+    if (!mostrarSaida()) history.back();
+  });
+})();
+</script>
+</body>
+</html>
