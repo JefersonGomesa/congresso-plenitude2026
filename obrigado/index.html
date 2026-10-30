@@ -174,6 +174,26 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 .fim .bt{display:inline-flex;margin-top:22px;padding:15px 26px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600}
 .fim .sec{display:block;margin:14px auto 0;font-size:14px;color:var(--muted);text-decoration:underline}
 
+/* popup de saída: aparece quando o lead tenta sair sem ter entrado no grupo ou assistido às aulas */
+.saida{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(10,8,7,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px}
+.saida.aberto{display:grid;animation:surge .3s ease}
+@keyframes surge{from{opacity:0}}
+.saida .caixa{position:relative;width:min(460px,100%);padding:30px 26px 24px;border-radius:22px;background:linear-gradient(160deg,#211a16,#120e0c);border:1px solid rgba(217,176,140,.32);box-shadow:0 40px 100px rgba(0,0,0,.6);animation:sobe .35s ease}
+@keyframes sobe{from{transform:translateY(14px)}}
+.saida .x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.saida .x:hover{background:rgba(255,255,255,.06);color:var(--fg)}
+.saida .x svg{width:18px;height:18px}
+.saida .r{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.saida h3{margin-top:10px;font-size:25px;font-weight:500;letter-spacing:-.03em;line-height:1.2;padding-right:20px}
+.saida p{margin-top:8px;color:#d6ccc2;font-size:14.5px;line-height:1.55}
+.saida ul{list-style:none;margin-top:18px;display:grid;gap:10px}
+.saida li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);font-size:14.5px}
+.saida li i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--dim)}
+.saida li i svg{width:12px;height:12px;display:none}
+.saida li.ok{border-color:rgba(217,176,140,.3);color:var(--muted)}
+.saida li.ok i{background:var(--gold);border-color:var(--gold);color:#2a1f18}.saida li.ok i svg{display:block}
+.saida .bt{display:flex;width:100%;justify-content:center;margin-top:20px;padding:16px;border-radius:999px;background:var(--sand);color:#2a1f18;font-weight:600;font-size:15.5px}
+.saida .sec{display:block;margin:12px auto 0;font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 @media (prefers-reduced-motion:reduce){.fundo img,.poeira i,.capa .foto,.btn.pulsa{animation:none}}
 
 /* ---------- celular ---------- */
@@ -245,6 +265,19 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
   </aside>
 </div>
 
+<!-- ===== popup de saída ===== -->
+<div class="saida" id="saida" role="dialog" aria-modal="true" aria-labelledby="saidaTitulo">
+  <div class="caixa">
+    <button class="x" id="saidaX" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <span class="r">Antes de sair</span>
+    <h3 id="saidaTitulo">Você já entrou no grupo e assistiu às aulas?</h3>
+    <p>O link de acesso do Congresso chega pelo grupo de inscritos. E as duas aulas bônus ficam aqui nesta página.</p>
+    <ul id="saidaLista"></ul>
+    <a class="bt" id="saidaBt" href="#">Entrar no grupo de inscritos</a>
+    <button class="sec" id="saidaSair">Já fiz tudo, pode sair</button>
+  </div>
+</div>
+
 <!-- ===== player ===== -->
 <div class="player" id="player" aria-hidden="true">
   <div class="tela">
@@ -290,7 +323,7 @@ h1 .g{background:var(--gold-text);-webkit-background-clip:text;background-clip:t
 const CONFIG = {
   /* Link de convite do grupo de inscritos no WhatsApp (ex.: "https://chat.whatsapp.com/XXXX").
      Vazio = o botão abre o WhatsApp da equipe com a mensagem abaixo. */
-  grupo: "",
+  grupo: "https://chat.whatsapp.com/Ce9NwHyeDmQDxprAqguMkR",
   whatsappEquipe: "554892080188",
   mensagemEquipe: "Olá! Acabei de garantir meu ingresso do Congresso Plenitude 2026 e quero entrar no grupo de inscritos.",
 
@@ -304,7 +337,7 @@ const CONFIG = {
 (function(){
   /* botão do grupo */
   const grupo = CONFIG.grupo || ("https://wa.me/" + CONFIG.whatsappEquipe + "?text=" + encodeURIComponent(CONFIG.mensagemEquipe));
-  document.querySelectorAll('[data-grupo]').forEach(a => a.href = grupo);
+  document.querySelectorAll('[data-grupo]').forEach(a => { a.href = grupo; a.addEventListener("click", () => localStorage.setItem("cp26-grupo", "1")); });
 
   /* progresso salvo neste aparelho */
   const K = "cp26-bonus-";
@@ -467,6 +500,52 @@ const CONFIG = {
     if (e.key === "Escape") fechar();
   });
   window.addEventListener("pagehide", () => { if (P.classList.contains("aberto") && pronto) salvar(); });
+
+  /* ===== popup de saída =====
+     Computador: o mouse sai pelo topo da janela (rumo ao X ou à barra de endereço).
+     Celular: o botão/gesto de voltar. Aparece uma vez por visita e só se faltar algo. */
+  const SA = document.getElementById("saida");
+  const noGrupo = () => localStorage.getItem("cp26-grupo") === "1";
+  const pendencias = () => [
+    { txt: "Entrar no grupo de inscritos", ok: noGrupo(), acao: () => { window.open(grupo, "_blank", "noopener"); localStorage.setItem("cp26-grupo", "1"); }, bt: "Entrar no grupo de inscritos" },
+    ...CONFIG.aulas.map((a, i) => ({ txt: "Assistir à aula " + (i + 1) + " · " + a.nome, ok: feita(i), acao: () => abrir(i), bt: "Assistir à aula de " + a.nome }))
+  ];
+  let mostrado = sessionStorage.getItem("cp26-saida") === "1", armado = false;
+  function mostrarSaida(){
+    const lista = pendencias(), falta = lista.find(x => !x.ok);
+    if (mostrado || !falta || P.classList.contains("aberto")) return false;
+    mostrado = true; sessionStorage.setItem("cp26-saida", "1");
+    document.getElementById("saidaLista").innerHTML = lista.map(x => `<li class="${x.ok ? "ok" : ""}"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>${esc(x.txt)}</li>`).join("");
+    const bt = document.getElementById("saidaBt");
+    bt.textContent = falta.bt;
+    bt.onclick = e => { e.preventDefault(); fecharSaida(); falta.acao(); };
+    SA.classList.add("aberto");
+    return true;
+  }
+  function fecharSaida(){ SA.classList.remove("aberto"); }
+  document.getElementById("saidaX").addEventListener("click", fecharSaida);
+  SA.addEventListener("click", e => { if (e.target === SA) fecharSaida(); });
+  document.getElementById("saidaSair").addEventListener("click", () => { fecharSaida(); if (armado === "usado") history.back(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && SA.classList.contains("aberto")) fecharSaida(); });
+
+  /* "Ver as aulas" rola sem criar passo no histórico (senão o voltar abriria o popup) */
+  document.querySelector(".bonus .ir").addEventListener("click", e => { e.preventDefault(); document.getElementById("aulas").scrollIntoView({ behavior: "smooth" }); });
+
+  /* computador */
+  document.addEventListener("mouseout", e => { if (!e.relatedTarget && e.clientY <= 0) mostrarSaida(); });
+
+  /* celular: cria um passo extra no histórico depois do primeiro toque (o navegador exige um toque antes) */
+  function armar(){
+    if (armado || mostrado) return;
+    armado = true; history.pushState({ cp26: 1 }, "");
+  }
+  ["pointerdown", "keydown"].forEach(t => document.addEventListener(t, armar, { once: true, capture: true }));
+  window.addEventListener("popstate", () => {
+    if (!armado || armado === "usado") return;
+    if (P.classList.contains("aberto")) { fechar(); history.pushState({ cp26: 1 }, ""); return; }
+    armado = "usado";
+    if (!mostrarSaida()) history.back();
+  });
 })();
 </script>
 </body>
