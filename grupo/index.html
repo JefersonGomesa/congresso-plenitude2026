@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grupo oficial | Congresso Plenitude 2026</title>
+<meta name="description" content="Entre no grupo oficial do Congresso Plenitude 2026 no WhatsApp: avisos, link de acesso e o seu presente.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0807">
+<meta property="og:title" content="Grupo oficial do Congresso Plenitude 2026">
+<meta property="og:description" content="28 de novembro · manhã e tarde · ao vivo e online. Toque para entrar no grupo no WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://congressoplenitude.eleveseplus.com.br/img/og-obrigado.jpg">
+<link rel="icon" type="image/png" sizes="64x64" href="../img/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== /grupo/: link curto do grupo de WhatsApp nos SMS. Avisa o GHL do clique (fluxo G2) e abre o grupo. Cores do Congresso. ===== */
+:root{ --bg:#0a0807; --fg:#f3ece4; --muted:#a99d92; --line:rgba(240,220,198,.22); --gold:#d9b08c;
+  --font:"Lexend","Avenir Next","Segoe UI",system-ui,sans-serif; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--fg);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+main{min-height:100%;display:grid;place-items:center;padding:32px 20px;text-align:center}
+.box{max-width:420px;display:grid;gap:18px;justify-items:center}
+img{width:72px;height:72px}
+h1{font-weight:400;font-size:22px;line-height:1.3;text-wrap:balance}
+p{color:var(--muted);font-size:15px;line-height:1.55}
+a.btn{display:inline-block;margin-top:6px;padding:14px 26px;border-radius:999px;background:var(--gold);color:#1a1210;font-weight:500;text-decoration:none}
+a.btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <div class="box">
+    <img src="../img/logo-icone.webp" alt="" width="72" height="72">
+    <h1>Abrindo o grupo oficial do Congresso Plenitude 2026…</h1>
+    <p>Se o WhatsApp não abrir sozinho, toque no botão.</p>
+    <a class="btn" id="entrar" href="https://chat.whatsapp.com/Ce9NwHyeDmQDxprAqguMkR">Entrar no grupo</a>
+  </div>
+</main>
+<script>
+(function(){
+  // URL do gatilho "Webhook recebido" do fluxo G2 no GHL (vazio = só abre o grupo)
+  var WEBHOOK = "";
+  var GRUPO = "https://chat.whatsapp.com/Ce9NwHyeDmQDxprAqguMkR";
+  var t = new URLSearchParams(location.search).get("t") || "";
+  var digitos = t.replace(/\D/g, "");
+  var foi = false;
+  function abrir(){ if (foi) return; foi = true; location.replace(GRUPO); }
+  if (WEBHOOK && digitos.length >= 10) {
+    // GET por imagem: não depende de CORS; o GHL recebe ?phone= em queryParams
+    var img = new Image();
+    img.onload = img.onerror = function(){ setTimeout(abrir, 150); };
+    img.src = WEBHOOK + (WEBHOOK.indexOf("?") < 0 ? "?" : "&") + "phone=" + encodeURIComponent("+" + digitos) + "&origem=pagina-grupo";
+    setTimeout(abrir, 1500);
+  } else {
+    setTimeout(abrir, 300);
+  }
+})();
+</script>
+</body>
+</html>
