@@ -345,6 +345,19 @@ main{overflow-x:clip}
 .g-carrossel .g-card{flex:none;width:232px}
 .g-carrossel:hover .g-track,.g-carrossel:focus-within .g-track{animation-play-state:paused}
 @keyframes desliza{from{transform:translateX(calc(-50% - 9px))}to{transform:translateX(0)}}
+/* setas e arraste (computador) */
+.g-setas{display:none;gap:10px}
+.g-setas button{width:46px;height:46px;border-radius:50%;border:0;background:transparent;color:var(--gold);cursor:pointer;display:grid;place-items:center;
+  box-shadow:inset 0 0 0 1px rgba(224,191,159,.55);transition:background .25s ease,color .25s ease,transform .25s ease}
+.g-setas button:hover,.g-setas button:focus-visible{background:linear-gradient(180deg,#f6e7d6 0%,#e0bf9f 48%,#c49b78 100%);color:#2b1e15;transform:translateY(-2px)}
+.g-setas button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.g-setas svg{width:18px;height:18px}
+.g-carrossel.js .g-track{animation:none}
+.g-carrossel.js{cursor:grab}
+.g-carrossel.js.arrastando{cursor:grabbing}
+.g-carrossel.js.arrastando *{user-select:none}
+.g-carrossel img{-webkit-user-drag:none;user-select:none}
+@media (min-width:1021px){.g-setas.on{display:flex}}
 @media (prefers-reduced-motion:reduce){.g-carrossel .g-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.g-carrossel .copia{display:none}.g-carrossel{-webkit-mask-image:none;mask-image:none}}
 .g-card{min-width:0}
 .g-card .portrait{aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 25%,#352b24,#120e0c 78%);box-shadow:inset 0 0 0 1px var(--line);transition:transform .4s}
@@ -835,6 +848,10 @@ main{overflow-x:clip}
         <h3 class="rv" style="margin-top:14px">A mesa deste ano reúne gerações, <span class="gold">e não por acaso.</span></h3>
         <p class="lead rv" style="margin-top:14px">Se o tema é a união de gerações, quem está nesta mesa é o primeiro argumento: nomes que abriram o caminho no cuidado cristão, ao lado de quem está chegando agora.</p>
       </div>
+      <div class="g-setas" id="g-setas" role="group" aria-label="Navegar pelos convidados">
+        <button type="button" data-dir="-1" aria-label="Convidados anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" data-dir="1" aria-label="Próximos convidados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
     <div class="g-grid" id="guests">
       <article class="g-card rv"><div class="portrait"><img src="img/convidado-1.png" alt="" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><b>Convidado a anunciar</b></article>
@@ -1002,6 +1019,7 @@ const CONFIG = {
     { nome: "Rafael de Abreu", credencial: "", tags: ["Instituto de Psicologia Tomista", "Presidente e cofundador"], instagram: "psi.rafaeldeabreu", foto: "img/rafael-de-abreu.webp" },
     { nome: "Aender Borba", credencial: "", tags: ["Psicologia e Teologia", "Capelão do Seminário Martin Bucer"], instagram: "aenderborba", foto: "img/aender-borba.webp" },
     { nome: "Rafael Durand", credencial: "", tags: ["Direito Religioso, Eleitoral e Digital", "Advogado e Mestre em Direito"], instagram: "rafaeldurandc", foto: "img/rafael-durand.webp" },
+    { nome: "Milena Castro", credencial: "", tags: ["Logoterapia e Análise Existencial", "Formação e supervisão em Logoterapia"], instagram: "milenacastro.psi", foto: "img/milena-castro.webp" },
   ],
 
   /* Depoimentos da Turma 01. "video" aceita link do YouTube (normal ou Shorts) ou um arquivo .mp4 na pasta img/.
@@ -1034,10 +1052,57 @@ const CONFIG = {
       const ig=String(c.instagram||'').replace(/^@/,'').trim();
       const extra=(copia?' copia':'')+(!copia&&i===g.length-1&&g.length%2?' ultimo':'');
       const oculto=copia?' aria-hidden="true"':'';
-      return `<article class="g-card${extra}"${oculto}><div class="portrait color"><img src="${esc(c.foto)}" alt="${esc(c.nome)}" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><div class="g-info"><b>${esc(c.nome)}</b>${c.credencial?`<span>${esc(c.credencial)}</span>`:''}${(c.tags||[]).length?`<ul class="tags">${c.tags.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${ig?`<a class="ig" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>`:''}</div></article>`;};
+      return `<article class="g-card${extra}"${oculto}><div class="portrait color"><img src="${esc(c.foto)}" alt="${esc(c.nome)}" draggable="false" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><div class="g-info"><b>${esc(c.nome)}</b>${c.credencial?`<span>${esc(c.credencial)}</span>`:''}${(c.tags||[]).length?`<ul class="tags">${c.tags.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${ig?`<a class="ig" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>`:''}</div></article>`;};
     gr.innerHTML='<div class="g-track">'+g.map((c,i)=>cartao(c,i,false)).join('')+g.map((c,i)=>cartao(c,i,true)).join('')+'</div>';
     gr.querySelectorAll('.copia a').forEach(a=>a.tabIndex=-1);
     gr.style.setProperty('--dur',(g.length*8)+'s');
+    /* Computador: o carrossel anda sozinho, para com o mouse em cima e aceita arrastar,
+       rolar de lado (trackpad ou Shift + roda do mouse) e as setas do cabeçalho. */
+    const tr=gr.querySelector('.g-track'), setas=document.getElementById('g-setas');
+    const pc=matchMedia('(min-width:1021px)');
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+      gr.classList.add('js'); setas.classList.add('on');
+      let x=null, ant=0, sobre=false, arr=null, alvo=null, espera=0, moveu=false;
+      const metade=()=>(tr.scrollWidth+18)/2;   // largura de uma volta (a lista vai 2 vezes)
+      const quadro=t=>{
+        const dt=Math.min((t-(ant||t))/1000,.1); ant=t;
+        if(pc.matches){
+          const m=metade(); if(x===null)x=-m;
+          if(alvo!==null){const d=alvo-x; if(Math.abs(d)<.5){x=alvo;alvo=null}else x+=d*Math.min(1,dt*9)}
+          else if(!arr&&!sobre&&t>espera) x+=m/(g.length*8)*dt;
+          let s=0; while(x+s>=0)s-=m; while(x+s<-m)s+=m;   // dá a volta sem emenda
+          if(s){x+=s; if(alvo!==null)alvo+=s; if(arr)arr.x0+=s}
+          tr.style.transform=`translateX(${x}px)`;
+        } else if(tr.style.transform) tr.style.transform='';
+        requestAnimationFrame(quadro);
+      };
+      requestAnimationFrame(quadro);
+      const pausa=ms=>espera=performance.now()+ms;
+      gr.addEventListener('mouseenter',()=>sobre=true);
+      gr.addEventListener('mouseleave',()=>sobre=false);
+      gr.addEventListener('focusin',()=>sobre=true);
+      gr.addEventListener('focusout',()=>sobre=false);
+      gr.addEventListener('pointerdown',e=>{
+        if(!pc.matches||e.pointerType!=='mouse'||e.button)return;
+        e.preventDefault(); arr={px:e.clientX,x0:x}; alvo=null; moveu=false;
+      });
+      addEventListener('pointermove',e=>{
+        if(!arr)return; const d=e.clientX-arr.px;
+        if(!moveu&&Math.abs(d)>5){moveu=true;gr.classList.add('arrastando')}
+        if(moveu)x=arr.x0+d;
+      });
+      addEventListener('pointerup',()=>{if(!arr)return; arr=null; gr.classList.remove('arrastando'); pausa(1500)});
+      gr.addEventListener('click',e=>{if(moveu){e.preventDefault();e.stopPropagation();moveu=false}},true);
+      gr.addEventListener('wheel',e=>{
+        if(!pc.matches)return;
+        const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:(e.shiftKey?e.deltaY:0);
+        if(!d)return; e.preventDefault(); alvo=null; x-=d; pausa(1500);
+      },{passive:false});
+      setas.addEventListener('click',e=>{
+        const b=e.target.closest('button'); if(!b)return;
+        alvo=(alvo??x)-(+b.dataset.dir)*500; pausa(2500);   // 2 cartões por clique
+      });
+    }
   }
   const d=CONFIG.depoimentos.filter(x=>x&&x.video);
   if(d.length){
