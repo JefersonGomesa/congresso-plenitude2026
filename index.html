@@ -6,9 +6,9 @@
 <!-- Remover a linha abaixo no dia em que a página for ao ar de verdade (libera o Google). -->
 <meta name="robots" content="noindex, nofollow">
 <title>Congresso Plenitude 2026</title>
-<meta name="description" content="Congresso Plenitude 2026 · 28 de novembro · tarde e noite. O cuidado da alma foi partido ao meio. Terapeutas, conselheiros, pastores e líderes reunidos para costurar isso de volta.">
+<meta name="description" content="Congresso Plenitude 2026 · 28 de novembro · manhã (9h às 12h) e tarde (13h30 às 17h). O cuidado da alma foi partido ao meio. Terapeutas, conselheiros, pastores e líderes reunidos para resgatar o cuidado integral do Ser: corpo, mente e espírito.">
 <meta property="og:title" content="Congresso Plenitude 2026 · 28 de novembro">
-<meta property="og:description" content="Você aprendeu a deixar a fé do lado de fora do consultório. Seu paciente não deixa.">
+<meta property="og:description" content="Faça parte daqueles que irão resgatar os fundamentos perdidos do cuidado integral do Ser: corpo, mente e espírito.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0a0807">
 <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
@@ -336,6 +336,8 @@ main{overflow-x:clip}
 .guests-head h3{font-size:clamp(22px,2.6vw,30px)}
 .g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .g-grid.n3{grid-template-columns:repeat(3,1fr);max-width:980px;margin-inline:auto}
+.g-grid.n5{grid-template-columns:repeat(5,1fr);gap:16px}
+.testi[hidden]{display:none}
 .g-card{min-width:0}
 .g-card .portrait{aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 25%,#352b24,#120e0c 78%);box-shadow:inset 0 0 0 1px var(--line);transition:transform .4s}
 .g-card:hover .portrait{transform:translateY(-4px)}
@@ -456,7 +458,8 @@ main{overflow-x:clip}
 /* ===== Responsivo ===== */
 @media (max-width:1020px){
   .facts-row{grid-template-columns:repeat(3,1fr);row-gap:10px}
-  .g-grid,.g-grid.n3{grid-template-columns:repeat(2,1fr)}
+  .g-grid,.g-grid.n3,.g-grid.n5{grid-template-columns:repeat(2,1fr)}
+  .g-grid.n5 .g-card:last-child{grid-column:1/-1;justify-self:center;width:calc(50% - 9px)}
   .track{grid-auto-columns:calc((100% - 20px)/2)}
 }
 @media (max-width:860px){
@@ -572,7 +575,7 @@ main{overflow-x:clip}
 <!-- Cabeçalho -->
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Congresso Plenitude 26, voltar ao início"><img src="img/logo-completa.webp" alt="Congresso Plenitude 26 · Geração unida por um mesmo propósito"></a>
+    <a class="brand" href="#inicio" aria-label="Congresso Plenitude 26, voltar ao início"><img src="img/logo-completa.webp" alt="Congresso Plenitude 26 · Gerações unidas por um mesmo propósito"></a>
     <a class="btn btn-sm" href="#ingresso">Quero meu ingresso</a>
   </div>
 </header>
@@ -583,11 +586,11 @@ main{overflow-x:clip}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1 class="rv d1">Você aprendeu a deixar a fé do lado de fora do consultório. <span class="gold">Seu paciente não!</span></h1>
-      <p class="lead rv d2"><strong>O cuidado da alma foi partido ao meio.</strong> De um lado sobrou técnica sem alma; do outro, alma sem técnica. <strong>Será um dia, cinco sessões.</strong> O Congresso Plenitude reúne terapeutas, conselheiros, pastores e líderes para costurar isso de volta.</p>
+      <h1 class="rv d1">Faça parte daqueles que irão resgatar os fundamentos perdidos do cuidado integral do Ser: <span class="gold">corpo, mente e espírito.</span></h1>
+      <p class="lead rv d2"><strong>O cuidado da alma foi partido ao meio.</strong> De um lado sobrou técnica sem alma; do outro, alma sem técnica. Você aprendeu a deixar a fé do lado de fora do consultório. Seu paciente não deixa. <strong>Será um dia, em dois turnos.</strong> O Congresso Plenitude reúne terapeutas, conselheiros, pastores e líderes para costurar isso de volta.</p>
       <ul class="when rv d2">
         <li><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>28 de novembro</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>Tarde e noite</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>Manhã e tarde</li>
         <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>100% online</li>
       </ul>
       <div class="cta-row rv d3">
@@ -616,7 +619,7 @@ main{overflow-x:clip}
   <div class="wrap">
     <h2 class="rv">O Congresso <span class="gold">em resumo.</span></h2>
     <div class="facts-row">
-      <div class="fact rv"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span>28 de novembro<small>tarde e noite</small></span></div>
+      <div class="fact rv"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span>28 de novembro<small>manhã e tarde</small></span></div>
       <div class="fact rv d1"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span><span>Cinco sessões<small>com intervalo entre os turnos</small></span></div>
       <div class="fact rv d2"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><span>100% online<small>ao vivo, de onde você estiver</small></span></div>
       <div class="fact rv d3"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span><span>Gravação<small>disponível por 12 meses</small></span></div>
@@ -680,8 +683,8 @@ main{overflow-x:clip}
     </div>
     <div>
       <span class="eyebrow rv">O retorno</span>
-      <h2 class="rv">Não estamos inventando <span class="gold">um fundamento.</span></h2>
-      <p class="lead rv">Estamos voltando ao que nunca deveria ter sido abandonado no cuidado da alma, e trazendo junto tudo o que a ciência aprendeu desde então. <strong>A Terapia da Plenitude não é uma terceira coisa no meio dos dois lados: ela devolve a cada um a metade que o outro guardou.</strong></p>
+      <h2 class="rv">Não estamos inventando um novo fundamento. <span class="gold">Estamos resgatando os fundamentos perdidos no cuidado integral das pessoas.</span></h2>
+      <p class="lead rv"><strong>E, para isso, precisamos de união:</strong> o cuidado pastoral, espiritual e teológico unido ao tratamento técnico, científico e terapêutico. Estamos voltando ao que nunca deveria ter sido abandonado no cuidado da alma, e trazendo junto tudo o que a ciência aprendeu desde então. <strong>A Terapia da Plenitude não é uma terceira coisa no meio dos dois lados: ela devolve a cada um a metade que o outro guardou.</strong></p>
 
       <div class="wave-list">
         <h3 class="rv">O lugar disso na <span class="gold">história da ciência psicológica.</span></h3>
@@ -689,10 +692,10 @@ main{overflow-x:clip}
           <li class="rv"><span class="pearl"></span><span>A primeira onda<em>olhou para o que a pessoa faz.</em></span></li>
           <li class="rv"><span class="pearl"></span><span>A segunda<em>para o que ela pensa.</em></span></li>
           <li class="rv"><span class="pearl"></span><span>A terceira<em>para a relação dela com a própria experiência.</em></span></li>
-          <li class="rv four"><span class="pearl"></span><span>A quarta olha para quem ela é<em>identidade, sentido, vocação e inteireza, em corpo, mente, relações e espírito.</em></span></li>
+          <li class="rv four"><span class="pearl"></span><span>A quarta é o nosso tempo, hoje!<em>É o resgate do Ser em sua plenitude: corpo, mente e espírito.</em></span></li>
         </ul>
       </div>
-      <p class="base rv">A base é <strong>Terapia do Esquema, ACT, Terapia Focada na Compaixão e Logoterapia</strong>, com Agostinho, Tomás de Aquino, Max Scheler e Edith Stein lidos na fonte.</p>
+      <p class="base rv">A base dessa nova onda vem dos fundamentos teológicos, antropológicos e filosóficos cristãos, integrados e unidos aos fundamentos mais atuais da ciência psicológica: <strong>Terapia do Esquema, Logoterapia, Neurociência e Terapias de Terceira Onda</strong>.</p>
     </div>
   </div>
 </section>
@@ -709,16 +712,16 @@ main{overflow-x:clip}
   <div class="wrap prog-grid">
     <div>
       <span class="eyebrow rv">O dia</span>
-      <h2 class="h2 rv">Um dia, cinco sessões, <span class="gold">gerações à mesma mesa.</span></h2>
-      <p class="lead rv">Tarde e noite de 28 de novembro, com um intervalo entre os turnos.</p>
-      <p class="turn rv">Tarde</p>
+      <h2 class="h2 rv">Um dia, cinco sessões. <span class="gold">Gerações unidas à mesa. Um só propósito.</span></h2>
+      <p class="lead rv">Sábado, 28 de novembro, em dois turnos: das 9h às 12h e das 13h30 às 17h.</p>
+      <p class="turn rv">Manhã · 9h às 12h</p>
       <ol class="pillars">
         <li class="rv"><div><b>O fundamento abandonado</b><p>Como o cuidado da alma foi partido ao meio, e o caminho de volta.</p></div></li>
         <li class="rv"><div><b>A Terapia da Plenitude na prática</b><p>Casos, técnicas e o protocolo da Pleromaterapia, para quem atende.</p></div></li>
         <li class="rv"><div><b>O cuidado da alma na liderança</b><p>Reconhecer o que chega ao seu gabinete e cuidar com método, sem deixar de cuidar com fé.</p></div></li>
       </ol>
-      <p class="turn pause rv">Intervalo</p>
-      <p class="turn rv">Noite</p>
+      <p class="turn pause rv">Intervalo para o almoço</p>
+      <p class="turn rv">Tarde · 13h30 às 17h</p>
       <ol class="pillars cont">
         <li class="rv"><div><b>Gerações que cuidam</b><p>Quem abriu o caminho e quem chega agora, juntos no mesmo lugar.</p></div></li>
         <li class="rv"><div><b>Nasce a Academia da Plenitude</b><p>A apresentação da Academia e da Turma 02 da pós, com condição exclusiva para quem estiver no Congresso.</p></div></li>
@@ -775,7 +778,7 @@ main{overflow-x:clip}
         <svg viewBox="0 0 200 200">
           <defs><path id="circ" d="M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1-160 0"/>
           <linearGradient id="gmono" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9977a"/><stop offset="1" stop-color="#8a5d45"/></linearGradient></defs>
-          <g class="rot"><text><textPath href="#circ">Congresso Plenitude · Geração unida por um mesmo propósito ·</textPath></text></g>
+          <g class="rot"><text><textPath href="#circ">Congresso Plenitude · Gerações unidas por um mesmo propósito ·</textPath></text></g>
         </svg>
         <img class="mono-ic" src="img/logo-icone.webp" alt="">
       </div>
@@ -911,7 +914,7 @@ main{overflow-x:clip}
     <div class="ticket rv">
       <img class="t-seal" src="img/logo-icone.webp" alt="">
       <p class="t-name">Congresso Plenitude 2026</p>
-      <p class="t-date">28 de novembro · tarde e noite · 5 sessões</p>
+      <p class="t-date">28 de novembro · 9h às 12h e 13h30 às 17h</p>
       <p class="price soon" id="preco">Valor em breve</p>
       <p class="parcelas" id="parcelas">Lote de lançamento anunciado em breve · até 12x no cartão</p>
       <ul class="incl">
@@ -938,8 +941,8 @@ main{overflow-x:clip}
 <section class="pad final">
   <div class="wrap">
     <img class="final-logo rv" src="img/logo-completa.webp" alt="Congresso Plenitude 26">
-    <span class="eyebrow rv">28 de novembro · tarde e noite</span>
-    <h2 class="rv">A Quarta Onda não é uma teoria. <span class="gold">É uma geração.</span></h2>
+    <span class="eyebrow rv">28 de novembro · manhã e tarde</span>
+    <h2 class="rv">A Quarta Onda não é uma nova teoria. <span class="gold">É uma geração unida pelo resgate dos fundamentos perdidos.</span></h2>
     <a class="btn rv d1" data-checkout href="#ingresso">Quero fazer parte <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
@@ -964,7 +967,7 @@ main{overflow-x:clip}
 </a>
 
 <div class="mbar" id="mbar">
-  <span><b>Congresso Plenitude 2026</b>28 de novembro · tarde e noite</span>
+  <span><b>Congresso Plenitude 2026</b>28 de novembro · manhã e tarde</span>
   <a class="btn btn-sm" href="#ingresso">Quero meu ingresso</a>
 </div>
 
@@ -988,7 +991,7 @@ const CONFIG = {
   ],
 
   /* Depoimentos da Turma 01. "video" aceita link do YouTube (normal ou Shorts) ou um arquivo .mp4 na pasta img/.
-     Enquanto a lista estiver vazia, aparecem 3 cartões "em breve". */
+     Enquanto a lista estiver vazia, a parte dos depoimentos fica oculta. */
   depoimentos: [
     // { video: "https://youtu.be/XXXXXXXXXXX", nome: "Nome · cidade", texto: "Frase curta do que mudou na clínica." },
   ]
@@ -1010,7 +1013,7 @@ const CONFIG = {
   const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const g=CONFIG.convidados.filter(c=>c&&c.nome);
   if(g.length){
-    const gr=document.getElementById('guests'); if(g.length===3) gr.classList.add('n3');
+    const gr=document.getElementById('guests'); if(g.length===3) gr.classList.add('n3'); if(g.length===5) gr.classList.add('n5');
     gr.innerHTML=g.map((c,i)=>{
       const ig=String(c.instagram||'').replace(/^@/,'').trim();
       return `<article class="g-card rv d${i%4}"><div class="portrait color"><img src="${esc(c.foto)}" alt="${esc(c.nome)}" onload="this.parentNode.classList.add('has-photo')"><div class="ph"><svg viewBox="0 0 300 360"><use href="#silhouette"/></svg></div></div><div class="g-info"><b>${esc(c.nome)}</b>${c.credencial?`<span>${esc(c.credencial)}</span>`:''}${(c.tags||[]).length?`<ul class="tags">${c.tags.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${ig?`<a class="ig" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>`:''}</div></article>`}).join('');
@@ -1025,6 +1028,7 @@ const CONFIG = {
       return `<article class="video"><div class="frame">${media}</div>${x.texto?`<p>${esc(x.texto)}</p>`:''}<b>${esc(x.nome)}</b></article>`;
     }).join('');
   }
+  else document.querySelector('.testi').hidden = true; // sem depoimentos no CONFIG: a parte dos vídeos fica oculta
   document.querySelector('.arrows').hidden = document.querySelectorAll('#track .video').length<2;
 })();
 
