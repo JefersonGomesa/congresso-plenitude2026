@@ -436,6 +436,14 @@ main{overflow-x:clip}
 .price.soon{font-size:clamp(30px,3.6vw,40px);font-weight:300}
 .price small{font-size:.4em;color:var(--muted);vertical-align:.9em;margin-right:6px}
 .parcelas{font-size:15px;color:var(--muted)}
+/* preço parcelado: rótulo pequeno, valor grande (R$ e centavos menores, no topo), à vista embaixo */
+.price.parc{margin-top:30px;font-size:clamp(60px,7vw,78px);line-height:0}
+.price.parc .p-x{display:block;margin-bottom:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.2}
+.price.parc .p-v{display:inline-flex;align-items:flex-start;color:var(--fg);line-height:.9}
+.price.parc small{font-size:.28em;font-weight:300;vertical-align:0;margin:.3em 10px 0 0;color:var(--muted)}
+.price.parc .cent{font-size:.42em;font-weight:200;margin:.1em 0 0 2px}
+.price.parc + .parcelas{margin-top:14px}
+.parcelas b{font-weight:400;color:var(--fg)}
 .incl{list-style:none;padding:0;margin:28px 0 30px}
 .incl li{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
 .incl li svg{flex:none;width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8}
@@ -1034,7 +1042,12 @@ const CONFIG = {
   if (CONFIG.checkout) document.querySelectorAll('[data-checkout]').forEach(a=>{a.href=CONFIG.checkout;a.target="_blank";a.rel="noopener"});
   if (CONFIG.preco) {
     const el=document.getElementById('preco'), pa=document.getElementById('parcelas'); el.classList.remove('soon');
-    if (CONFIG.parcelas) {el.innerHTML='<small>12x de R$</small>'+CONFIG.parcelas; pa.textContent='ou R$ '+CONFIG.preco+' à vista';}
+    if (CONFIG.parcelas) {
+      const [int,cent]=String(CONFIG.parcelas).split(',');
+      el.classList.add('parc');
+      el.innerHTML='<span class="p-x">em até 12x de</span><span class="p-v"><small>R$</small>'+int+(cent?'<span class="cent">,'+cent+'</span>':'')+'</span>';
+      pa.innerHTML='ou <b>R$ '+CONFIG.preco+'</b> à vista';
+    }
     else {el.innerHTML='<small>R$</small>'+CONFIG.preco; pa.textContent='à vista ou em até 12x no cartão';}
   }
   const wa = !CONFIG.whatsapp ? '' : /^https?:/.test(CONFIG.whatsapp) ? CONFIG.whatsapp
