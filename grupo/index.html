@@ -44,7 +44,7 @@ a.btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 <script>
 (function(){
   // URL do gatilho "Webhook recebido" do fluxo G2 no GHL (vazio = só abre o grupo)
-  var WEBHOOK = "";
+  var WEBHOOK = "https://services.leadconnectorhq.com/hooks/gJYkHzHnolkkWk9ZqldH/webhook-trigger/1126b6ac-a95a-4526-8ce8-cc69ea160334";
   var GRUPO = "https://chat.whatsapp.com/Ce9NwHyeDmQDxprAqguMkR";
   var t = new URLSearchParams(location.search).get("t") || "";
   var digitos = t.replace(/\D/g, "");
