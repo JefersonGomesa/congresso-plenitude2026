@@ -267,6 +267,10 @@ main{overflow-x:clip}
 .pillars b{display:block;font-weight:500;color:var(--fg);margin-bottom:2px}
 .pillars p{font-size:14.5px;color:var(--muted);line-height:1.55}
 .pillars li:last-child b{color:var(--gold-hi)}
+/* cronograma: horário no lugar do número */
+.pillars.agenda li{grid-template-columns:58px 1fr}
+.pillars.agenda li::before{content:attr(data-h);font-size:14px;letter-spacing:.04em;font-weight:500}
+.pillars .mesa{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
 .screen-wrap{position:relative;padding:8% 2%}
 .screen-wrap .ring{position:absolute;left:50%;top:50%;width:94%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
   border:1px solid rgba(243,224,202,.18);box-shadow:0 0 0 18px rgba(243,224,202,.025),0 0 0 19px rgba(243,224,202,.10)}
@@ -550,6 +554,7 @@ main{overflow-x:clip}
   .wave-list h3{text-align:center}
   .pillars li{grid-template-columns:1fr;text-align:center;justify-items:center}
   .pillars li::before{padding-top:0}
+  .pillars.agenda li{grid-template-columns:1fr;gap:6px}
   .prog .btn,.ticket .btn{margin-inline:auto}
   .ticket .btn{width:auto}
   .host-photo{margin-inline:-16px}
@@ -653,7 +658,7 @@ main{overflow-x:clip}
     <h2 class="rv">O Congresso <span class="gold">em resumo.</span></h2>
     <div class="facts-row">
       <div class="fact rv"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span>28 de novembro<small>manhã e tarde</small></span></div>
-      <div class="fact rv d1"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span><span>Cinco sessões<small>com intervalo entre os turnos</small></span></div>
+      <div class="fact rv d1"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span><span>Cinco mesas<small>mais abertura e encerramento</small></span></div>
       <div class="fact rv d2"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><span>100% online<small>ao vivo, de onde você estiver</small></span></div>
       <div class="fact rv d3"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span><span>Gravação<small>disponível por 12 meses</small></span></div>
       <div class="fact rv d4"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5M21 9v5"/></svg></span><span>Academia da Plenitude<small>apresentada pela 1ª vez</small></span></div>
@@ -745,19 +750,21 @@ main{overflow-x:clip}
   <div class="wrap prog-grid">
     <div>
       <span class="eyebrow rv">O dia</span>
-      <h2 class="h2 rv">Um dia, cinco sessões. <span class="gold">Gerações unidas à mesa. Um só propósito.</span></h2>
+      <h2 class="h2 rv">Um dia, cinco mesas. <span class="gold">Gerações unidas à mesa. Um só propósito.</span></h2>
       <p class="lead rv">Sábado, 28 de novembro, em dois turnos: das 9h às 12h e das 13h30 às 17h.</p>
       <p class="turn rv">Manhã · 9h às 12h</p>
-      <ol class="pillars">
-        <li class="rv"><div><b>O fundamento abandonado</b><p>Como o cuidado da alma foi partido ao meio, e o caminho de volta.</p></div></li>
-        <li class="rv"><div><b>A Terapia da Plenitude na prática</b><p>Casos, técnicas e o protocolo da Pleromaterapia, para quem atende.</p></div></li>
-        <li class="rv"><div><b>O cuidado da alma na liderança</b><p>Reconhecer o que chega ao seu gabinete e cuidar com método, sem deixar de cuidar com fé.</p></div></li>
+      <ol class="pillars agenda">
+        <li class="rv" data-h="9h"><div><span class="mesa">Abertura</span><b>A união de gerações no resgate dos fundamentos perdidos</b></div></li>
+        <li class="rv" data-h="9h30"><div><span class="mesa">Mesa 1</span><b>Fé e Constituição</b><p>Liberdade religiosa e o exercício profissional dos cristãos na saúde mental.</p></div></li>
+        <li class="rv" data-h="10h"><div><span class="mesa">Mesa 2</span><b>O Resgate do Ser</b><p>Os fundamentos da Logoterapia, da Psicologia Tomista e da Antropologia Paulina na compreensão do ser humano integral.</p></div></li>
+        <li class="rv" data-h="11h"><div><span class="mesa">Mesa 3</span><b>Cristãos e o adoecimento mental</b><p>Tratamento integral em saúde mental para cristãos.</p></div></li>
       </ol>
-      <p class="turn pause rv">Intervalo para o almoço</p>
+      <p class="turn pause rv">12h · Intervalo</p>
       <p class="turn rv">Tarde · 13h30 às 17h</p>
-      <ol class="pillars cont">
-        <li class="rv"><div><b>Gerações que cuidam</b><p>Quem abriu o caminho e quem chega agora, juntos no mesmo lugar.</p></div></li>
-        <li class="rv"><div><b>Nasce a Academia da Plenitude</b><p>A apresentação da Academia e da Turma 02 da pós, com condição exclusiva para quem estiver no Congresso.</p></div></li>
+      <ol class="pillars agenda cont">
+        <li class="rv" data-h="13h30"><div><span class="mesa">Mesa 4</span><b>Aconselhamento Bíblico e Saúde Mental</b><p>A integração entre os fundamentos teológicos e a psicologia no cuidado da alma.</p></div></li>
+        <li class="rv" data-h="15h"><div><span class="mesa">Mesa 5</span><b>Trauma Emocional e a Graça</b><p>O processo de cura e renovação da mente no processo terapêutico com cristãos.</p></div></li>
+        <li class="rv" data-h="16h"><div><span class="mesa">Encerramento</span><b>Terapia da Plenitude: a resposta para o cuidado integral do Ser</b><p>Lançamento da Academia da Plenitude e da Turma 02 da Pós em Terapia da Plenitude.</p></div></li>
       </ol>
       <a class="btn rv" href="#ingresso">Quero meu ingresso <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
@@ -955,7 +962,7 @@ main{overflow-x:clip}
       <p class="price soon" id="preco">Valor em breve</p>
       <p class="parcelas" id="parcelas">Lote de lançamento anunciado em breve · até 12x no cartão</p>
       <ul class="incl">
-        <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Acesso às cinco sessões ao vivo</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Acesso às cinco mesas ao vivo, da abertura ao encerramento</li>
         <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Gravação disponível por 12 meses</li>
         <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Certificado de participação</li>
         <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Condição exclusiva para a Turma 02 da pós</li>
