@@ -53,15 +53,23 @@ a.btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
   // URL do gatilho "Webhook recebido" do fluxo G2 no GHL (vazio = só abre o grupo)
   var WEBHOOK = "https://services.leadconnectorhq.com/hooks/gJYkHzHnolkkWk9ZqldH/webhook-trigger/124e1b7e-ba98-415f-987c-6611e9d6504c";
   var GRUPO = "https://chat.whatsapp.com/HzTakCUFzYX14hFNOTdobj?s=cl&p=i&mlu=4&ilr=4&iam=2";
-  var t = new URLSearchParams(location.search).get("t") || "";
-  var digitos = t.replace(/\D/g, "");
+  // ?e= e-mail do contato (recomendado: o {{contact.phone}} do GHL vem com espaço e o WhatsApp corta o link no espaço)
+  // ?t= telefone (mantido para links antigos)
+  var q = new URLSearchParams(location.search);
+  var email = (q.get("e") || "").trim().replace(/ /g, "+");  // "+" do e-mail vira espaço na URL
+  if (email.indexOf("@") < 1) email = "";
+  var digitos = (q.get("t") || "").replace(/\D/g, "");
+  if (digitos.length === 10 || digitos.length === 11) digitos = "55" + digitos;  // sem código do país = Brasil
   var foi = false;
   function abrir(){ if (foi) return; foi = true; location.replace(GRUPO); }
-  if (WEBHOOK && digitos.length >= 10) {
-    // GET por imagem: não depende de CORS; o GHL recebe ?phone= em queryParams
+  if (WEBHOOK && (email || digitos.length >= 12)) {
+    // GET por imagem: não depende de CORS; o GHL recebe ?email= e/ou ?phone= em queryParams
     var img = new Image();
     img.onload = img.onerror = function(){ setTimeout(abrir, 150); };
-    img.src = WEBHOOK + (WEBHOOK.indexOf("?") < 0 ? "?" : "&") + "phone=" + encodeURIComponent("+" + digitos) + "&origem=pagina-grupo";
+    img.src = WEBHOOK + (WEBHOOK.indexOf("?") < 0 ? "?" : "&")
+      + (email ? "email=" + encodeURIComponent(email) + "&" : "")
+      + (digitos.length >= 12 ? "phone=" + encodeURIComponent("+" + digitos) + "&" : "")
+      + "origem=pagina-grupo";
     setTimeout(abrir, 1500);
   } else {
     setTimeout(abrir, 300);
