@@ -254,6 +254,7 @@ body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
   font:500 13.5px/1 var(--font);letter-spacing:.02em;color:#2b1e15;white-space:nowrap;
   background:linear-gradient(180deg,#f6e7d6 0%,#e0bf9f 48%,#c49b78 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 26px -12px rgba(217,170,128,.6)}
 .wbtn svg{width:15px;height:15px;flex:none}
+.wbtn .tx-s{display:none}
 .wbtn.ghost{color:var(--fg);background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
 .wbtn.big{padding:16px 28px;font-size:15px}
 .wbtn:focus-visible,.fld input:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
@@ -290,6 +291,8 @@ body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
   .wtop img{height:28px}
   .wtop .wbtn{padding:10px 12px;font-size:12.5px}
   .wtop .wbtn .tx-l{display:none}
+  .wtop .wbtn .tx-s{display:inline}
+  .web .mono,.web code{white-space:normal;word-break:break-all}
   .web .page{padding-top:52px}
   .web .grid2,.web .grid3,.web .grid4,.web .split,.web .split3,.web .spk-grid,.web .host,.web .crack,.web .waves,.duv-grid{grid-template-columns:1fr!important}
   .web [style*="grid-template-columns"]{grid-template-columns:1fr!important}
@@ -319,8 +322,8 @@ body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
 <header class="wtop"><div class="in">
   <a href="#p01" aria-label="Início"><img src="img/logo-completa.png" alt="Congresso Plenitude 2026"></a>
   <div class="acts">
-    <a class="wbtn ghost" href="#duvidas"><span class="tx-l">Enviar</span> <span>dúvida</span></a>
-    <a class="wbtn" href="manual-do-embaixador.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg><span class="tx-l">Baixar</span> <span>PDF</span></a>
+    <a class="wbtn ghost" href="#duvidas"><span class="tx-l">Enviar dúvida</span><span class="tx-s">Dúvida</span></a>
+    <a class="wbtn" href="manual-do-embaixador.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg><span class="tx-l">Baixar PDF</span><span class="tx-s">PDF</span></a>
   </div>
 </div></header>
 <main>
