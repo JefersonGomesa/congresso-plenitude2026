@@ -1,9 +1,11 @@
 <?php
 /* Recebe as dúvidas do formulário de /embaixadores/.
    1. Guarda cada dúvida em ~/_embaixadores_dados/duvidas.jsonl (fora do site, o rsync não apaga).
-   2. Envia um e-mail de aviso para o endereço de ~/_embaixadores_dados/config.php.
+   2. Avisa o Jeferson: e-mail (o PHP mail() está bloqueado nesta hospedagem em 13/11/2026)
+      e/ou webhook do GHL, se 'webhook' estiver no config.php.
+   3. As dúvidas aparecem em painel.php?k=<chave>.
    O config.php fica só no servidor (não vai para o GitHub):
-     <?php return ['para' => 'email@exemplo.com', 'de' => 'noreply@eleveseplus.com.br'];
+     <?php return ['para' => 'email', 'de' => 'noreply@eleveseplus.com.br', 'chave' => '...', 'webhook' => ''];
 */
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -54,6 +56,12 @@ if (!empty($cfg['para'])) {
   $cab = "From: =?UTF-8?B?" . base64_encode('Manual do Embaixador') . "?= <$de>\r\n"
        . "Content-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit\r\nMIME-Version: 1.0\r\n";
   $enviado = @mail($cfg['para'], $assunto, $corpo, $cab, "-f$de");
+}
+// aviso pelo GHL (se houver um webhook em config.php): o fluxo do GHL manda o WhatsApp para o Jeferson
+if (!empty($cfg['webhook'])) {
+  $ctx = stream_context_create(['http' => ['method' => 'POST', 'timeout' => 6, 'ignore_errors' => true,
+    'header' => "Content-Type: application/json\r\n", 'content' => json_encode($reg + ['origem' => 'manual-embaixador'], JSON_UNESCAPED_UNICODE)]]);
+  if (@file_get_contents($cfg['webhook'], false, $ctx) !== false) $enviado = true;
 }
 if (!$salvo && !$enviado) sair(500, ['ok' => false, 'erro' => 'Não foi possível enviar agora. Tente de novo.']);
 sair(200, ['ok' => true]);
