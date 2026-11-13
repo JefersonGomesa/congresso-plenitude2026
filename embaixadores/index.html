@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manual do Embaixador · Congresso Plenitude 2026</title>
+<meta name="description" content="Material interno dos Embaixadores do Congresso Plenitude 2026.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0807">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Fonte do PDF. Gerar: python3 embaixadores-2026/gerar-pdf.py */
+:root{
+  --bg:#0a0807; --bg-2:#120e0c; --bg-3:#1a1512;
+  --fg:#f3ece4; --muted:#b3a79c; --dim:#7d7269;
+  --line:rgba(240,220,198,.14); --line-2:rgba(240,220,198,.24);
+  --gold:#d9b08c; --gold-hi:#f3e0ca; --gold-lo:#a9805f;
+  --ink:#2a1f18; --ink-2:#5b4a3e;
+  --sand:linear-gradient(100deg,#c4a283 0%,#e2cbb4 30%,#f2e4d5 55%,#e6d0ba 78%,#c19f80 100%);
+  --gold-text:linear-gradient(100deg,#f5e3cf 0%,#d7ad87 45%,#ebcfae 70%,#c79a74 100%);
+  --card:#16120f;
+  --font:"Lexend","Avenir Next","Segoe UI",system-ui,sans-serif;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#3a3330}
+body{font-family:var(--font);font-weight:300;font-size:calc(9.4pt*var(--fs,1));line-height:1.55;color:var(--muted);-webkit-font-smoothing:antialiased;counter-reset:pg}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{margin:0;font-weight:300;color:var(--fg);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0 0 2.6mm}
+p:last-child{margin-bottom:0}
+strong,b{font-weight:500;color:var(--fg)}
+ul,ol{margin:0;padding:0}
+a{color:inherit;text-decoration:none}
+
+/* Página A4 */
+.page{position:relative;width:210mm;height:297mm;margin:0 auto 8mm;padding:17mm 17mm 22mm;overflow:hidden;
+  background:radial-gradient(ellipse 70% 40% at 100% 0%,rgba(217,176,140,.10),transparent 70%),var(--bg);
+  page-break-after:always;break-after:page;counter-increment:pg}
+.page:last-child{page-break-after:auto;break-after:auto}
+@media print{.page{margin:0}}
+.folio{position:absolute;left:17mm;right:17mm;bottom:9mm;display:flex;justify-content:space-between;align-items:center;
+  padding-top:3mm;border-top:1px solid var(--line);font-size:calc(7pt*var(--fs,1));letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.folio::after{content:counter(pg,decimal-leading-zero);color:var(--gold);letter-spacing:.1em}
+
+.gold{color:#e4c09c}
+.eyebrow{display:flex;align-items:center;gap:3mm;font-size:calc(7.2pt*var(--fs,1));font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4mm}
+.eyebrow::before{content:"";width:9mm;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.h1{font-size:calc(30pt*var(--fs,1));font-weight:200}
+.h2{font-size:calc(21pt*var(--fs,1));font-weight:200;margin-bottom:4mm}
+.h3{font-size:calc(12pt*var(--fs,1));font-weight:400;margin-bottom:2mm}
+.lead{font-size:calc(10.6pt*var(--fs,1));line-height:1.55;color:var(--muted);max-width:150mm;margin-bottom:6mm}
+.lead strong{color:var(--fg)}
+.small{font-size:calc(8pt*var(--fs,1));line-height:1.45;color:var(--dim)}
+.mt0{margin-top:0}.mt2{margin-top:2mm}.mt4{margin-top:4mm}.mt6{margin-top:6mm}.mt8{margin-top:8mm}
+.mb2{margin-bottom:2mm}.mb4{margin-bottom:4mm}.mb6{margin-bottom:6mm}
+
+/* Cartões e grades */
+.card{background:var(--card);border:1px solid var(--line);border-radius:3.2mm;padding:5mm 5.5mm}
+.card.hi{border-color:rgba(217,176,140,.45);background:#21190f}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.tag{display:inline-block;font-size:calc(6.8pt*var(--fs,1));font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:1.2mm 2.8mm;border-radius:99px;border:1px solid var(--line-2)}
+.tbc{display:inline;font-size:.86em;font-weight:400;color:#f0c9a3;background:rgba(217,150,100,.13);border:1px dashed rgba(240,190,140,.55);border-radius:1.2mm;padding:0 1.3mm;white-space:nowrap}
+.sand .tbc{color:#7a3f1c;background:rgba(122,63,28,.08);border-color:rgba(122,63,28,.45)}
+.pearl{flex:none;width:5.2mm;height:5.2mm;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#fff 0,#f7eee6 14%,#e2cfbe 40%,#a88c76 78%,#6b5546 100%);
+  box-shadow:0 .6mm 1.6mm rgba(0,0,0,.55)}
+.rule{height:1px;background:linear-gradient(90deg,var(--line-2),transparent);margin:4.5mm 0}
+
+/* Lista com marcador perolado */
+.pl{list-style:none}
+.pl li{position:relative;padding-left:6mm;margin-bottom:1.8mm}
+.pl li::before{content:"";position:absolute;left:0;top:1.35mm;width:2.4mm;height:2.4mm;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#fff 0,#e2cfbe 40%,#a88c76 80%)}
+.pl.no li::before{background:none;border:1px solid var(--dim);width:2.2mm;height:2.2mm}
+/* Passos numerados */
+.steps{list-style:none;counter-reset:st}
+.steps>li{position:relative;padding-left:9mm;margin-bottom:2.6mm;counter-increment:st}
+.steps>li::before{content:counter(st);position:absolute;left:0;top:-.2mm;width:5.6mm;height:5.6mm;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:calc(7.4pt*var(--fs,1));font-weight:500;color:#2b1e15;
+  background:linear-gradient(180deg,#f6e7d6 0%,#e0bf9f 48%,#c49b78 100%)}
+.steps>li b{color:var(--fg)}
+
+/* Avisos */
+.warn{display:flex;gap:3.5mm;align-items:flex-start;border-radius:2.6mm;padding:3.6mm 4.5mm;margin:3mm 0;font-size:calc(8.8pt*var(--fs,1));line-height:1.5;
+  border:1px solid rgba(240,190,140,.4);background:rgba(217,150,100,.08);color:var(--fg)}
+.warn .k{flex:none;font-size:calc(6.8pt*var(--fs,1));font-weight:600;letter-spacing:.16em;color:#2b1e15;background:#e7c3a0;border-radius:1mm;padding:.8mm 2mm;margin-top:.3mm}
+.warn.atencao{border-color:rgba(255,140,110,.55);background:rgba(200,80,50,.12)}
+.warn.atencao .k{background:#f0a48a}
+
+/* Tabelas */
+table{width:100%;border-collapse:collapse;font-size:calc(8.4pt*var(--fs,1));line-height:1.45}
+th{font-size:calc(6.8pt*var(--fs,1));font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:left;padding:0 3mm 2.4mm;border-bottom:1px solid var(--line-2)}
+td{padding:2.4mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child,th:first-child{padding-left:0}
+td b{color:var(--fg)}
+code,.mono{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.86em;color:var(--gold-hi);background:rgba(243,224,202,.07);border-radius:1mm;padding:.2mm 1.2mm;white-space:nowrap}
+
+/* Mensagens prontas (roteiros) */
+.msg{position:relative;background:#1b2a22;border:1px solid rgba(160,220,180,.18);border-radius:3mm 3mm 3mm .8mm;padding:3.6mm 4.4mm;margin:2mm 0 3mm;color:#e9f1ea;font-size:calc(8.8pt*var(--fs,1));line-height:1.55}
+.msg .who{display:block;font-size:calc(6.6pt*var(--fs,1));letter-spacing:.16em;text-transform:uppercase;color:#9fd1b0;margin-bottom:1.4mm;font-weight:400}
+.msg p{margin-bottom:1.6mm}
+.msg .ph{color:#ffd9b0}
+.msg.lead-msg{background:#1c1714;border-color:var(--line-2);border-radius:3mm 3mm .8mm 3mm;color:var(--fg)}
+.msg.lead-msg .who{color:var(--gold)}
+
+/* FAQ */
+.faq{column-count:2;column-gap:7mm}
+.q{break-inside:avoid;margin-bottom:3.2mm}
+.q h4{font-size:calc(9.1pt*var(--fs,1));font-weight:500;color:var(--fg);margin-bottom:1.2mm;line-height:1.3;display:flex;gap:2mm}
+.q h4::before{content:"";flex:none;width:1.6mm;height:1.6mm;margin-top:1.4mm;border-radius:50%;background:var(--gold)}
+.q p{font-size:calc(8.2pt*var(--fs,1));line-height:1.45;margin:0 0 1.2mm 3.6mm}
+.faq-sec{column-span:all;font-size:calc(7pt*var(--fs,1));letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:1mm 0 3.6mm;padding-bottom:2mm;border-bottom:1px solid var(--line)}
+
+/* Páginas em areia (aberturas de parte) */
+.sand{background:var(--sand)!important;color:var(--ink-2)}
+.sand::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 30% 40%,rgba(255,255,255,.45),transparent 70%)}
+.sand>*{position:relative}
+.sand h1,.sand h2,.sand h3,.sand b,.sand strong{color:var(--ink)}
+.sand .eyebrow{color:#8a5d45}
+.sand .eyebrow::before{background:linear-gradient(90deg,transparent,#8a5d45)}
+.sand .folio{border-color:rgba(42,31,24,.18);color:#8a6d58;position:absolute}
+.sand .folio::after{color:#8a5d45}
+.part-num{font-size:calc(120pt*var(--fs,1));font-weight:200;line-height:.9;color:rgba(42,31,24,.14);letter-spacing:-.04em}
+.part-list{list-style:none;margin-top:10mm;border-top:1px solid rgba(42,31,24,.18)}
+.part-list li{display:flex;justify-content:space-between;gap:6mm;padding:3.2mm 0;border-bottom:1px solid rgba(42,31,24,.14);font-size:calc(10.5pt*var(--fs,1));color:var(--ink)}
+.part-list li span{color:#8a5d45;font-size:calc(9pt*var(--fs,1))}
+.mono-badge{width:22mm;height:22mm;border-radius:50%;padding:4.4mm;background:radial-gradient(circle at 40% 35%,#33271f,#120d0a 75%);box-shadow:0 3mm 7mm -2mm rgba(60,35,20,.55)}
+
+/* Capa */
+.cover{padding:15mm 17mm}
+.cover .logo{height:13mm;width:auto}
+.cover .hero{position:absolute;left:-6mm;right:-6mm;bottom:0;height:150mm;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 78%,transparent 100%)}
+.cover .hero img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.cover .glow{position:absolute;left:0;right:0;bottom:0;height:170mm;background:radial-gradient(ellipse 60% 55% at 50% 70%,rgba(217,176,140,.22),transparent 70%)}
+.cover .title{margin-top:20mm}
+.cover .title .h1{font-size:calc(40pt*var(--fs,1));line-height:1.05}
+.cover .meta{display:flex;gap:2.4mm;margin-top:7mm;flex-wrap:wrap}
+.cover .meta span{font-size:calc(7.6pt*var(--fs,1));letter-spacing:.12em;text-transform:uppercase;color:var(--fg);padding:1.8mm 3.4mm;border-radius:99px;border:1px solid var(--line-2);background:rgba(10,8,7,.5)}
+.cover .bottom{position:absolute;left:17mm;right:17mm;bottom:10mm;display:flex;justify-content:space-between;font-size:calc(7pt*var(--fs,1));letter-spacing:.14em;text-transform:uppercase;color:var(--fg);text-shadow:0 1px 6px rgba(0,0,0,.9)}
+
+/* Resumo em números */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.fact{border:1px solid var(--line);border-radius:2.8mm;padding:4mm 4.4mm;background:var(--card)}
+.fact b{display:block;font-size:calc(12pt*var(--fs,1));font-weight:300;color:var(--fg);margin-bottom:.8mm}
+.fact span{font-size:calc(8pt*var(--fs,1));color:var(--muted);line-height:1.4}
+.stat b{display:block;font-size:calc(24pt*var(--fs,1));font-weight:200;line-height:1}
+.stat span{font-size:calc(8pt*var(--fs,1));line-height:1.4;display:block;margin-top:1.6mm}
+blockquote{margin:0;padding:5mm 6mm;border-left:2px solid var(--gold);background:rgba(243,224,202,.04);font-size:calc(11.5pt*var(--fs,1));line-height:1.45;color:var(--fg);font-weight:300}
+
+/* Rachadura */
+.crack{display:grid;grid-template-columns:1fr 10mm 1fr;align-items:stretch}
+.crack .fault{display:flex;justify-content:center}
+.crack .fault i{display:block;width:1px;height:100%;background:linear-gradient(transparent,#fff,transparent);box-shadow:0 0 6px rgba(255,240,220,.8)}
+
+/* Ondas */
+.waves{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:3mm;overflow:hidden}
+.wave{padding:4.4mm 4mm;border-right:1px solid var(--line)}
+.wave:last-child{border-right:0;background:#21190f}
+.wave small{display:block;font-size:calc(6.8pt*var(--fs,1));letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6mm}
+.wave b{display:block;font-size:calc(9.4pt*var(--fs,1));font-weight:400;line-height:1.35}
+
+/* Programação */
+.turn{display:flex;align-items:center;gap:3.5mm;margin:3.6mm 0 .6mm;font-size:calc(7.4pt*var(--fs,1));letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi)}
+.turn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
+.slot{display:grid;grid-template-columns:25mm 1fr;gap:3mm;padding:2.6mm 0;border-bottom:1px solid var(--line)}
+.slot .t{font-size:calc(13pt*var(--fs,1));font-weight:200;color:var(--fg);line-height:1.1}
+.slot .t small{display:block;font-size:calc(6.6pt*var(--fs,1));letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:1mm;font-weight:400}
+.slot h3{font-size:calc(10.6pt*var(--fs,1));font-weight:400;margin-bottom:.8mm}
+.slot p{font-size:calc(8.5pt*var(--fs,1));margin-bottom:1.2mm}
+.slot .who{display:flex;flex-wrap:wrap;gap:1.6mm}
+.slot .who span{font-size:calc(7.6pt*var(--fs,1));color:var(--fg);padding:.8mm 2.6mm;border-radius:99px;background:rgba(243,224,202,.07);border:1px solid var(--line)}
+.slot.key{background:#1d160f;border-radius:2mm;padding-left:2mm;margin-left:-2mm}
+.pause{display:flex;align-items:center;gap:3mm;margin:3.6mm 0;font-size:calc(7pt*var(--fs,1));letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.pause::before,.pause::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* Pessoas */
+.host{display:grid;grid-template-columns:62mm 1fr;gap:7mm;align-items:end}
+.host .ph{height:84mm;border-radius:3.2mm;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#3d322a,#120e0c 75%)}
+.host .ph img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.host .ph.cover-img img{object-fit:cover;object-position:center 20%}
+.ig{display:inline-flex;align-items:center;gap:1.6mm;font-size:calc(8.4pt*var(--fs,1));color:var(--gold-hi);font-weight:400}
+.ig::before{content:"";width:3.2mm;height:3.2mm;border-radius:1mm;border:1.2px solid var(--gold);box-shadow:inset 0 0 0 .7mm var(--bg),inset 0 0 0 1.3mm var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm;margin:2.4mm 0}
+.chips span{font-size:calc(7.4pt*var(--fs,1));color:var(--fg);padding:.8mm 2.6mm;border-radius:99px;border:1px solid var(--line-2)}
+.spk-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.spk{display:grid;grid-template-columns:30mm 1fr;gap:4.2mm;border:1px solid var(--line);border-radius:3mm;padding:3.4mm;background:var(--card)}
+.spk .ph{height:39mm;border-radius:2.2mm;overflow:hidden;background:#1a1512}
+.spk .ph img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.spk .mesa{font-size:calc(6.6pt*var(--fs,1));letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4mm}
+.spk h3{font-size:calc(11pt*var(--fs,1));font-weight:400;margin-bottom:1mm}
+.spk p{font-size:calc(8.1pt*var(--fs,1));line-height:1.45;margin:1.6mm 0 0}
+
+/* Preço */
+.price{display:flex;align-items:baseline;gap:2mm;color:var(--fg)}
+.price small{font-size:calc(10pt*var(--fs,1))}
+.price b{font-size:calc(36pt*var(--fs,1));font-weight:200;line-height:1}
+.price i{font-style:normal;font-size:calc(14pt*var(--fs,1));font-weight:200}
+
+/* Diagrama do caminho */
+.flow{display:flex;align-items:stretch;gap:0}
+.flow .n{flex:1;border:1px solid var(--line-2);border-radius:2.6mm;padding:3.4mm 3mm;background:var(--card);font-size:calc(7.8pt*var(--fs,1));line-height:1.4}
+.flow .n b{display:block;font-size:calc(8.8pt*var(--fs,1));font-weight:500;margin-bottom:1mm}
+.flow .n.me{border-color:rgba(217,176,140,.6);background:#251c12}
+.flow .ar{flex:none;width:5mm;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:calc(10pt*var(--fs,1))}
+
+.kind{border-radius:3mm;border:1px solid var(--line);padding:4.4mm;background:var(--card)}
+.kind .n{font-size:calc(22pt*var(--fs,1));font-weight:200;line-height:1;color:var(--gold)}
+.kind h3{font-size:calc(10.4pt*var(--fs,1));font-weight:400;margin:2mm 0 1.4mm}
+.kind p{font-size:calc(8.3pt*var(--fs,1));line-height:1.45}
+
+.check{list-style:none}
+.check li{position:relative;padding-left:7mm;margin-bottom:2mm}
+.check li::before{content:"";position:absolute;left:0;top:.6mm;width:3.6mm;height:3.6mm;border-radius:.9mm;border:1.2px solid var(--gold)}
+.toc{list-style:none;counter-reset:none}
+.toc li{display:grid;grid-template-columns:1fr auto;gap:4mm;padding:1.95mm 0;border-bottom:1px solid var(--line);color:var(--fg);font-size:calc(9.4pt*var(--fs,1))}
+.toc li span{color:var(--gold);font-size:calc(8.4pt*var(--fs,1))}
+.toc li.part{border-bottom:0;padding-top:5mm;font-size:calc(7pt*var(--fs,1));letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+.split3{display:grid;grid-template-columns:1.1fr .9fr;gap:7mm}
+
+/* ===== Versão web ===== */
+html{scroll-behavior:smooth;scroll-padding-top:84px;background:var(--bg)}
+body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
+.web .page{width:auto;height:auto;max-width:1000px;margin:0 auto;padding:72px clamp(16px,5vw,64px) 40px;overflow:visible;
+  background:none;border-top:1px solid var(--line)}
+.web .page.sand{max-width:none;border-top:0;padding:64px max(16px,calc((100% - 1000px)/2 + clamp(16px,5vw,64px)))}
+.web .sand>div[style]{margin-top:28px!important}
+.web .part-num{font-size:calc(84pt*var(--fs,1))}
+.web .folio{position:static;margin-top:44px}
+.web .sand .folio{position:static}
+.web .cover{min-height:min(1100px,max(760px,120vw));border-top:0;padding-top:28px;padding-bottom:28px}
+.web .cover .hero{left:0;right:0;height:min(600px,96vw)}
+.web .cover .bottom{left:clamp(16px,5vw,64px);right:clamp(16px,5vw,64px);bottom:20px}
+.web .cover .logo{display:none}
+.web .toc a,.web .part-list a{display:contents;color:inherit}
+.web .toc li:hover,.web .part-list li:hover{color:var(--gold-hi)}
+.web a.ref{color:var(--gold-hi);text-decoration:underline;text-decoration-color:rgba(217,176,140,.4);text-underline-offset:2px}
+.web .sand a.ref{color:#7a3f1c}
+
+/* Barra do topo */
+.wtop{position:sticky;top:0;z-index:50;background:rgba(10,8,7,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.wtop .in{max-width:1000px;margin:0 auto;padding:12px clamp(16px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wtop img{height:34px;width:auto}
+.wtop .acts{display:flex;gap:8px}
+.wbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;
+  font:500 13.5px/1 var(--font);letter-spacing:.02em;color:#2b1e15;white-space:nowrap;
+  background:linear-gradient(180deg,#f6e7d6 0%,#e0bf9f 48%,#c49b78 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 26px -12px rgba(217,170,128,.6)}
+.wbtn svg{width:15px;height:15px;flex:none}
+.wbtn.ghost{color:var(--fg);background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.wbtn.big{padding:16px 28px;font-size:15px}
+.wbtn:focus-visible,.fld input:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+
+/* Dúvidas */
+.duv{max-width:1000px;margin:0 auto;padding:72px clamp(16px,5vw,64px);border-top:1px solid var(--line)}
+.duv-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.duv form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.fld{display:block;margin-bottom:16px}
+.fld span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.fld input,.fld textarea{width:100%;font:300 16px/1.5 var(--font);color:var(--fg);background:#0d0a09;border:1px solid var(--line-2);border-radius:10px;padding:12px 14px}
+.fld textarea{min-height:150px;resize:vertical}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--dim)}
+.isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg-ok{display:none;padding:16px 18px;border-radius:10px;background:#1b2a22;border:1px solid rgba(160,220,180,.25);color:#e9f1ea;font-size:15px;line-height:1.5;margin-top:14px}
+.msg-err{display:none;padding:14px 16px;border-radius:10px;background:rgba(200,80,50,.12);border:1px solid rgba(255,140,110,.5);color:var(--fg);font-size:14.5px;margin-top:14px}
+.dl{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px;padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.dl p{margin:0;font-size:14px;color:var(--muted)}
+.wfoot{text-align:center;padding:64px 16px 48px;border-top:1px solid var(--line)}
+.wfoot p{max-width:620px;margin:18px auto 0;font-size:22px;line-height:1.4;color:var(--fg);font-weight:200}
+.wfoot small{display:block;margin-top:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+
+@media (max-width:760px){
+  body.web{--fs:1.1}
+  .wtop img{height:28px}
+  .wtop .wbtn{padding:10px 12px;font-size:12.5px}
+  .wtop .wbtn .tx-l{display:none}
+  .web .page{padding-top:52px}
+  .web .grid2,.web .grid3,.web .grid4,.web .split,.web .split3,.web .spk-grid,.web .host,.web .crack,.web .waves,.duv-grid{grid-template-columns:1fr!important}
+  .web [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+  .web .facts{grid-template-columns:1fr 1fr}
+  .web .crack{gap:0}.web .crack .fault{height:26px}.web .crack .fault i{width:60%;height:1px;align-self:center}
+  .web .waves .wave{border-right:0;border-bottom:1px solid var(--line)}
+  .web .flow{flex-direction:column}.web .flow .ar{width:auto;height:22px;transform:rotate(90deg)}
+  .web .faq{column-count:1}
+  .web .host{gap:16px}.web .host .ph{height:min(110vw,440px)!important}
+  .web .slot{grid-template-columns:76px 1fr}
+  .web .cover .title .h1{font-size:calc(34pt*var(--fs,1))}
+  .web .cover .meta span{font-size:11px}
+  .web .cover .bottom{flex-direction:column;gap:6px;align-items:flex-start}
+  .web .h2 br{display:none}
+  .web table{font-size:calc(8.2pt*var(--fs,1))}
+  .web td,.web th{padding-left:6px;padding-right:6px}
+  .web .price b{font-size:calc(30pt*var(--fs,1))}
+  .web .part-num{font-size:calc(64pt*var(--fs,1))}
+  .web .stat b{font-size:calc(20pt*var(--fs,1))}
+  .wfoot p{font-size:19px}
+}
+@media (max-width:420px){.web .facts{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="web">
+<header class="wtop"><div class="in">
+  <a href="#p01" aria-label="Início"><img src="img/logo-completa.png" alt="Congresso Plenitude 2026"></a>
+  <div class="acts">
+    <a class="wbtn ghost" href="#duvidas"><span>Enviar</span> <span class="tx-l">dúvida</span></a>
+    <a class="wbtn" href="manual-do-embaixador.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg><span>Baixar</span> <span class="tx-l">PDF</span></a>
+  </div>
+</div></header>
+<main>
+<section id="p01" class="page cover">
+  <div class="hero"><img src="img/hero-equipe-v2.jpg" alt=""></div>
+  <img class="logo" src="img/logo-completa.png" alt="Congresso Plenitude">
+  <div class="title">
+    <div class="eyebrow">Material interno · Embaixadores</div>
+    <h1 class="h1">Manual do<br><span class="gold">Embaixador</span></h1>
+    <p class="lead mt4" style="max-width:120mm">Tudo o que você precisa para atender os leads do <strong>Congresso Plenitude 2026</strong> e da <strong>Pós em Terapia da Plenitude, Turma 02</strong>.</p>
+    <div class="meta"><span>Sábado, 28 de novembro</span><span>9h às 12h · 13h30 às 17h</span><span>100% online</span></div>
+  </div>
+  <div class="bottom"><span>Academia da Plenitude</span><span>Versão de 13/11/2026 · uso interno</span></div>
+</section>
+<section id="p02" class="page">
+  <div class="eyebrow">Antes de começar</div>
+  <h2 class="h2">Como usar este manual</h2>
+  <div class="split3">
+    <div>
+      <p class="lead mb4">Você é a pessoa que o lead encontra do outro lado da conversa. Este manual dá a você <strong>o que dizer</strong> e <strong>onde fazer</strong>.</p>
+      <ul class="pl">
+        <li><b>Parte 1 · O Congresso.</b> O que é, por que existe, a programação, os preletores, o ingresso, a Pós e as respostas para as dúvidas dos leads.</li>
+        <li><b>Parte 2 · O CRM.</b> Como usar o GoHighLevel, o pipeline, as tags e o passo a passo de cada tipo de atendimento, com as mensagens prontas.</li>
+      </ul>
+      <div class="card mt6">
+        <h3 class="h3">Seu papel em 3 tarefas</h3>
+        <ol class="steps mt2">
+          <li><b>Receber quem comprou o Congresso.</b> Dar boas-vindas, levar ao grupo de inscritos e conhecer o perfil da pessoa.</li>
+          <li><b>Recuperar quem tentou comprar e não concluiu.</b> Tirar a dúvida e ajudar a terminar o pagamento.</li>
+          <li><b>Acompanhar quem se interessa pela Pós.</b> Responder às dúvidas e levar até a matrícula na Turma 02.</li>
+        </ol>
+      </div>
+      <div class="warn mt6"><span class="k">LEGENDA</span><span>O selo <span class="tbc">a confirmar</span> marca o que a equipe ainda vai confirmar. O selo <span class="tbc">no treinamento</span> marca o que o Jeferson explica no treinamento. <b>Não passe ao lead o que tem selo.</b> Diga "vou confirmar e já te respondo".</span></div>
+    </div>
+    <div>
+      <ul class="toc">
+        <li class="part">Parte 1 · O Congresso</li>
+        <li><a href="#p04">O Congresso em resumo<span>04</span></a></li>
+        <li><a href="#p05">Por que o Congresso existe<span>05</span></a></li>
+        <li><a href="#p06">A Quarta Onda e para quem é<span>06</span></a></li>
+        <li><a href="#p07">A programação do dia<span>07</span></a></li>
+        <li><a href="#p08">Quem conduz<span>08</span></a></li>
+        <li><a href="#p09">Os preletores<span>09</span></a></li>
+        <li><a href="#p11">Ingresso, pagamento e acesso<span>11</span></a></li>
+        <li><a href="#p12">A Pós · Turma 02<span>12</span></a></li>
+        <li><a href="#p14">Dúvidas frequentes · Congresso<span>14</span></a></li>
+        <li><a href="#p15">Dúvidas frequentes · Pós<span>15</span></a></li>
+        <li><a href="#p16">Como falar com o lead<span>16</span></a></li>
+        <li class="part">Parte 2 · O CRM</li>
+        <li><a href="#p18">Como o lead chega até você<span>18</span></a></li>
+        <li><a href="#p19">Primeiro acesso e menu<span>19</span></a></li>
+        <li><a href="#p20">O pipeline de leads<span>20</span></a></li>
+        <li><a href="#p21">Ficha do contato e tags<span>21</span></a></li>
+        <li><a href="#p22">Conversas: como responder<span>22</span></a></li>
+        <li><a href="#p23">Atendimento 1 · Comprou o Congresso<span>23</span></a></li>
+        <li><a href="#p24">Atendimento 2 · Não concluiu a compra<span>24</span></a></li>
+        <li><a href="#p25">Atendimento 3 · Pós<span>25</span></a></li>
+        <li><a href="#p26">Respostas para as objeções da Pós<span>26</span></a></li>
+        <li><a href="#p27">O dia 28/11 para o Embaixador<span>27</span></a></li>
+        <li><a href="#p28">Dúvidas sobre o CRM e checklist<span>28</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="folio"><span>Manual do Embaixador · Congresso Plenitude 2026</span></div>
+</section>
+<section id="p03" class="page sand">
+  <img class="mono-badge" src="img/logo-icone.png" alt="">
+  <div style="margin-top:40mm">
+    <div class="part-num">01</div>
+    <div class="eyebrow mt4">Parte 1</div>
+    <h1 class="h1" style="font-size:calc(40pt*var(--fs,1))">O Congresso</h1>
+    <p class="lead mt4" style="color:var(--ink-2);max-width:130mm">O que é, por que existe, quem fala, quanto custa e o que responder para cada dúvida do lead.</p>
+    <ul class="part-list">
+      <li><a href="#p04">O Congresso em resumo e por que ele existe<span>04 a 06</span></a></li>
+      <li><a href="#p07">A programação e os preletores<span>07 a 10</span></a></li>
+      <li><a href="#p11">Ingresso, pagamento e acesso<span>11</span></a></li>
+      <li><a href="#p12">A Pós em Terapia da Plenitude · Turma 02<span>12 e 13</span></a></li>
+      <li><a href="#p14">Dúvidas frequentes e como falar com o lead<span>14 a 16</span></a></li>
+    </ul>
+  </div>
+  <div class="folio"><span>Manual do Embaixador · Congresso Plenitude 2026</span></div>
+</section>
+<section id="p04" class="page">
+  <div class="eyebrow">O Congresso em resumo</div>
+  <h2 class="h2">Um dia, cinco mesas,<br><span class="gold">gerações unidas à mesa.</span></h2>
+  <p class="lead">O Congresso Plenitude 2026 é um encontro <strong>online e ao vivo</strong> para quem cuida de gente: terapeutas, conselheiros, pastores, líderes e estudantes. O tema é a <strong>união de gerações no resgate dos fundamentos perdidos</strong> do cuidado integral do ser humano: corpo, mente e espírito. A Academia da Plenitude realiza o Congresso. O João Victor Fonseca conduz.</p>
+  <div class="facts">
+    <div class="fact"><b>28 de novembro</b><span>Sábado</span></div>
+    <div class="fact"><b>9h às 12h · 13h30 às 17h</b><span>Manhã e tarde, horário de Brasília</span></div>
+    <div class="fact"><b>100% online</b><span>Ao vivo pelo Zoom, de onde a pessoa estiver</span></div>
+    <div class="fact"><b>5 mesas</b><span>Mais a abertura e o encerramento</span></div>
+    <div class="fact"><b>Gravação por 12 meses</b><span>Para assistir de novo ou depois</span></div>
+    <div class="fact"><b>Perguntas ao vivo</b><span>Durante a transmissão</span></div>
+  </div>
+  <blockquote class="mt6">"Faça parte daqueles que irão resgatar os fundamentos perdidos do cuidado integral do Ser: corpo, mente e espírito."</blockquote>
+  <div class="card hi mt6">
+    <div class="eyebrow mb2">Explique o Congresso em 30 segundos</div>
+    <p style="color:var(--fg);font-size:calc(10pt*var(--fs,1));line-height:1.6">"O Congresso Plenitude é um dia online, no sábado 28/11, para quem cuida de gente: terapeutas, pastores, conselheiros e líderes. São cinco mesas com nomes como a Dra. Esly Carvalho e o psiquiatra Ismael Sobrinho, sobre como unir de novo a técnica e a fé no cuidado da alma. O ingresso custa R$ 97 à vista ou 12x de R$ 10,03, é ao vivo pelo Zoom, e a gravação fica disponível por 12 meses."</p>
+  </div>
+  <div class="eyebrow mt8">De onde viemos</div>
+  <div class="grid3">
+    <div class="stat"><b class="gold">259</b><span>profissionais e líderes na primeira edição do Congresso, em 2025</span></div>
+    <div class="stat"><b class="gold">420 h</b><span>na Turma 01 da Pós em Terapia da Plenitude, reconhecida pelo MEC e em andamento</span></div>
+    <div class="stat"><b class="gold">3</b><span>comunidades ativas: Psis Com Propósito, Nutre e Clube do Livro</span></div>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p05" class="page">
+  <div class="eyebrow">A rachadura</div>
+  <h2 class="h2">Por que o Congresso existe:<br><span class="gold">o cuidado da alma foi partido ao meio.</span></h2>
+  <p class="lead">Por séculos, cuidar da alma era uma coisa só. Quem cuidava sabia quem o ser humano era, de onde vinha a dor e para que servia a vida. No século passado, esse cuidado foi partido ao meio. <strong>A igreja ficou com a alma e perdeu a técnica. A ciência psicológica ficou com a técnica e perdeu a alma.</strong> Nenhum dos dois lados escolheu isso. Os dois herdaram.</p>
+  <div class="crack">
+    <div class="card">
+      <span class="tag">O pastor</span>
+      <h3 class="h3 mt4">Tem o fundamento.<br>Não tem o método.</h3>
+      <p>Recebe a pessoa adoecida no gabinete. Cuida no escuro, por intuição e oração, com medo de errar.</p>
+    </div>
+    <div class="fault"><i></i></div>
+    <div class="card">
+      <span class="tag">O terapeuta</span>
+      <h3 class="h3 mt4">Tem o método.<br>Não tem o fundamento.</h3>
+      <p>Atende o paciente cristão. Trata o sintoma, o paciente melhora e continua vazio.</p>
+    </div>
+  </div>
+  <p class="mt6" style="font-size:calc(12pt*var(--fs,1));color:var(--fg);text-align:center;line-height:1.4">Dos dois lados, a consequência é a mesma:<br>gente cuidando de gente com metade das ferramentas.</p>
+  <div class="rule"></div>
+  <div class="eyebrow">O retorno</div>
+  <h3 class="h3" style="font-size:calc(14pt*var(--fs,1));font-weight:300">Não estamos inventando um novo fundamento. Estamos resgatando os fundamentos perdidos no cuidado integral das pessoas.</h3>
+  <p class="mt2">Para isso, o Congresso une o cuidado pastoral, espiritual e teológico ao tratamento técnico, científico e terapêutico. A Terapia da Plenitude não é uma terceira coisa no meio dos dois lados: ela devolve a cada um a metade que o outro guardou.</p>
+  <div class="grid2 mt4">
+    <div class="warn" style="margin:0"><span class="k">DIGA</span><span>"resgate", "retorno", "voltar aos fundamentos", "unir de novo", "cuidado integral".</span></div>
+    <div class="warn atencao" style="margin:0"><span class="k">NÃO DIGA</span><span>"nova terapia", "nova era", "nova geração", "método revolucionário".</span></div>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p06" class="page">
+  <div class="eyebrow">O lugar na história</div>
+  <h2 class="h2">A Quarta Onda</h2>
+  <p class="lead">Na história da ciência psicológica, cada onda olhou para uma parte do ser humano. A Terapia da Plenitude se apresenta como a quarta.</p>
+  <div class="waves">
+    <div class="wave"><small>1ª onda</small><b>Olhou para o que a pessoa faz.</b></div>
+    <div class="wave"><small>2ª onda</small><b>Olhou para o que ela pensa.</b></div>
+    <div class="wave"><small>3ª onda</small><b>Olhou para a relação dela com a própria experiência.</b></div>
+    <div class="wave"><small>4ª onda · hoje</small><b class="gold">O resgate do Ser em sua plenitude: corpo, mente e espírito.</b></div>
+  </div>
+  <p class="mt4">A base da Quarta Onda são os <strong>fundamentos teológicos, antropológicos e filosóficos cristãos</strong>, unidos aos fundamentos mais atuais da ciência psicológica: <strong>Terapia do Esquema, Logoterapia, Neurociência e Terapias de Terceira Onda</strong>. Não é aconselhamento bíblico com vocabulário técnico, nem ciência psicológica com um devocional no fim. É o cuidado da alma inteiro de novo.</p>
+  <div class="rule"></div>
+  <div class="eyebrow">Para quem é</div>
+  <h2 class="h2">Um encontro para quem cuida de gente.</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 class="h3">O Congresso é para quem</h3>
+      <ul class="pl mt2">
+        <li>É terapeuta cristão e não quer mais deixar metade do paciente do lado de fora do consultório.</li>
+        <li>É terapeuta e quer lastro para tratar o ser humano por completo.</li>
+        <li>É pastor ou líder, recebe gente que a oração sozinha não tem alcançado e quer cuidar com método.</li>
+        <li>É conselheiro e quer entender o que está vendo quando alguém senta na sua frente.</li>
+        <li>Cuida de pessoas e sente que, há muito tempo, ninguém cuida de si.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h3">Não é para quem</h3>
+      <ul class="pl no mt2">
+        <li>Quer espiritualizar o sofrimento sem critério clínico.</li>
+        <li>Procura conteúdo religioso sem base científica.</li>
+        <li>Busca técnicas soltas e respostas simples para casos difíceis.</li>
+        <li>Espera sair habilitado a fazer psicoterapia sem ser graduado em Psicologia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mt4">
+    <h3 class="h3">As duas famílias de público</h3>
+    <div class="grid2 mt2">
+      <p><b>Vocacionado.</b> Pastor, líder, conselheiro, quem cuida de pessoas na igreja ou no ministério. Tem o fundamento. Procura o método.</p>
+      <p><b>Profissional.</b> Terapeuta, graduado ou estudante de Psicologia. Tem o método. Procura o fundamento.</p>
+    </div>
+    <p class="small mt2">Descubra em qual família o lead está logo na primeira conversa. A resposta muda as mesas que você indica e o caminho na Pós.</p>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p07" class="page">
+  <div class="eyebrow">O dia</div>
+  <h2 class="h2">A programação</h2>
+  <p class="lead mb2">Sábado, 28 de novembro · 100% online, pelo Zoom · horário de Brasília.</p>
+  <div class="turn">Manhã · 9h às 12h</div>
+  <div class="slot"><div class="t">9h<small>Abertura</small></div><div><h3>A união de gerações no resgate dos fundamentos perdidos</h3><div class="who"><span>João Victor Fonseca</span></div></div></div>
+  <div class="slot"><div class="t">9h30<small>Mesa 1</small></div><div><h3>Fé e Constituição</h3><p>Liberdade religiosa e o exercício profissional dos cristãos na saúde mental.</p><div class="who"><span>Rafael Durand</span></div></div></div>
+  <div class="slot"><div class="t">10h<small>Mesa 2</small></div><div><h3>O Resgate do Ser</h3><p>Os fundamentos da Logoterapia, da Psicologia Tomista e da Antropologia Paulina na compreensão do ser humano integral.</p><div class="who"><span>Rafael de Abreu</span><span>Milena Castro</span></div></div></div>
+  <div class="slot"><div class="t">11h<small>Mesa 3</small></div><div><h3>Cristãos e o adoecimento mental</h3><p>Tratamento integral em saúde mental para cristãos.</p><div class="who"><span>Ismael Sobrinho</span><span>Leandro Carone</span><span>Isabella Ferreira</span></div></div></div>
+  <div class="pause">12h · Intervalo · voltamos às 13h30</div>
+  <div class="turn">Tarde · 13h30 às 17h</div>
+  <div class="slot"><div class="t">13h30<small>Mesa 4</small></div><div><h3>Aconselhamento Bíblico e Saúde Mental</h3><p>A integração entre os fundamentos teológicos e a psicologia no cuidado da alma.</p><div class="who"><span>Aender Borba</span><span>Kauane Leite</span></div></div></div>
+  <div class="slot"><div class="t">15h<small>Mesa 5</small></div><div><h3>Trauma Emocional e a Graça</h3><p>O processo de cura e renovação da mente no processo terapêutico com cristãos.</p><div class="who"><span>Renata Moreira</span><span>Dra. Esly Carvalho</span><span>Mary Pinheiro</span></div></div></div>
+  <div class="slot key" style="border-bottom:0"><div class="t">16h<small>Encerramento</small></div><div><h3>Terapia da Plenitude: a resposta para o cuidado integral do Ser</h3><p>Lançamento da Academia da Plenitude e da <b>Turma 02 da Pós em Terapia da Plenitude</b>, com condição exclusiva para quem está no Congresso.</p><div class="who"><span>João Victor Fonseca</span></div></div></div>
+  <div class="grid2 mt4">
+    <div class="card" style="padding:4mm 4.6mm">
+      <h3 class="h3" style="font-size:calc(10pt*var(--fs,1))">Que mesas indicar para cada perfil</h3>
+      <p class="mt2" style="font-size:calc(8.2pt*var(--fs,1));line-height:1.45"><b>Vocacionado:</b> Mesas 1, 3 e 4.<br><b>Profissional:</b> Mesas 2, 3 e 5.<br><b>Os dois:</b> abertura e encerramento.</p>
+    </div>
+    <div class="warn" style="margin:0"><span class="k">16H</span><span>O encerramento abre as matrículas da Turma 02. Este é o momento de maior movimento para você. Veja a <a class="ref" href="#p27">página 27</a>.</span></div>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p08" class="page">
+  <div class="eyebrow">Quem conduz</div>
+  <h2 class="h2">Quem está à frente deste encontro</h2>
+  <div class="host mt4">
+    <div class="ph"><img src="img/joao-destaque.jpg" alt="João Victor Fonseca"></div>
+    <div>
+      <span class="tag">Abertura 9h · Encerramento 16h</span>
+      <h3 class="h3 mt4" style="font-size:calc(17pt*var(--fs,1));font-weight:300">João Victor Fonseca</h3>
+      <p style="color:var(--fg)">Terapeuta · criador da Terapia da Plenitude</p>
+      <ul class="pl mt2">
+        <li><b>Formação:</b> especialista em Terapia Cognitivo-Comportamental e Neurociência do Comportamento, com formação em Terapia do Esquema.</li>
+        <li><b>Criação:</b> Terapia da Plenitude e o protocolo Pleromaterapia.</li>
+        <li><b>Ensino:</b> coordenador da pós-graduação em Terapia da Plenitude.</li>
+        <li><b>Fundação:</b> Academia da Plenitude.</li>
+      </ul>
+      <span class="ig mt2">@joaofonseca.oficial</span>
+    </div>
+  </div>
+  <div class="host mt6">
+    <div class="ph cover-img" style="height:70mm"><img src="img/renata.jpg" alt="Renata Moreira"></div>
+    <div>
+      <span class="tag">Ao lado de João · Mesa 5</span>
+      <h3 class="h3 mt4" style="font-size:calc(17pt*var(--fs,1));font-weight:300">Renata Moreira</h3>
+      <p style="color:var(--fg)">Terapeuta · graduada em Psicologia pela PUC Minas</p>
+      <p>Mais de 20 anos de clínica com adultos, casais e famílias. Especialista em Terapia do Esquema. Fundadora da Escola de Ester e do movimento Mães ao Alto.</p>
+      <div class="chips"><span>+20 anos de clínica</span><span>Terapia do Esquema</span><span>Adultos, casais e famílias</span><span>Escola de Ester</span><span>Mães ao Alto</span></div>
+      <span class="ig">@renatamoreira.br</span>
+    </div>
+  </div>
+  <div class="card mt6" style="display:grid;grid-template-columns:16mm 1fr;gap:5mm;align-items:center">
+    <img src="img/logo-icone.png" alt="" style="width:16mm">
+    <div><h3 class="h3">A Academia da Plenitude</h3><p style="font-size:calc(8.6pt*var(--fs,1))">Escola cristã de formação em saúde mental. Forma quem cuida de gente (terapeutas, conselheiros, pastores e líderes) com rigor científico, profundidade teológica e uma visão declarada de quem o ser humano é. A Academia nasce oficialmente no encerramento do Congresso.</p></div>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p09" class="page">
+  <div class="eyebrow">Convidados 2026</div>
+  <h2 class="h2">Os preletores</h2>
+  <p class="lead mb4">A mesa deste ano reúne gerações: nomes que abriram o caminho no cuidado cristão, ao lado de quem está chegando agora. Os cartões estão na ordem das mesas.</p>
+  <div class="spk-grid">
+    <div class="spk"><div class="ph"><img src="img/rafael-durand.jpg" alt=""></div><div><div class="mesa">Mesa 1 · 9h30</div><h3>Rafael Durand</h3><span class="ig">@rafaeldurandc</span><p>Advogado e mestre em Direito. Atua com Direito Religioso, Eleitoral e Digital. Fala sobre liberdade religiosa e o exercício profissional dos cristãos na saúde mental.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/rafael-de-abreu.jpg" alt=""></div><div><div class="mesa">Mesa 2 · 10h</div><h3>Rafael de Abreu</h3><span class="ig">@psi.rafaeldeabreu</span><p>Presidente e cofundador do Instituto de Psicologia Tomista. Referência nacional em psicologia tomista e professor da Pós em Terapia da Plenitude.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/milena-castro.jpg" alt=""></div><div><div class="mesa">Mesa 2 · 10h</div><h3>Milena Castro</h3><span class="ig">@milenacastro.psi</span><p>Atua com Logoterapia e Análise Existencial, a abordagem que coloca o sentido da vida no centro do cuidado. Faz formação e supervisão em Logoterapia.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/ismael-sobrinho-v3.jpg" alt=""></div><div><div class="mesa">Mesa 3 · 11h</div><h3>Ismael Sobrinho</h3><span class="ig">@ismael.sobrinho</span><p>Psiquiatra (RQE 17867) e escritor de 6 livros. Traz a visão médica do tratamento integral em saúde mental para cristãos.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/leandro-carone.jpg" alt=""></div><div><div class="mesa">Mesa 3 · 11h</div><h3>Leandro Carone</h3><span class="ig">@oleandrocarone</span><p>Fundador da Cedro Clínica, com trabalho dedicado ao cuidado de homens.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/isabella-ferreira.jpg" alt=""></div><div><div class="mesa">Mesa 3 · 11h</div><h3>Isabella Ferreira</h3><span class="ig">@bellarferreira</span><p>Graduada em Psicologia e criadora de conteúdo. Representa a geração que está chegando agora ao cuidado cristão.</p></div></div>
+  </div>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p10" class="page">
+  <div class="eyebrow">Convidados 2026</div>
+  <h2 class="h2">Os preletores <span class="gold">· tarde</span></h2>
+  <div class="spk-grid mt4">
+    <div class="spk"><div class="ph"><img src="img/aender-borba-v2.jpg" alt=""></div><div><div class="mesa">Mesa 4 · 13h30</div><h3>Aender Borba</h3><span class="ig">@aenderborba</span><p>Formação em Psicologia e Teologia. Capelão do Seminário Martin Bucer.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/kauane-leite.jpg" alt=""></div><div><div class="mesa">Mesa 4 · 13h30</div><h3>Kauane Leite</h3><span class="ig">@kauanelleite</span><p>Atua na integração entre Psicologia, Aconselhamento e Teologia, com foco em saúde mental e fé cristã. Esteve no Congresso 2025: a aula dela é um dos bônus do ingresso.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/esly-carvalho.jpg" alt=""></div><div><div class="mesa">Mesa 5 · 15h</div><h3>Dra. Esly Carvalho</h3><span class="ig">@doutoraeslycarvalho</span><p>Fundadora da TraumaClinic. Formadora de profissionais (trainer) em EMDR, Brainspotting e Psicodrama, abordagens usadas no tratamento do trauma.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/mary-pinheiro.jpg" alt=""></div><div><div class="mesa">Mesa 5 · 15h</div><h3>Mary Pinheiro</h3><span class="ig">@marypinheiro.br</span><p>Atua em saúde mental. <span class="tbc">a confirmar</span></p></div></div>
+  </div>
+  <p class="small mt4">A Renata Moreira também está na Mesa 5. O perfil dela está na <a class="ref" href="#p08">página 08</a>.</p>
+  <div class="warn mt4"><span class="k">CUIDADO</span><span>Use os títulos como estão nos cartões: psiquiatra, advogado, capelão, terapeuta. Nunca chame ninguém de "psicólogo". Se o lead perguntar algo sobre um preletor que não está aqui, diga que vai confirmar.</span></div>
+  <div class="rule"></div>
+  <div class="eyebrow">Bônus do ingresso</div>
+  <h2 class="h2" style="font-size:calc(17pt*var(--fs,1))">Duas aulas do Congresso 2025</h2>
+  <div class="grid2">
+    <div class="spk"><div class="ph"><img src="img/kauane-leite.jpg" alt=""></div><div><div class="mesa">Aula 1 · 2025</div><h3>Kauane Leite</h3><p><b>Saúde mental e fé cristã.</b> Psicologia, aconselhamento e teologia no cuidado de quem sofre.</p></div></div>
+    <div class="spk"><div class="ph"><img src="img/yago-martins.jpg" alt=""></div><div><div class="mesa">Aula 2 · 2025</div><h3>Pr. Yago Martins</h3><p><b>Teologia, cosmovisão e integracionismo.</b> Como o terapeuta pode pensar teologicamente o próprio trabalho.</p></div></div>
+  </div>
+  <p class="mt4">O comprador recebe o link das aulas <b>pelo WhatsApp, depois de entrar no grupo de inscritos</b>. A automação envia o link sozinha. O link das aulas não aparece em nenhuma página pública: <b>não envie o link das aulas para quem não comprou.</b></p>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p11" class="page">
+  <div class="eyebrow">Ingresso</div>
+  <h2 class="h2">Ingresso, pagamento e acesso</h2>
+  <div class="split">
+    <div class="card hi">
+      <span class="tag">Congresso Plenitude 2026</span>
+      <p class="mt4" style="color:var(--fg)">em até 12x de</p>
+      <div class="price"><small>R$</small><b>10</b><i>,03</i></div>
+      <p class="mt2">ou <b>R$ 97,00 à vista</b></p>
+      <ul class="pl mt4">
+        <li>Acesso às cinco mesas ao vivo, da abertura ao encerramento</li>
+        <li>Gravação disponível por 12 meses</li>
+        <li>Perguntas ao vivo durante as mesas</li>
+        <li>Duas aulas bônus do Congresso 2025</li>
+        <li>Condição exclusiva para a Turma 02 da Pós</li>
+      </ul>
+      <p class="mt4" style="color:var(--fg)"><b>Garantia incondicional de 7 dias.</b></p>
+    </div>
+    <div>
+      <h3 class="h3">Formas de pagamento (Kiwify)</h3>
+      <table class="mt2">
+        <tr><td><b>Cartão</b></td><td>Até 12x. Aprovação na hora.</td></tr>
+        <tr><td><b>Pix</b></td><td>Aprovação em poucos minutos. Recomende para quem teve o cartão recusado.</td></tr>
+        <tr><td><b>Boleto</b></td><td>Compensa em até 3 dias úteis. A partir de 25/11, indique Pix ou cartão.</td></tr>
+      </table>
+      <h3 class="h3 mt6">Links oficiais</h3>
+      <table class="mt2">
+        <tr><td><b>Página</b></td><td><span class="mono">congressoplenitude.eleveseplus.com.br</span></td></tr>
+        <tr><td><b>Checkout</b></td><td><span class="mono">pay.kiwify.com.br/FMAqNH5</span></td></tr>
+        <tr><td><b>Grupo</b></td><td><span class="mono">congressoplenitude.eleveseplus.com.br/grupo/</span></td></tr>
+        <tr><td><b>Suporte</b></td><td>WhatsApp do Congresso: <b>+55 48 9208-0188</b></td></tr>
+      </table>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Envie só estes links. Não envie o link da página de obrigado nem o das aulas bônus: eles são só para compradores.</span></div>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <h3 class="h3">O caminho do comprador depois da compra</h3>
+  <p class="small mb4">O sistema faz tudo isto sozinho. Conheça a sequência para responder o lead que pergunta "e agora?".</p>
+  <ol class="steps" style="display:grid;grid-template-columns:1fr 1fr;column-gap:7mm">
+    <li><b>A Kiwify aprova o pagamento</b> e abre a página de obrigado, com o botão do grupo.</li>
+    <li><b>Chega um e-mail de confirmação</b> com o botão do grupo de inscritos e o link de suporte.</li>
+    <li><b>Em 1 minuto, chega um WhatsApp.</b> Se a pessoa já está no grupo, a mensagem traz as aulas bônus. Se não está, traz o link do grupo e pede para responder <b>ENTREI</b>.</li>
+    <li><b>Depois de 24 h</b>, quem ainda não entrou no grupo recebe um lembrete.</li>
+    <li><b>No grupo</b>, a equipe envia os horários, os avisos e, no dia 28, o link do Zoom.</li>
+    <li><b>Até o dia 28/11</b>, o comprador recebe lembretes por e-mail e WhatsApp. No dia, são 3 lembretes.</li>
+  </ol>
+  <div class="folio"><span>Parte 1 · O Congresso</span></div>
+</section>
+<section id="p12" class="page">
+  <div class="eyebrow">O pitch do dia · 16h</div>
+  <h2 class="h2">A Pós em Terapia da Plenitude<br><span class="gold">Turma 02</span></h2>
+  <p class="lead mb4">A especialização que devolve ao cuidado da alma o que foi separado: a técnica e o sentido, a ciência e a fé. A pós forma terapeutas para tratar o ser humano em todas as suas dimensões, com protocolo, supervisão e rigor científico, a partir de uma antropologia cristã declarada.</p>
+  <div class="facts">
+    <div class="fact"><b>Reconhecida pelo MEC</b><span>Lato sensu, validade nacional. Faculdade parceira <span class="tbc">a confirmar</span></span></div>
+    <div class="fact"><b>420 horas</b><span>4 módulos integrados</span></div>
+    <div class="fact"><b>1 fim de semana por mês</b><span>Ao vivo, sexta à noite e sábado <span class="tbc">a confirmar</span></span></div>
+    <div class="fact"><b>Aulas gravadas</b><span>Para assistir quando puder</span></div>
+    <div class="fact"><b>Supervisões mensais</b><span>Com discussão de casos reais, e o PPD (Plano Pessoal e Profissional de Desenvolvimento)</span></div>
+    <div class="fact"><b>24 meses de acesso</b><span>Início das aulas <span class="tbc">a confirmar</span></span></div>
+  </div>
+  <h3 class="h3 mt4">Os quatro módulos</h3>
+  <table class="mt2">
+    <tr><td style="width:12mm"><b class="gold" style="font-size:calc(13pt*var(--fs,1));font-weight:300">I</b></td><td><b>Terapia da Plenitude: fundamentos.</b> A estrutura do ser humano e a cosmovisão que sustenta uma clínica e um cuidado de base cristã: ontologia, bases filosóficas e bases científicas.</td></tr>
+    <tr><td><b class="gold" style="font-size:calc(13pt*var(--fs,1));font-weight:300">II</b></td><td><b>Teorias e terapias integradas.</b> Como integrar as abordagens contemporâneas para trabalhar a plenitude do ser, incluindo valores e formação de virtudes.</td></tr>
+    <tr><td><b class="gold" style="font-size:calc(13pt*var(--fs,1));font-weight:300">III</b></td><td><b>Terapia do Esquema Integrativa.</b> Fragmentos, núcleo pleno e dimensão espiritual dentro do modelo mais consolidado da psicologia da personalidade.</td></tr>
+    <tr><td><b class="gold" style="font-size:calc(13pt*var(--fs,1));font-weight:300">IV</b></td><td><b>Práticas avançadas e integradas.</b> Casos difíceis e a integração da espiritualidade de forma ética, científica e teológica.</td></tr>
+  </table>
+  <p class="small mt2">Inclui as disciplinas acadêmicas exigidas pelo MEC (metodologia científica, ética acadêmica e seminários de pesquisa) e módulos restritos a quem tem registro no CRP, para os conteúdos de clínica psicológica.</p>
+  <h3 class="h3 mt4">Os cinco pilares, com décadas de pesquisa</h3>
+  <div class="grid2 mt2" style="font-size:calc(8.5pt*var(--fs,1))">
+    <p><b>01 · Terapia do Esquema.</b> Padrões que nascem na história de vida e se repetem na vida adulta. Young, Roediger, Bernstein.</p>
+    <p><b>02 · Terapias de terceira onda.</b> ACT, Mindfulness e Terapia Focada na Compaixão. Hayes, Kabat-Zinn, Gilbert.</p>
+    <p><b>03 · Logoterapia e psicologia existencial.</b> O sentido da vida no centro do cuidado. Frankl, Wong.</p>
+    <p><b>04 · Psicologia da espiritualidade.</b> Como a fé influencia a saúde mental. Pargament, Koenig.</p>
+    <p><b>05 · Filosofia clássica e antropologia cristã.</b> Quem é o ser humano. Tomás de Aquino, Scheler, Edith Stein, Taylor.</p>
+    <p class="small">Não é misticismo, não é coaching espiritual e não é teologia disfarçada de clínica. É clínica com antropologia declarada.</p>
+  </div>
+  <div class="folio"><span>Parte 1 · A Pós</span></div>
+</section>
+<section id="p13" class="page">
+  <div class="eyebrow">Matrículas Turma 02</div>
+  <h2 class="h2">Como entrar na Pós</h2>
+  <div class="warn atencao"><span class="k">ATENÇÃO</span><span>A equipe ainda vai confirmar os valores, o parcelamento, a faculdade, o formato, a data de início, o corpo docente e o prazo das matrículas. <b>Não informe esses dados ao lead antes da confirmação.</b></span></div>
+  <div class="split mt4">
+    <div class="card hi">
+      <span class="tag">Recomendado · Acesso completo</span>
+      <h3 class="h3 mt4">Pós-graduação completa</h3>
+      <p>Condição exclusiva para quem está no Congresso.</p>
+      <p class="mt2">Valor e parcelamento: <span class="tbc">a confirmar</span></p>
+      <ul class="pl mt4" style="font-size:calc(8.6pt*var(--fs,1))">
+        <li>Pós completa, 420 horas, certificação MEC</li>
+        <li>Todos os cursos livres da plataforma, inclusive os dos Embaixadores</li>
+        <li>Psis Com Propósito, a comunidade de terapeutas cristãos</li>
+        <li>Nutre, o núcleo de espiritualidade e saúde mental</li>
+        <li>Clube do Livro</li>
+        <li>Supervisões mensais e PPD</li>
+        <li>Desconto em psicoterapia e supervisão na Eleve-se</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Pós em módulos</span>
+      <h3 class="h3 mt4">Um módulo por vez</h3>
+      <p class="mt2">Valor por módulo: <span class="tbc">a confirmar</span></p>
+      <ul class="pl mt4" style="font-size:calc(8.6pt*var(--fs,1))">
+        <li>Um módulo por vez, no ritmo da pessoa</li>
+        <li>Cada módulo tem certificado de curso livre</li>
+        <li>Quem conclui os quatro módulos e a avaliação recebe o certificado de pós</li>
+      </ul>
+      <p class="small mt4">O acesso completo sai mais barato do que os quatro módulos avulsos e ainda inclui as comunidades e os cursos livres.</p>
+    </div>
+  </div>
+  <div class="grid2 mt6">
+    <div>
+      <h3 class="h3">Quem ensina <span class="tbc">a confirmar</span></h3>
+      <ul class="pl mt2" style="font-size:calc(8.6pt*var(--fs,1))">
+        <li><b>João Victor Fonseca</b> · criador da Terapia da Plenitude e coordenador da pós</li>
+        <li><b>Renata Moreira</b> · Terapia do Esquema para casais e famílias</li>
+        <li><b>Dr. David Bernstein</b> · referência mundial em Terapia do Esquema (internacional)</li>
+        <li><b>Dr. Eckhard Roediger</b> · criador da Terapia do Esquema Contextual (internacional)</li>
+        <li><b>Amélia Guimarães</b> · espiritualidade e saúde mental</li>
+        <li><b>Rafael de Abreu</b> · referência nacional em psicologia tomista</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="h3">Condições</h3>
+      <ul class="pl mt2" style="font-size:calc(8.6pt*var(--fs,1))">
+        <li>Condição exclusiva para quem participou do Congresso, válida até o fechamento das matrículas <span class="tbc">a confirmar</span>.</li>
+        <li>Outras formas de pagamento (boleto parcelado) <span class="tbc">a confirmar</span>.</li>
+        <li>Certificado: média igual ou superior a 6, atividades concluídas, diploma de graduação e documentação exigida pela faculdade.</li>
+        <li>Depois da pós, o aluno pode se tornar <b>Embaixador da Plenitude</b>: representa a Academia na sua região, conduz grupos locais e pode gravar cursos na plataforma.</li>
+      </ul>
+      <p class="mt2"><b>Página da Pós:</b> <span class="mono">eleveseplus.com.br/posplenitude</span></p>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 1 · A Pós</span></div>
+</section>
+<section id="p14" class="page">
+  <div class="eyebrow">Dúvidas frequentes</div>
+  <h2 class="h2">O que o lead pergunta sobre o Congresso</h2>
+  <div class="faq">
+    <div class="faq-sec">Data, formato e acesso</div>
+    <div class="q"><h4>Quando é o Congresso?</h4><p>Sábado, 28 de novembro de 2026. Manhã das 9h às 12h e tarde das 13h30 às 17h, horário de Brasília.</p></div>
+    <div class="q"><h4>É online ou presencial?</h4><p>100% online e ao vivo. A pessoa assiste de onde estiver.</p></div>
+    <div class="q"><h4>Onde vai ser a transmissão?</h4><p>No Zoom. A equipe envia o link no dia 28, no grupo de inscritos do WhatsApp.</p></div>
+    <div class="q"><h4>Como recebo o acesso?</h4><p>Logo após a compra, chega um e-mail e um WhatsApp com o link do grupo de inscritos. No grupo, a equipe envia todas as informações.</p></div>
+    <div class="q"><h4>Não recebi o e-mail, ou saí do grupo.</h4><p>Peça para olhar as pastas de spam e de promoções e confira o e-mail da compra. Envie o link do grupo, que é o mesmo para todos: <span class="mono">congressoplenitude.eleveseplus.com.br/grupo/</span></p></div>
+    <div class="q"><h4>Não consigo assistir ao vivo. Posso ver depois?</h4><p>Sim. A gravação fica disponível por 12 meses. A pessoa não precisa assistir aos dois turnos ao vivo.</p></div>
+    <div class="q"><h4>Tem certificado?</h4><p>Não. O Congresso não emite certificado.</p></div>
+    <div class="q"><h4>Vai ter perguntas ao vivo?</h4><p>Sim. O participante pode fazer perguntas durante a transmissão.</p></div>
+    <div class="faq-sec">Preço e pagamento</div>
+    <div class="q"><h4>Quanto custa?</h4><p>R$ 97,00 à vista ou em até 12x de R$ 10,03 no cartão.</p></div>
+    <div class="q"><h4>Quais são as formas de pagamento?</h4><p>Cartão (até 12x), Pix e boleto. O boleto compensa em até 3 dias úteis: perto do dia 28, indique Pix ou cartão.</p></div>
+    <div class="q"><h4>Tem garantia?</h4><p>Sim. Garantia incondicional de 7 dias. O pedido de reembolso é feito pela Kiwify, com o e-mail da compra. Avise a equipe.</p></div>
+    <div class="q"><h4>Paguei no Pix e não chegou nada.</h4><p>O Pix aprova em poucos minutos. Confira se o código usado foi o da compra. Se passou de 30 minutos, chame a equipe.</p></div>
+    <div class="q"><h4>Posso comprar mais de um ingresso?</h4><p>Sim. Oriente uma compra para cada participante, com o nome, o e-mail e o WhatsApp de quem vai assistir. Assim cada pessoa recebe o link do grupo.</p></div>
+    <div class="q"><h4>O que é o bônus?</h4><p>Duas aulas do Congresso 2025: Kauane Leite (Saúde mental e fé cristã) e Pr. Yago Martins (Teologia, cosmovisão e integracionismo). O link chega pelo WhatsApp depois que a pessoa entra no grupo.</p></div>
+    <div class="faq-sec">Para quem é</div>
+    <div class="q"><h4>Preciso ser formado em Psicologia?</h4><p>Não. O Congresso é para todos que cuidam de pessoas: terapeutas, conselheiros, pastores, líderes e estudantes.</p></div>
+    <div class="q"><h4>Sou pastor. O que eu levo para o gabinete?</h4><p>Você vai entender o que está vendo quando alguém senta na sua frente: o que é sofrimento humano comum, o que pede cuidado continuado e o que pede outro profissional. Vai aprender a cuidar com método, sem deixar de cuidar com fé.</p></div>
+    <div class="q"><h4>Sou graduado em Psicologia. E o CRP?</h4><p>Esse é um dos temas do Congresso: como cuidar da dimensão espiritual dentro do que o Código de Ética permite.</p></div>
+    <div class="q"><h4>É ciência ou fé?</h4><p>As duas, cada uma no seu lugar. A base clínica é a Terapia do Esquema, a ACT, a Terapia Focada na Compaixão e a Logoterapia, guiadas por uma visão cristã de quem o ser humano é, sem espiritualizar o sofrimento.</p></div>
+    <div class="q"><h4>Não sou cristão. Posso participar?</h4><p>Sim. A fé é o fundamento declarado do Congresso. A espiritualidade é tratada de forma científica, filosófica e ética.</p></div>
+    <div class="q"><h4>Vou sair habilitado a fazer psicoterapia?</h4><p>Não. Psicoterapia é ato privativo de quem tem registro no CRP e continua sendo. O Congresso ensina a cuidar melhor dentro do papel de cada um.</p></div>
+  </div>
+  <div class="folio"><span>Parte 1 · Dúvidas frequentes</span></div>
+</section>
+<section id="p15" class="page">
+  <div class="eyebrow">Dúvidas frequentes</div>
+  <h2 class="h2">O que o lead pergunta sobre a Pós</h2>
+  <div class="faq">
+    <div class="q"><h4>A pós é reconhecida pelo MEC?</h4><p>Sim. É uma pós-graduação lato sensu de 420 horas, com certificado emitido pela faculdade parceira, de validade nacional.</p></div>
+    <div class="q"><h4>Qual é a faculdade?</h4><p><span class="tbc">a confirmar</span>. A Eleve-se tem Acordo de Cooperação Técnico-Científica com a faculdade parceira, que responde pelo projeto pedagógico e pelas ações acadêmicas (Art. 3º da Resolução 100).</p></div>
+    <div class="q"><h4>Quando começam as aulas?</h4><p><span class="tbc">a confirmar</span></p></div>
+    <div class="q"><h4>Como são as aulas?</h4><p>Ao vivo, um fim de semana por mês (sexta à noite e sábado) <span class="tbc">a confirmar</span>. Todas ficam gravadas. Há supervisões clínicas mensais com discussão de casos reais.</p></div>
+    <div class="q"><h4>Vou dar conta da carga horária?</h4><p>As aulas acontecem um fim de semana por mês, ficam gravadas, e a pessoa tem 24 meses para concluir. Também pode fazer um módulo por vez.</p></div>
+    <div class="q"><h4>É muito espiritual?</h4><p>É confessional sem ser devocional. A fé é o fundamento declarado. O conteúdo é científico, filosófico e clínico. A dimensão espiritual entra como parte do ser humano, não como instrução religiosa.</p></div>
+    <div class="q"><h4>Não sou cristão. Posso fazer?</h4><p>Sim. A espiritualidade é tratada de forma científica, filosófica e ética, nunca dogmática.</p></div>
+    <div class="q"><h4>Não sou formado em Psicologia. Posso fazer?</h4><p>Sim. A pessoa aprende a tratar o ser humano por completo e aplica isso no seu campo de atuação. A pós exige ensino superior completo, como qualquer pós no Brasil. As atividades privativas continuam reservadas a quem tem registro no CRP.</p></div>
+    <div class="q"><h4>Sou pastor ou conselheiro, sem graduação. Posso estudar?</h4><p>Sim. Os módulos são abertos como cursos livres, com certificado próprio. O certificado de pós-graduação exige graduação concluída, por lei.</p></div>
+    <div class="q"><h4>Sou graduado em Psicologia. E o CRP?</h4><p>A pós tem módulos restritos a quem tem registro no CRP, para os conteúdos de clínica psicológica. A dimensão espiritual entra de forma científica e ética.</p></div>
+    <div class="q"><h4>Quanto custa?</h4><p>A equipe vai confirmar os valores. Até lá, diga: "Vou confirmar os valores e já te respondo."</p></div>
+    <div class="q"><h4>Posso parcelar?</h4><p>As formas de pagamento e o parcelamento <span class="tbc">a confirmar</span>.</p></div>
+    <div class="q"><h4>Até quando vale a condição do Congresso?</h4><p>Até o fechamento das matrículas <span class="tbc">a confirmar</span>.</p></div>
+    <div class="q"><h4>O que vem no acesso completo?</h4><p>A pós completa, todos os cursos livres da plataforma, as comunidades Psis Com Propósito, Nutre e Clube do Livro, supervisões mensais, PPD e desconto em psicoterapia e supervisão na Eleve-se.</p></div>
+    <div class="q"><h4>Como recebo o certificado?</h4><p>Com média igual ou superior a 6, as atividades concluídas, o diploma de graduação e a documentação exigida pela faculdade.</p></div>
+    <div class="q"><h4>Quem são os professores?</h4><p>João Victor Fonseca, Renata Moreira, Dr. David Bernstein, Dr. Eckhard Roediger, Amélia Guimarães e Rafael de Abreu <span class="tbc">a confirmar</span>.</p></div>
+    <div class="q"><h4>Não assisti ao encerramento. Onde vejo a apresentação?</h4><p>Na gravação do Congresso, na última sessão. E na página da Pós: <span class="mono">eleveseplus.com.br/posplenitude</span></p></div>
+    <div class="q"><h4>Ainda tenho dúvida. Com quem falo?</h4><p>Com você. Responda pelo GHL e, se não souber, diga que vai confirmar com a equipe.</p></div>
+  </div>
+  <div class="folio"><span>Parte 1 · Dúvidas frequentes</span></div>
+</section>
+<section id="p16" class="page">
+  <div class="eyebrow">Linguagem</div>
+  <h2 class="h2">Como falar com o lead</h2>
+  <p class="lead">Estas regras valem para toda mensagem que você envia em nome da Academia da Plenitude.</p>
+  <table>
+    <tr><th style="width:34%">Regra</th><th>O que fazer</th></tr>
+    <tr><td><b>Terapeuta, nunca "psicólogo"</b></td><td>Use "terapeuta" para o João, a Renata e os alunos. Para os preletores, use o título do cartão (psiquiatra, advogado, capelão). "Psicologia", como área de estudo, pode.</td></tr>
+    <tr><td><b>Retorno, não novidade</b></td><td>Fale em resgate e em voltar aos fundamentos. Nunca diga "nova terapia", "nova era" ou "nova geração".</td></tr>
+    <tr><td><b>Limite nunca vira promessa</b></td><td>Não prometa cura, resultado clínico ou habilitação para fazer psicoterapia. Se a frase promete mais do que o Congresso entrega, apague a frase.</td></tr>
+    <tr><td><b>Preço só o aprovado</b></td><td>Congresso: R$ 97 ou 12x de R$ 10,03. Pós: só depois da confirmação da equipe. Não crie desconto, não crie prazo.</td></tr>
+    <tr><td><b>Só os links oficiais</b></td><td>Página, checkout, grupo e o link da Pós que o Jeferson passa no treinamento. Nenhum outro.</td></tr>
+    <tr><td><b>Fale com a família certa</b></td><td>Vocacionado: "cuidar com método, sem deixar de cuidar com fé". Profissional: "tratar o ser humano por completo".</td></tr>
+  </table>
+  <div class="card mt6">
+    <h3 class="h3">Palavras que não usamos</h3>
+    <div class="chips mt2"><span>jornada</span><span>transformar</span><span>desbloquear</span><span>revolucionário</span><span>mindset</span><span>segredo</span><span>psicólogo</span><span>nova terapia</span></div>
+  </div>
+  <div class="grid2 mt6">
+    <div>
+      <h3 class="h3">O tom</h3>
+      <ul class="pl mt2">
+        <li>Frases curtas. Uma ideia por mensagem.</li>
+        <li>Chame a pessoa pelo nome.</li>
+        <li>Apresente-se em toda primeira mensagem: o número é o mesmo para todos os Embaixadores.</li>
+        <li>Termine com uma pergunta simples, para a pessoa responder.</li>
+        <li>Emoji com moderação: no máximo 1 por mensagem.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="h3">Quando você não sabe a resposta</h3>
+      <ol class="steps mt2">
+        <li>Diga: "Boa pergunta. Vou confirmar com a equipe e já te respondo."</li>
+        <li>Registre a pergunta na nota do contato.</li>
+        <li>Pergunte à equipe.</li>
+        <li>Responda o lead no mesmo dia.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Não dê orientação clínica pelo WhatsApp. Se o lead contar que está em crise ou em risco, acolha, indique o CVV (ligação gratuita no 188) ou o serviço de saúde mais próximo e avise a equipe na hora.</span></div>
+  <div class="folio"><span>Parte 1 · Linguagem</span></div>
+</section>
+<section id="p17" class="page sand">
+  <img class="mono-badge" src="img/logo-icone.png" alt="">
+  <div style="margin-top:40mm">
+    <div class="part-num">02</div>
+    <div class="eyebrow mt4">Parte 2</div>
+    <h1 class="h1" style="font-size:calc(40pt*var(--fs,1))">O CRM</h1>
+    <p class="lead mt4" style="color:var(--ink-2);max-width:135mm">Como o atendimento funciona no GoHighLevel (GHL): onde o lead aparece, como responder, como mover no pipeline e o passo a passo de cada tipo de atendimento.</p>
+    <ul class="part-list">
+      <li><a href="#p18">Como o lead chega até você e primeiro acesso<span>18 e 19</span></a></li>
+      <li><a href="#p20">Pipeline, ficha do contato e tags<span>20 e 21</span></a></li>
+      <li><a href="#p22">Conversas: como responder<span>22</span></a></li>
+      <li><a href="#p23">Os 3 tipos de atendimento, com mensagens prontas<span>23 a 26</span></a></li>
+      <li><a href="#p27">O dia 28/11, dúvidas e checklist<span>27 e 28</span></a></li>
+    </ul>
+  </div>
+  <div class="folio"><span>Manual do Embaixador · Congresso Plenitude 2026</span></div>
+</section>
+<section id="p18" class="page">
+  <div class="eyebrow">Visão geral</div>
+  <h2 class="h2">Como o lead chega até você</h2>
+  <p class="lead">O GoHighLevel (GHL) é o CRM da Academia: o sistema que guarda os contatos, as conversas e a etapa de cada lead. As automações fazem a primeira parte. Você faz a parte humana.</p>
+  <div class="flow">
+    <div class="n"><b>1 · Origem</b>Instagram, anúncio, indicação ou página do Congresso</div>
+    <div class="ar">›</div>
+    <div class="n"><b>2 · Checkout</b>A pessoa compra, ou tenta comprar, na Kiwify</div>
+    <div class="ar">›</div>
+    <div class="n"><b>3 · Automação</b>O GHL cria o contato e envia e-mail e WhatsApp</div>
+    <div class="ar">›</div>
+    <div class="n"><b>4 · Rodízio</b>O GHL atribui o contato a um Embaixador, em partes iguais</div>
+    <div class="ar">›</div>
+    <div class="n me"><b>5 · Você</b>Atende em Conversas e move o cartão no pipeline</div>
+  </div>
+  <h3 class="h3 mt8">Os 3 tipos de lead que você atende</h3>
+  <div class="grid3 mt2">
+    <div class="kind"><div class="n">1</div><h3>Comprou o Congresso</h3><p><b>Objetivo:</b> dar boas-vindas, levar ao grupo e conhecer o perfil.</p><p class="mt2 small"><a class="ref" href="#p23">Página 23</a></p></div>
+    <div class="kind"><div class="n">2</div><h3>Não concluiu a compra do Congresso</h3><p>Carrinho abandonado, Pix gerado e não pago, ou cartão recusado. <b>Objetivo:</b> tirar a dúvida e concluir a compra.</p><p class="mt2 small"><a class="ref" href="#p24">Página 24</a></p></div>
+    <div class="kind"><div class="n">3</div><h3>Interessado na Pós</h3><p>Tentou se matricular e não concluiu, ou perguntou depois do encerramento. <b>Objetivo:</b> responder e levar até a matrícula.</p><p class="mt2 small"><a class="ref" href="#p25">Página 25</a></p></div>
+  </div>
+  <h3 class="h3 mt8">Glossário</h3>
+  <table class="mt2">
+    <tr><td style="width:30%"><b>Contato</b></td><td>A ficha de uma pessoa: nome, WhatsApp, e-mail, tags, notas e histórico.</td></tr>
+    <tr><td><b>Lead (oportunidade)</b></td><td>O cartão do contato no pipeline. No menu do painel, as oportunidades aparecem com o nome <b>Leads</b>.</td></tr>
+    <tr><td><b>Pipeline</b></td><td>O quadro com as etapas do atendimento, em colunas. Cada cartão está em uma etapa.</td></tr>
+    <tr><td><b>Tag</b></td><td>Etiqueta que a automação coloca no contato para marcar o que aconteceu (exemplo: comprou, entrou no grupo).</td></tr>
+    <tr><td><b>Fluxo (automação)</b></td><td>Sequência de ações que o GHL faz sozinho: enviar mensagem, colocar tag, mover o cartão.</td></tr>
+    <tr><td><b>Rodízio</b></td><td>Distribuição automática dos contatos entre os Embaixadores, em partes iguais.</td></tr>
+    <tr><td><b>Stevo</b></td><td>O serviço que liga o WhatsApp do Congresso ao GHL. No GHL, o WhatsApp aparece como canal <b>SMS</b>.</td></tr>
+  </table>
+  <div class="folio"><span>Parte 2 · O CRM</span></div>
+</section>
+<section id="p19" class="page">
+  <div class="eyebrow">Primeiro acesso</div>
+  <h2 class="h2">Entre no GHL e conheça o menu</h2>
+  <div class="split">
+    <div>
+      <h3 class="h3">No computador</h3>
+      <ol class="steps mt2">
+        <li>Abra o e-mail de convite do GHL.</li>
+        <li>Clique no link do convite.</li>
+        <li>Crie a sua senha.</li>
+        <li>Entre no painel pelo link que o Jeferson envia no treinamento.</li>
+        <li>Confira o nome da conta no canto superior esquerdo: <b>Eleve-se Plus — Plenitude</b>.</li>
+        <li>Salve o link do painel nos favoritos do navegador.</li>
+      </ol>
+      <h3 class="h3 mt6">No celular</h3>
+      <ol class="steps mt2">
+        <li>Instale o aplicativo que o Jeferson indica no treinamento.</li>
+        <li>Entre com o mesmo e-mail e a mesma senha.</li>
+        <li>Ative as notificações do aplicativo.</li>
+      </ol>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Não compartilhe a sua senha. Cada Embaixador tem o próprio usuário. O sistema registra quem enviou cada mensagem.</span></div>
+    </div>
+    <div>
+      <h3 class="h3">O que você usa no menu</h3>
+      <table class="mt2">
+        <tr><td style="width:32%"><b>Conversas</b></td><td>Onde você lê e responde as mensagens de WhatsApp, e-mail e Instagram. É a tela que você mais usa.</td></tr>
+        <tr><td><b>Contatos</b></td><td>A lista e a ficha de cada pessoa: tags, notas, tarefas e histórico.</td></tr>
+        <tr><td><b>Leads</b></td><td>O pipeline "Congresso Plenitude 2026", com os cartões em colunas.</td></tr>
+      </table>
+      <p class="small mt2">Você não precisa usar os outros itens do menu. Não altere automações, campanhas ou configurações.</p>
+      <div class="card mt6">
+        <h3 class="h3">O que você vê</h3>
+        <p>O seu usuário mostra <b>só os contatos atribuídos a você</b>. O rodízio distribui os contatos novos entre os Embaixadores, em partes iguais.</p>
+        <p>Se um lead disser que já fala com outro Embaixador, ou se você não encontrar um contato, avise a equipe. Não crie um contato novo para a mesma pessoa.</p>
+      </div>
+      <div class="card mt4">
+        <h3 class="h3">Antes do treinamento</h3>
+        <ul class="check mt2">
+          <li>Envie ao Jeferson: nome completo, e-mail e WhatsApp.</li>
+          <li>Tenha à mão este manual: o atendimento é todo feito pelo GHL.</li>
+          <li>Leia a Parte 1 deste manual.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · O CRM</span></div>
+</section>
+<section id="p20" class="page">
+  <div class="eyebrow">Leads</div>
+  <h2 class="h2">O pipeline "Congresso Plenitude 2026"</h2>
+  <p class="lead mb2">Cada coluna é uma etapa. O sistema move as etapas 1 a 4 e a 8. Você move as etapas 5, 6, 7 e 9.</p>
+  <table>
+    <tr><th style="width:6%">#</th><th style="width:25%">Etapa</th><th style="width:14%">Quem move</th><th>O que você faz</th></tr>
+    <tr><td>1</td><td><b>Comentou no Instagram</b></td><td>Sistema</td><td>Nada. A automação responde e envia o link da página.</td></tr>
+    <tr><td>2</td><td><b>Recebeu o link</b></td><td>Sistema</td><td>Nada, se o contato não for atribuído a você. Se for, pergunte se ficou alguma dúvida.</td></tr>
+    <tr><td>3</td><td><b>Carrinho abandonado</b></td><td>Sistema</td><td>Atendimento 2: recuperar a compra (<a class="ref" href="#p24">página 24</a>).</td></tr>
+    <tr><td>4</td><td><b>Comprou o Congresso</b></td><td>Sistema</td><td>Atendimento 1: boas-vindas. Depois, mova para a etapa 5.</td></tr>
+    <tr><td>5</td><td><b>Em atendimento (Embaixador)</b></td><td>Você</td><td>A conversa com o comprador está em andamento.</td></tr>
+    <tr><td>6</td><td><b>Interessado na Pós</b></td><td>Você</td><td>O lead mostrou interesse na Pós. Responda às dúvidas (<a class="ref" href="#p15">páginas 15 e 26</a>).</td></tr>
+    <tr><td>7</td><td><b>Link da Pós enviado</b></td><td>Você</td><td>Você enviou o link da Pós. Faça o acompanhamento.</td></tr>
+    <tr><td>8</td><td><b>Comprou a Pós</b></td><td>Sistema</td><td>Envie os parabéns. <span class="tbc">no treinamento</span></td></tr>
+    <tr><td>9</td><td><b>Lead Desistiu</b></td><td>Você</td><td>O lead disse não, ou não respondeu a 3 tentativas. Registre o motivo na nota.</td></tr>
+  </table>
+  <div class="split mt6">
+    <div>
+      <h3 class="h3">Como mover um cartão</h3>
+      <ol class="steps mt2">
+        <li>Clique em <b>Leads</b> no menu.</li>
+        <li>Selecione o pipeline <b>Congresso Plenitude 2026</b>.</li>
+        <li>Arraste o cartão para a coluna da nova etapa.</li>
+        <li>Se preferir, abra o cartão, troque o campo <b>Etapa</b> e clique em <b>Salvar</b>.</li>
+      </ol>
+    </div>
+    <div>
+      <div class="warn" style="margin-top:0"><span class="k">CUIDADO</span><span>Não mova nenhum cartão para as etapas 1 a 4. Essas etapas são do sistema.</span></div>
+      <div class="warn"><span class="k">CUIDADO</span><span>Mantenha o status do cartão em <b>Aberto</b>. Mude só a etapa.</span></div>
+      <div class="warn"><span class="k">CUIDADO</span><span>Não exclua cartões nem contatos. Se um contato estiver duplicado, avise a equipe.</span></div>
+    </div>
+  </div>
+  <div class="card mt4">
+    <h3 class="h3">Leads da Pós</h3>
+    <p>Quem tentar a matrícula na Pós e não concluir também entra no seu pipeline. <span class="tbc">no treinamento</span> O cartão leva a etiqueta do produto, para você saber se a recuperação é do Congresso ou da Pós.</p>
+  </div>
+  <div class="folio"><span>Parte 2 · O CRM</span></div>
+</section>
+<section id="p21" class="page">
+  <div class="eyebrow">Contatos</div>
+  <h2 class="h2">A ficha do contato e as tags</h2>
+  <div class="split">
+    <div>
+      <h3 class="h3">O que tem na ficha</h3>
+      <ul class="pl mt2">
+        <li><b>Dados:</b> nome, WhatsApp e e-mail.</li>
+        <li><b>Tags:</b> o que já aconteceu com o lead.</li>
+        <li><b>Leads (oportunidades):</b> a etapa no pipeline.</li>
+        <li><b>Notas:</b> o que você descobriu na conversa.</li>
+        <li><b>Tarefas:</b> os lembretes de retorno.</li>
+        <li><b>Atividade:</b> o histórico de mensagens e de automações.</li>
+      </ul>
+      <h3 class="h3 mt6">Registre uma nota em toda conversa</h3>
+      <ol class="steps mt2">
+        <li>Abra a ficha do contato.</li>
+        <li>Clique em <b>Notas</b>.</li>
+        <li>Escreva no modelo abaixo.</li>
+        <li>Clique em <b>Salvar</b>.</li>
+      </ol>
+      <div class="msg lead-msg"><span class="who">Modelo de nota</span>Perfil: vocacionado (pastor) · Atua: igreja em Curitiba · Interesse: Mesa 4 e Pós em módulos · Dúvida: boleto parcelado · Próximo passo: retorno dia 29/11 às 10h</div>
+      <h3 class="h3 mt4">Crie uma tarefa para cada retorno</h3>
+      <ol class="steps mt2">
+        <li>Na ficha, clique em <b>Tarefas</b> e em <b>Adicionar</b>.</li>
+        <li>Escreva o que fazer (exemplo: "Retornar sobre a Pós").</li>
+        <li>Escolha a data e a hora. Clique em <b>Salvar</b>.</li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="h3">As tags que importam para você</h3>
+      <table class="mt2" style="font-size:calc(8pt*var(--fs,1))">
+        <tr><th>Tag</th><th>Significa</th></tr>
+        <tr><td><code>congresso-2026-comprador</code></td><td>Comprou o Congresso.</td></tr>
+        <tr><td><code>congresso-2026-grupo</code></td><td>Entrou no grupo de inscritos e recebeu as aulas bônus.</td></tr>
+        <tr><td><code>congresso-2026-clicou-grupo</code></td><td>Tocou no link do grupo.</td></tr>
+        <tr><td><code>congresso-2026-recuperacao</code></td><td>Não concluiu a compra. Precisa de atendimento. Sai quando a compra é aprovada.</td></tr>
+        <tr><td><code>congresso-2026-carrinho</code></td><td>Histórico: abandonou o carrinho.</td></tr>
+        <tr><td><code>congresso-2026-pix-boleto</code></td><td>Histórico: gerou Pix sem pagar, ou teve o cartão recusado.</td></tr>
+        <tr><td><code>ig-congresso</code></td><td>Comentou "Plenitude" no Instagram.</td></tr>
+        <tr><td><code>ig-story</code></td><td>Veio pelo story ou pelo Direct.</td></tr>
+        <tr><td><code>ig-telefone-salvo</code></td><td>Enviou o WhatsApp pelo Direct.</td></tr>
+        <tr><td>Tags da Pós</td><td><span class="tbc">no treinamento</span></td></tr>
+      </table>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Não apague, não renomeie e não crie tags. As automações dependem delas. Uma tag apagada pode fazer o lead receber a mensagem errada.</span></div>
+      <div class="card mt4">
+        <h3 class="h3">Não perturbe (DND)</h3>
+        <p>Se o lead pedir para não receber mais mensagens: ative <b>Não perturbe</b> na ficha, registre o pedido na nota e mova o cartão para <b>Lead Desistiu</b>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · O CRM</span></div>
+</section>
+<section id="p22" class="page">
+  <div class="eyebrow">Conversas</div>
+  <h2 class="h2">Como responder um lead</h2>
+  <div class="split">
+    <div>
+      <ol class="steps">
+        <li>Clique em <b>Conversas</b> no menu.</li>
+        <li>Abra a aba <b>Não lidas</b>.</li>
+        <li>Clique na conversa.</li>
+        <li><b>Leia o histórico inteiro.</b> As mensagens da automação também aparecem ali.</li>
+        <li>Olhe as tags e a etapa no painel da direita.</li>
+        <li>Na caixa de texto, selecione o canal <b>SMS</b>. Esse canal é o WhatsApp do Congresso.</li>
+        <li>Escreva a mensagem e clique em <b>Enviar</b>.</li>
+        <li>Registre a nota e mova o cartão, se a etapa mudou.</li>
+      </ol>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Não selecione o canal "WhatsApp" do GHL. Ele não está ligado. O WhatsApp do Congresso funciona pelo canal <b>SMS</b>.</span></div>
+      <h3 class="h3 mt6">Os canais</h3>
+      <table class="mt2">
+        <tr><td style="width:26%"><b>SMS</b></td><td>WhatsApp do Congresso (+55 48 9208-0188). Canal principal.</td></tr>
+        <tr><td><b>E-mail</b></td><td>Para o lead sem WhatsApp. As respostas aos e-mails também chegam em Conversas.</td></tr>
+        <tr><td><b>Instagram</b></td><td>Direct do @joaofonseca.oficial. Você só pode responder até 24 h depois da última mensagem do lead.</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card hi">
+        <h3 class="h3">Um número para todos</h3>
+        <p>Todos os Embaixadores atendem pelo <b>mesmo WhatsApp</b>. O lead não sabe quem está do outro lado. Por isso:</p>
+        <ul class="pl mt2">
+          <li>Apresente-se pelo nome na primeira mensagem.</li>
+          <li>Responda só os contatos atribuídos a você.</li>
+          <li>Não use o seu WhatsApp pessoal para falar com o lead.</li>
+          <li>Não mexa no celular do chip do Congresso.</li>
+        </ul>
+      </div>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>O WhatsApp pode bloquear o número se receber muitas mensagens iguais em sequência. Se o número cair, ninguém atende. Personalize cada mensagem com o nome. Espere pelo menos 1 minuto entre envios em sequência. Não envie a mesma mensagem para dezenas de pessoas.</span></div>
+      <div class="card mt4">
+        <h3 class="h3">Horário de atendimento</h3>
+        <p>Envie mensagens <b>das 8h às 21h</b>, o mesmo horário das automações. Se a mensagem do lead chegar depois das 21h, responda no dia seguinte, a partir das 8h.</p>
+      </div>
+      <div class="card mt4">
+        <h3 class="h3">Mensagens que a automação trata</h3>
+        <p>Se o lead responder <b>ENTREI</b>, a automação marca a entrada no grupo e envia as aulas bônus. Você não precisa responder.</p>
+        <p class="small">A primeira mensagem pode mostrar o texto "Source: congresso-plenitude". É normal. O lead não vê esse texto.</p>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · O CRM</span></div>
+</section>
+<section id="p23" class="page">
+  <div class="eyebrow">Atendimento 1</div>
+  <h2 class="h2">Comprou o Congresso</h2>
+  <div class="split">
+    <div>
+      <div class="card"><h3 class="h3">Como o lead chega</h3><p>Cartão na etapa <b>Comprou o Congresso</b>, com a tag <code>congresso-2026-comprador</code>.</p><p><b>O sistema já enviou:</b> e-mail de confirmação com o grupo, e WhatsApp com o link do grupo ou com as aulas bônus.</p></div>
+      <h3 class="h3 mt6">O que você faz</h3>
+      <ol class="steps mt2">
+        <li>Abra a conversa e leia o que a automação enviou.</li>
+        <li>Mova o cartão para <b>Em atendimento</b>.</li>
+        <li>Envie a mensagem de boas-vindas (ao lado).</li>
+        <li>Olhe a tag <code>congresso-2026-grupo</code>. Se ela não estiver lá, envie o link do grupo.</li>
+        <li>Descubra o perfil: vocacionado ou profissional.</li>
+        <li>Indique as mesas que conversam com o perfil (<a class="ref" href="#p07">página 07</a>).</li>
+        <li>Registre a nota.</li>
+        <li>Na semana do evento, confirme a data e o horário com o lead.</li>
+      </ol>
+      <div class="warn mt4"><span class="k">CUIDADO</span><span>Não fale da Pós antes do encerramento do dia 28. A Pós é apresentada pelo João às 16h. Antes disso, diga só que "no encerramento tem uma novidade para quem está no Congresso".</span></div>
+    </div>
+    <div>
+      <div class="msg"><span class="who">Boas-vindas</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, Embaixador(a) da Academia da Plenitude.</p><p>Vi que você garantiu seu lugar no Congresso Plenitude 2026. Seja muito bem-vindo(a)!</p><p>É no sábado, 28/11, das 9h às 12h e das 13h30 às 17h, 100% online.</p><p>Você já entrou no grupo de inscritos? É por ele que chegam os avisos e, no dia, o link do Zoom.</p></div>
+      <div class="msg"><span class="who">Se não está no grupo</span><p>Este é o link do grupo: congressoplenitude.eleveseplus.com.br/grupo/</p><p>Depois de entrar, responda ENTREI aqui. As duas aulas bônus do Congresso 2025 chegam em seguida.</p></div>
+      <div class="msg"><span class="who">Perfil</span><p>E me conta: hoje você cuida de pessoas onde? No consultório, na igreja, no aconselhamento?</p><p>Pergunto para te indicar as mesas que mais conversam com o que você vive.</p></div>
+      <div class="msg"><span class="who">Semana do evento</span><p><span class="ph">{nome}</span>, falta pouco! Sábado, 28/11, começamos às 9h com a abertura do João.</p><p>O link do Zoom chega no grupo de inscritos no dia. Vou estar por aqui se precisar de ajuda.</p></div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · Atendimento</span></div>
+</section>
+<section id="p24" class="page">
+  <div class="eyebrow">Atendimento 2</div>
+  <h2 class="h2">Não concluiu a compra do Congresso</h2>
+  <table class="mb4">
+    <tr><th style="width:24%">Situação</th><th style="width:34%">O que aconteceu</th><th>O que o sistema já enviou</th></tr>
+    <tr><td><b>Carrinho abandonado</b></td><td>Preencheu os dados no checkout e saiu.</td><td>Depois de 15 min: e-mail com o link do checkout e WhatsApp no dia 1, no dia 2 e no dia 3.</td></tr>
+    <tr><td><b>Pix gerado</b></td><td>Gerou o Pix e não pagou.</td><td rowspan="2">Depois de 15 min, entra em recuperação. Mensagens automáticas <span class="tbc">a confirmar</span>.</td></tr>
+    <tr><td><b>Cartão recusado</b></td><td>O banco recusou o pagamento.</td></tr>
+  </table>
+  <div class="split">
+    <div>
+      <h3 class="h3">O que você faz</h3>
+      <ol class="steps mt2">
+        <li>Olhe a tag <code>congresso-2026-comprador</code>. Se ela estiver lá, o lead já comprou: não fale de pagamento.</li>
+        <li>Leia o que a automação enviou. Não repita a mesma mensagem.</li>
+        <li>Envie a mensagem da situação (ao lado).</li>
+        <li>Responda a dúvida com a Parte 1 deste manual.</li>
+        <li>Envie o link do checkout: <span class="mono">pay.kiwify.com.br/FMAqNH5</span></li>
+        <li>Se o lead não responder, crie uma tarefa e tente de novo no dia seguinte.</li>
+        <li>Depois de 3 tentativas sem resposta, em dias diferentes, registre na nota e mova para <b>Lead Desistiu</b>.</li>
+      </ol>
+      <div class="card mt4">
+        <h3 class="h3">Dicas por situação</h3>
+        <p><b>Cartão recusado:</b> o motivo mais comum é o limite. Sugira outro cartão ou o Pix.</p>
+        <p><b>Pix:</b> o código do Pix tem validade. Se expirou, a pessoa gera um novo pelo link do checkout.</p>
+        <p><b>Boleto:</b> a partir de 25/11, indique Pix ou cartão. O boleto pode não compensar até o dia 28.</p>
+      </div>
+    </div>
+    <div>
+      <div class="msg"><span class="who">Carrinho abandonado</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, da equipe do Congresso Plenitude 2026.</p><p>Vi que você começou a sua inscrição e ela não foi concluída. Aconteceu alguma coisa no pagamento, ou ficou alguma dúvida?</p><p>Posso te ajudar por aqui.</p></div>
+      <div class="msg"><span class="who">Pix gerado</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, do Congresso Plenitude 2026.</p><p>Vi que você gerou o Pix da sua inscrição. Se o código expirou, você gera um novo por este link: pay.kiwify.com.br/FMAqNH5</p><p>Ficou alguma dúvida?</p></div>
+      <div class="msg"><span class="who">Cartão recusado</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, do Congresso Plenitude 2026.</p><p>Vi que o pagamento no cartão não foi aprovado. Isso costuma acontecer por limite. Você pode tentar outro cartão ou pagar no Pix, que aprova na hora: pay.kiwify.com.br/FMAqNH5</p></div>
+      <div class="msg"><span class="who">Retorno · dia seguinte</span><p><span class="ph">{nome}</span>, passando para lembrar: o Congresso é no sábado, 28/11.</p><p>São R$ 97 à vista ou 12x de R$ 10,03, com 7 dias de garantia, e a gravação fica disponível por 12 meses. O link é este: pay.kiwify.com.br/FMAqNH5</p></div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · Atendimento</span></div>
+</section>
+<section id="p25" class="page">
+  <div class="eyebrow">Atendimento 3</div>
+  <h2 class="h2">Interessado na Pós</h2>
+  <div class="split">
+    <div>
+      <div class="card"><h3 class="h3">Como o lead chega</h3>
+        <ul class="pl mt2">
+          <li>Tentou a matrícula depois do encerramento e não concluiu <span class="tbc">no treinamento</span>.</li>
+          <li>Perguntou sobre a Pós na conversa.</li>
+          <li>Recebeu o roteiro pós-evento e respondeu (<a class="ref" href="#p26">página 26</a>).</li>
+        </ul>
+      </div>
+      <h3 class="h3 mt6">O que você faz</h3>
+      <ol class="steps mt2">
+        <li>Abra a conversa e leia o histórico.</li>
+        <li>Mova o cartão para <b>Interessado na Pós</b>.</li>
+        <li>Envie a mensagem da situação (ao lado).</li>
+        <li>Leia a nota: o perfil do lead define o caminho. Vocacionado sem graduação: módulos como curso livre. Graduado: pós completa.</li>
+        <li>Responda às objeções com a <a class="ref" href="#p26">página 26</a>.</li>
+        <li>Envie o <b>link da Pós</b> <span class="tbc">no treinamento</span> e mova para <b>Link da Pós enviado</b>.</li>
+        <li>Crie uma tarefa de retorno para 24 h depois.</li>
+        <li>Compra aprovada: o sistema move para <b>Comprou a Pós</b>. Envie os parabéns.</li>
+      </ol>
+      <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>Use só o link da Pós indicado no treinamento. Antes da aprovação dos valores, não informe preço.</span></div>
+    </div>
+    <div>
+      <div class="msg"><span class="who">Matrícula não concluída</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, Embaixador(a) da Academia da Plenitude.</p><p>Vi que você começou a sua matrícula na Turma 02 da Pós em Terapia da Plenitude e ela não foi concluída.</p><p>Ficou alguma dúvida sobre a pós ou sobre o pagamento? Estou aqui para te ajudar.</p></div>
+      <div class="msg"><span class="who">Envio do link</span><p>Que bom, <span class="ph">{nome}</span>! Este é o link da sua matrícula: <span class="ph">[link da Pós]</span></p><p>A condição do Congresso vale até <span class="ph">[data de fechamento]</span>.</p></div>
+      <div class="msg"><span class="who">Retorno · 24 h depois</span><p><span class="ph">{nome}</span>, conseguiu ver o link da matrícula?</p><p>Se ficou alguma dúvida sobre o formato, os módulos ou o pagamento, me fala aqui que eu te ajudo.</p></div>
+      <div class="msg"><span class="who">Parabéns</span><p><span class="ph">{nome}</span>, sua matrícula na Turma 02 foi confirmada! Seja muito bem-vindo(a) à Academia da Plenitude.</p><p><span class="ph">[próximos passos]</span></p></div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · Atendimento</span></div>
+</section>
+<section id="p26" class="page">
+  <div class="eyebrow">Depois do evento</div>
+  <h2 class="h2">Roteiro pós-evento e objeções da Pós</h2>
+  <div class="split">
+    <div>
+      <h3 class="h3">Roteiro pós-evento (todos os compradores)</h3>
+      <div class="msg"><span class="who">Mensagem 1 · gravação</span><p>Oi, <span class="ph">{nome}</span>! Aqui é <span class="ph">[seu nome]</span>, da Academia da Plenitude.</p><p>A gravação do Congresso Plenitude 2026 já está disponível <span class="ph">[onde assistir]</span>. Ela fica no ar por 12 meses.</p><p>Você conseguiu assistir ao vivo?</p></div>
+      <p style="font-size:calc(8.4pt*var(--fs,1))"><b>Se assistiu:</b> pergunte o que mais ficou com a pessoa e qual mesa falou com o que ela vive. Depois, pergunte se ela viu a abertura das matrículas da Turma 02 e o que achou da pós.</p>
+      <p style="font-size:calc(8.4pt*var(--fs,1))"><b>Se não assistiu:</b> indique a gravação, em especial o encerramento, em que o João apresenta a Academia e a Turma 02. Pergunte se ela consegue assistir hoje ou amanhã.</p>
+      <div class="msg"><span class="who">Interesse</span><p>E você chegou a tentar a matrícula, ou ainda está avaliando? A condição do Congresso vale até <span class="ph">[data de fechamento]</span>.</p></div>
+    </div>
+    <div>
+      <h3 class="h3">Respostas para as objeções</h3>
+      <table class="mt2" style="font-size:calc(8pt*var(--fs,1))">
+        <tr><td style="width:30%"><b>"Estou sem tempo."</b></td><td>Aulas ao vivo um fim de semana por mês, todas gravadas, supervisões mensais e até 24 meses para concluir. Também dá para fazer um módulo por vez.</td></tr>
+        <tr><td><b>"Não sei se vou dar conta."</b></td><td>São quatro módulos, das raízes à prática avançada. A pessoa não estuda sozinha: tem supervisões e as comunidades. O foco é profundidade e segurança no cuidado.</td></tr>
+        <tr><td><b>"Está caro."</b></td><td>Parcelamento no cartão e outras opções <span class="tbc">a confirmar</span>. Ou começar pelo Módulo I, com certificado de curso livre.</td></tr>
+        <tr><td><b>"Não tenho graduação."</b></td><td>Os módulos abrem como cursos livres, com certificado próprio. O certificado de pós exige graduação, por lei. As atividades privativas continuam de quem tem registro no CRP.</td></tr>
+        <tr><td><b>"Não sei se é para mim."</b></td><td>Ofereça enviar os quatro módulos, os professores e a página: <span class="mono">eleveseplus.com.br/posplenitude</span>. Assim a pessoa decide com clareza.</td></tr>
+        <tr><td><b>"E o CRP?"</b></td><td>Pós lato sensu, reconhecida pelo MEC, 420 horas, com módulos restritos a quem tem registro no CRP. A dimensão espiritual entra de forma científica e ética.</td></tr>
+        <tr><td><b>"É muito espiritual?"</b></td><td>Confessional sem ser devocional. O conteúdo é científico, filosófico e clínico: Terapia do Esquema, ACT, Terapia Focada na Compaixão e Logoterapia, com Agostinho, Tomás de Aquino, Scheler e Edith Stein.</td></tr>
+      </table>
+      <div class="msg mt4"><span class="who">Se a pós não é para agora</span><p>Sem problema nenhum. O mais importante é você continuar cuidando de gente com fundamento.</p><p>Se preferir começar por algo menor, o Módulo I abre como curso livre, com certificado próprio. Quer conhecer?</p></div>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · Atendimento</span></div>
+</section>
+<section id="p27" class="page">
+  <div class="eyebrow">Sábado, 28 de novembro</div>
+  <h2 class="h2">O dia do Congresso para o Embaixador</h2>
+  <p class="lead">O dia tem dois momentos de movimento: a entrada de quem tem dúvida de acesso, de manhã, e a abertura das matrículas da Pós, às 16h.</p>
+  <div class="slot"><div class="t">Até 27/11<small>Preparação</small></div><div><h3>Deixe tudo em ordem</h3><p>Todos os seus compradores com boas-vindas enviadas e no grupo de inscritos. Notas com o perfil de cada um. Este manual lido.</p></div></div>
+  <div class="slot"><div class="t">8h30<small>Antes de abrir</small></div><div><h3>Entre no GHL</h3><p>Abra Conversas no computador e no celular. Responda as mensagens não lidas.</p></div></div>
+  <div class="slot"><div class="t">9h às 12h<small>Manhã</small></div><div><h3>Assista e atenda as dúvidas de acesso</h3><p>A dúvida mais comum: "onde está o link do Zoom?". Resposta: no grupo de inscritos. Envie o link do grupo. Compras de última hora: boas-vindas e link do grupo na hora.</p></div></div>
+  <div class="slot"><div class="t">12h às 13h30<small>Intervalo</small></div><div><h3>Responda o que ficou pendente</h3><p>Veja os carrinhos abandonados da manhã e as perguntas sem resposta.</p></div></div>
+  <div class="slot"><div class="t">13h30 às 16h<small>Tarde</small></div><div><h3>Assista e acompanhe Conversas</h3><p>Responda dentro de 15 minutos. Prepare as respostas da Pós (<a class="ref" href="#p15">páginas 15 e 26</a>).</p></div></div>
+  <div class="slot key"><div class="t">16h<small>Encerramento</small></div><div><h3>Matrículas da Turma 02 abertas</h3><p>Fique on-line. As primeiras perguntas sobre a Pós chegam durante o encerramento. Mova cada interessado para <b>Interessado na Pós</b> e envie o link da Pós.</p></div></div>
+  <div class="slot"><div class="t">17h às 21h<small>Noite</small></div><div><h3>Atenda as matrículas não concluídas</h3><p>Use o Atendimento 3. Responda até as 21h. O que chegar depois, responda no domingo, a partir das 8h.</p></div></div>
+  <div class="slot" style="border-bottom:0"><div class="t">29/11 em diante<small>Pós-evento</small></div><div><h3>Roteiro pós-evento</h3><p>Envie a mensagem da gravação para todos os seus compradores, em lotes, até o fechamento das matrículas <span class="tbc">a confirmar</span>.</p></div></div>
+  <div class="warn atencao mt4"><span class="k">ATENÇÃO</span><span>No dia 28, o volume de mensagens é maior. Não envie a mesma mensagem para muitos leads ao mesmo tempo. Personalize e espere pelo menos 1 minuto entre envios em sequência.</span></div>
+  <div class="folio"><span>Parte 2 · O dia</span></div>
+</section>
+<section id="p28" class="page">
+  <div class="eyebrow">Dúvidas sobre o CRM</div>
+  <h2 class="h2">Se acontecer, faça assim</h2>
+  <div class="faq">
+    <div class="q"><h4>Não encontro um contato.</h4><p>Você vê só os contatos atribuídos a você. Peça à equipe para conferir a quem o contato está atribuído.</p></div>
+    <div class="q"><h4>A mensagem não foi entregue.</h4><p>Não reenvie várias vezes. Avise o Jeferson: o celular do chip pode estar sem internet.</p></div>
+    <div class="q"><h4>O lead respondeu o e-mail.</h4><p>A resposta aparece em Conversas. Responda pelo mesmo canal ou pelo WhatsApp (canal SMS).</p></div>
+    <div class="q"><h4>Movi o cartão para a etapa errada.</h4><p>Mova de volta para a etapa certa. Se foi para uma das etapas 1 a 4, avise a equipe.</p></div>
+    <div class="q"><h4>O lead pediu reembolso.</h4><p>A garantia é de 7 dias. O pedido é feito pela Kiwify, com o e-mail da compra. Registre na nota e avise a equipe.</p></div>
+    <div class="q"><h4>O lead mandou áudio.</h4><p>Ouça o áudio na conversa. Responda por texto.</p></div>
+    <div class="q"><h4>O lead quer falar com o João.</h4><p>Explique que você é da equipe da Academia e que pode ajudar. Se ele insistir, registre na nota e avise a equipe <span class="tbc">no treinamento</span>.</p></div>
+    <div class="q"><h4>O lead já comprou a Pós com outro Embaixador.</h4><p>Não envie o link da Pós. Parabenize, registre na nota e avise a equipe.</p></div>
+    <div class="q"><h4>O lead diz que é de outro Embaixador.</h4><p>Não responda sobre venda. Avise a equipe para corrigir a atribuição.</p></div>
+    <div class="q"><h4>O lead contou um problema pessoal grave.</h4><p>Acolha, não dê orientação clínica, indique o CVV (188) ou o serviço de saúde e avise a equipe na hora.</p></div>
+  </div>
+  <div class="grid2 mt2">
+    <div class="card hi">
+      <h3 class="h3">Checklist de cada dia</h3>
+      <ul class="check mt2">
+        <li>Abrir Conversas e zerar as não lidas.</li>
+        <li>Dar boas-vindas a todo comprador novo.</li>
+        <li>Conferir os cartões em Carrinho abandonado.</li>
+        <li>Fazer os retornos das tarefas do dia.</li>
+        <li>Registrar uma nota em cada conversa.</li>
+        <li>Mover cada cartão para a etapa certa.</li>
+        <li>Levar as dúvidas sem resposta para a equipe.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h3">A quem pedir ajuda</h3>
+      <table class="mt2">
+        <tr><td style="width:40%"><b>Acesso e uso do GHL</b></td><td>Jeferson <span class="tbc">no treinamento</span></td></tr>
+        <tr><td><b>Conteúdo do Congresso e da Pós</b></td><td>Equipe da Academia <span class="tbc">no treinamento</span></td></tr>
+        <tr><td><b>Pagamento e reembolso</b></td><td>Equipe, com os dados da compra na Kiwify</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="folio"><span>Parte 2 · Dúvidas</span></div>
+</section>
+
+<section class="duv" id="duvidas">
+  <div class="duv-grid">
+    <div>
+      <div class="eyebrow">Dúvidas dos Embaixadores</div>
+      <h2 class="h2">Ficou alguma dúvida?</h2>
+      <p class="lead">Escreva a sua dúvida sobre o Congresso, a Pós ou o atendimento. Ela chega direto para o Jeferson, e a resposta vem pelo seu WhatsApp.</p>
+      <div class="dl">
+        <a class="wbtn big" href="manual-do-embaixador.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Baixar o manual em PDF</a>
+        <p>3.7 MB · para ler sem internet</p>
+      </div>
+    </div>
+    <form id="fduv" novalidate>
+      <label class="fld"><span>Seu nome</span><input name="nome" autocomplete="name" required maxlength="120" placeholder="Nome e sobrenome"></label>
+      <label class="fld"><span>Seu WhatsApp</span><input name="telefone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="40" placeholder="(00) 00000-0000"></label>
+      <label class="fld"><span>Sua dúvida</span><textarea name="duvida" required maxlength="3000" placeholder="Escreva aqui a sua dúvida"></textarea></label>
+      <label class="isca" aria-hidden="true">Não preencha<input name="site" tabindex="-1" autocomplete="off"></label>
+      <button class="wbtn big" type="submit" style="width:100%">Enviar dúvida</button>
+      <div class="msg-ok" id="ok">Dúvida enviada. O Jeferson recebe agora e responde pelo seu WhatsApp.</div>
+      <div class="msg-err" id="err"></div>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="wfoot">
+  <img src="img/logo-icone.png" alt="" style="width:54px;margin:0 auto">
+  <p>A Quarta Onda não é uma nova teoria. <span class="gold">É uma geração unida pelo resgate dos fundamentos perdidos.</span></p>
+  <small>Academia da Plenitude · Material interno · não encaminhe aos leads</small>
+</footer>
+<script>
+(function(){
+  const f=document.getElementById('fduv'), ok=document.getElementById('ok'), err=document.getElementById('err'), b=f.querySelector('button');
+  let secao='';
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const h=e.target.querySelector('h1,h2');if(h)secao=h.textContent.trim()}}),{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('.page').forEach(s=>obs.observe(s));
+  f.addEventListener('submit',async ev=>{
+    ev.preventDefault(); ok.style.display='none'; err.style.display='none';
+    const d=Object.fromEntries(new FormData(f)); d.secao=secao;
+    if(!d.nome.trim()||!d.telefone.trim()||!d.duvida.trim()){err.textContent='Preencha o nome, o WhatsApp e a dúvida.';err.style.display='block';return}
+    b.disabled=true; b.textContent='Enviando...';
+    try{
+      const r=await fetch('duvida.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok&&j.ok){ok.style.display='block';f.querySelector('textarea').value=''}
+      else{err.textContent=j.erro||'Não foi possível enviar agora. Tente de novo.';err.style.display='block'}
+    }catch(e){err.textContent='Sem conexão. Confira a internet e tente de novo.';err.style.display='block'}
+    b.disabled=false; b.textContent='Enviar dúvida';
+  });
+})();
+</script>
+</body>
+</html>
