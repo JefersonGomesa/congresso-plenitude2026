@@ -279,8 +279,9 @@ body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
 @media (min-width:1100px){
   body.web{--fs:1.24}
   .web .cover{min-height:min(760px,calc(100vh - 60px));display:flex;flex-direction:column;justify-content:center;padding-top:40px;padding-bottom:72px}
-  .web .cover .title{margin-top:0;max-width:52%}
-  .web .cover .hero{left:46%;right:clamp(16px,5vw,64px);top:24px;bottom:56px;height:auto;
+  .web .cover .title{margin-top:0;max-width:46%}
+  .web .slot{grid-template-columns:36mm 1fr}
+  .web .cover .hero{left:50%;right:clamp(16px,5vw,64px);top:24px;bottom:56px;height:auto;
     -webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
   .web .cover .hero img{object-position:center bottom}
 }
@@ -298,7 +299,8 @@ body.web{--fs:1.14;background:var(--bg);overflow-x:hidden}
   .web .flow{flex-direction:column}.web .flow .ar{width:auto;height:22px;transform:rotate(90deg)}
   .web .faq{column-count:1}
   .web .host{gap:16px}.web .host .ph{height:min(110vw,440px)!important}
-  .web .slot{grid-template-columns:76px 1fr}
+  .web .slot{grid-template-columns:100px 1fr;gap:10px}
+  .web .slot .t small{letter-spacing:.06em}
   .web .cover .title .h1{font-size:calc(34pt*var(--fs,1))}
   .web .cover .meta span{font-size:11px}
   .web .cover .bottom{flex-direction:column;gap:6px;align-items:flex-start}
