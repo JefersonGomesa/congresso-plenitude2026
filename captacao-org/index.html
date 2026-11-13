@@ -117,6 +117,36 @@ main{overflow-x:clip}
 .turn.pause::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--dim)}
 .prog .pillars{margin:6px 0 0}
 .prog .pillars.cont{counter-reset:none;margin-bottom:36px}
+/* dia em dois blocos: manhã (areia) e tarde (bronze escuro) */
+.dia{margin:30px 0 36px}
+.turno{border-radius:18px;padding:clamp(20px,2.6vw,30px) clamp(18px,2.6vw,30px) clamp(10px,1.4vw,16px)}
+.turno-head{display:flex;align-items:center;gap:12px;padding-bottom:14px}
+.turno-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;flex:none}
+.turno-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.turno-head h3{margin:0;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.turno-h{margin-left:auto;font-size:14px;font-weight:500;letter-spacing:.04em}
+.prog .turno .pillars{margin:0}
+.turno .pillars li{padding:14px 0}
+.turno .quem{display:block;margin-top:6px;font-size:13px;font-weight:400;letter-spacing:.02em}
+.turno.manha{background:var(--sand);color:var(--ink);box-shadow:0 24px 50px -30px rgba(0,0,0,.7)}
+.turno.manha .turno-ic{color:#8a5d45;box-shadow:inset 0 0 0 1px rgba(138,93,69,.4)}
+.turno.manha h3,.turno.manha .turno-h{color:var(--ink)}
+.turno.manha .pillars li{border-top-color:rgba(42,31,24,.14)}
+.turno.manha .pillars li::before{color:#8a5d45}
+.turno.manha .pillars b,.turno.manha .pillars li:last-child b{color:var(--ink)}
+.turno.manha .pillars p{color:var(--ink-2)}
+.turno.manha .mesa{color:#8a5d45}
+.turno.manha .quem{color:#6e4a37}
+.turno.tarde{background:linear-gradient(150deg,#3a271d 0%,#22170f 55%,#170f0a 100%);box-shadow:inset 0 0 0 1px rgba(217,176,140,.28),0 24px 50px -30px rgba(0,0,0,.8)}
+.turno.tarde .turno-ic{color:var(--gold);box-shadow:inset 0 0 0 1px rgba(217,176,140,.4)}
+.turno.tarde h3,.turno.tarde .turno-h{color:var(--gold-hi)}
+.turno.tarde .pillars li{border-top-color:rgba(240,220,198,.12)}
+.turno.tarde .mesa{color:#b89478}
+.turno.tarde .quem{color:var(--gold)}
+.pausa{display:flex;align-items:center;gap:14px;margin:14px 0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.pausa::before,.pausa::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.pausa span{padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line-2)}
+@media (min-width:861px){.prog .prog-grid{align-items:start}.prog .screen-wrap{position:sticky;top:110px}}
 
 /* ===== 6b. ACADEMIA ===== */
 .academia{position:relative;z-index:2;background:var(--sand);color:var(--ink);overflow:hidden;padding-block:clamp(64px,9vw,110px)}
@@ -762,20 +792,26 @@ main{overflow-x:clip}
       <span class="eyebrow rv">O dia</span>
       <h2 class="h2 rv">Um dia, cinco mesas. <span class="gold">Gerações unidas à mesa. Um só propósito.</span></h2>
       <p class="lead rv">Sábado, 28 de novembro, em dois turnos: das 9h às 12h e das 13h30 às 17h.</p>
-      <p class="turn rv">Manhã · 9h às 12h</p>
-      <ol class="pillars agenda">
-        <li class="rv" data-h="9h"><div><span class="mesa">Abertura</span><b>A união de gerações no resgate dos fundamentos perdidos</b></div></li>
-        <li class="rv" data-h="9h30"><div><span class="mesa">Mesa 1</span><b>Fé e Constituição</b><p>Liberdade religiosa e o exercício profissional dos cristãos na saúde mental.</p></div></li>
-        <li class="rv" data-h="10h"><div><span class="mesa">Mesa 2</span><b>O Resgate do Ser</b><p>Os fundamentos da Logoterapia, da Psicologia Tomista e da Antropologia Paulina na compreensão do ser humano integral.</p></div></li>
-        <li class="rv" data-h="11h"><div><span class="mesa">Mesa 3</span><b>Cristãos e o adoecimento mental</b><p>Tratamento integral em saúde mental para cristãos.</p></div></li>
-      </ol>
-      <p class="turn pause rv">12h · Intervalo</p>
-      <p class="turn rv">Tarde · 13h30 às 17h</p>
-      <ol class="pillars agenda cont">
-        <li class="rv" data-h="13h30"><div><span class="mesa">Mesa 4</span><b>Aconselhamento Bíblico e Saúde Mental</b><p>A integração entre os fundamentos teológicos e a psicologia no cuidado da alma.</p></div></li>
-        <li class="rv" data-h="15h"><div><span class="mesa">Mesa 5</span><b>Trauma Emocional e a Graça</b><p>O processo de cura e renovação da mente no processo terapêutico com cristãos.</p></div></li>
-        <li class="rv" data-h="16h"><div><span class="mesa">Encerramento</span><b>Terapia da Plenitude: a resposta para o cuidado integral do Ser</b><p>Lançamento da Academia da Plenitude e da Turma 02 da Pós em Terapia da Plenitude.</p></div></li>
-      </ol>
+      <div class="dia">
+      <div class="turno manha rv">
+        <div class="turno-head"><span class="turno-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span><h3>Manhã</h3><span class="turno-h">9h às 12h</span></div>
+        <ol class="pillars agenda">
+          <li class="rv" data-h="9h"><div><span class="mesa">Abertura</span><b>A união de gerações no resgate dos fundamentos perdidos</b><span class="quem">João Victor Fonseca</span></div></li>
+          <li class="rv" data-h="9h30"><div><span class="mesa">Mesa 1</span><b>Fé e Constituição</b><p>Liberdade religiosa e o exercício profissional dos cristãos na saúde mental.</p><span class="quem">Rafael Durand</span></div></li>
+          <li class="rv" data-h="10h"><div><span class="mesa">Mesa 2</span><b>O Resgate do Ser</b><p>Os fundamentos da Logoterapia, da Psicologia Tomista e da Antropologia Paulina na compreensão do ser humano integral.</p><span class="quem">Rafael de Abreu · Milena Castro</span></div></li>
+          <li class="rv" data-h="11h"><div><span class="mesa">Mesa 3</span><b>Cristãos e o adoecimento mental</b><p>Tratamento integral em saúde mental para cristãos.</p><span class="quem">Ismael Sobrinho · Leandro Carone · Isabella Ferreira</span></div></li>
+        </ol>
+      </div>
+      <p class="pausa rv"><span>12h · Intervalo</span></p>
+      <div class="turno tarde rv">
+        <div class="turno-head"><span class="turno-ic"><svg viewBox="0 0 24 24"><path d="M5 17a7 7 0 0 1 14 0"/><path d="M2.5 17h19M12 4.5v2.5M4.9 9.9l1.6 1.6M19.1 9.9l-1.6 1.6M8 21h8"/></svg></span><h3>Tarde</h3><span class="turno-h">13h30 às 17h</span></div>
+        <ol class="pillars agenda">
+          <li class="rv" data-h="13h30"><div><span class="mesa">Mesa 4</span><b>Aconselhamento Bíblico e Saúde Mental</b><p>A integração entre os fundamentos teológicos e a psicologia no cuidado da alma.</p><span class="quem">Aender Borba · Kauane Leite</span></div></li>
+          <li class="rv" data-h="15h"><div><span class="mesa">Mesa 5</span><b>Trauma Emocional e a Graça</b><p>O processo de cura e renovação da mente no processo terapêutico com cristãos.</p><span class="quem">Renata Moreira · Dra. Esly Carvalho · Mary Pinheiro</span></div></li>
+          <li class="rv" data-h="16h"><div><span class="mesa">Encerramento</span><b>Terapia da Plenitude: a resposta para o cuidado integral do Ser</b><p>Lançamento da Academia da Plenitude e da Turma 02 da Pós em Terapia da Plenitude.</p><span class="quem">João Victor Fonseca</span></div></li>
+        </ol>
+      </div>
+      </div>
       <a class="btn rv" href="#ingresso">Quero meu ingresso <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
     <div class="screen-wrap rv d2" aria-hidden="true">
