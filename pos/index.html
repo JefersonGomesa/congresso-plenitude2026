@@ -59,7 +59,13 @@ a.btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 (function(){
   // Número da equipe da Pós: 48 9145-1437 (pedido do Jeferson em 27/11/2026; antes 48 9208-0188). O lead só entra no GHL (P1 → rodízio) se este número estiver ligado à Stevo desta sub-conta.
   // Para trocar o número ou o texto, mude só o link do botão acima.
-  var destino = document.getElementById("falar").href;
+  // ?m=nao (28/11/2026): link do Instagram do João, botão "Não participei" do fluxo IG Pós.
+  // Troca a mensagem; o fluxo P1 reconhece "não participei do Congresso".
+  var botao = document.getElementById("falar");
+  if (/[?&]m=nao\b/.test(location.search)) {
+    botao.href = "https://wa.me/554891451437?text=" + encodeURIComponent("Eu não participei do Congresso, gostaria de saber mais sobre a Pós-graduação.");
+  }
+  var destino = botao.href;
   setTimeout(function(){ location.replace(destino); }, 400);
 })();
 </script>
